@@ -2,7 +2,7 @@
 
 require_once (dirname (__FILE__).'/../../models/email_template.php');
 
-class Post_Email extends FI_Post
+class Post_Email_Deprecated extends FI_Post
 {
 	var $text             = null;
 	var $html             = null;
@@ -49,41 +49,80 @@ class Post_Email extends FI_Post
 	}
 	
 	function send ($from, $to, $subject, $template)
-	{	   						
-    $this->from = $from;
-    $this->subject = $subject;                		        
-    
-    //add attachments
-    $attach = new EmailAttachment( $template );
-    $attachments = $attach->get();    
-    $attachments = array_merge( $attachments, $this->attachments );    
+	{
+		assert ('strlen ($template) > 0');
+		include_once (dirname (__FILE__).'/../../lib/swift3/Swift.php');
 
-    if( count( $attachments ) > 0 ){
-       foreach( $attachments AS $upload ){
-          $info = getimagesize( $upload->stored_location );
+		if ($this->swift == null)
+		{
+			if (get_option ('filled_in_smtp_host') != '')
+			{
+				$type = SWIFT_SMTP_ENC_OFF;
+				if (get_option ('filled_in_smtp_ssl') == 'ssl')
+					$type = SWIFT_SMTP_ENC_SSL;
+				else if (get_option ('filled_in_smtp_ssl') == 'tls')
+					$type = SWIFT_SMTP_ENC_TLS;
+					
+				include_once (dirname (__FILE__).'/../../lib/swift3/Swift/Connection/SMTP.php');
+				$connection = new Swift_Connection_SMTP (get_option ('filled_in_smtp_host'), get_option ('filled_in_smtp_port'), $type);
+				if (get_option ('filled_in_smtp_username') != '')
+				{
+					$connection->setUsername (get_option ('filled_in_smtp_username'));
+					$connection->setUsername (get_option ('filled_in_smtp_password'));			
+				}
+			}
+			else
+			{
+				include_once (dirname (__FILE__).'/../../lib/swift3/Swift/Connection/NativeMail.php');
+				$connection = new Swift_Connection_NativeMail ();
+			}
+		
+			$this->swift = &new Swift ($connection);
+		}
+		
+		$message = &new Swift_Message ($subject);
 
-          if( $info[2] != 0 && preg_match( '/"(.*?)'.$upload->name.'"/', $this->html ) > 0 ){
-             $this->html = preg_replace( '/"(.*?)'.$upload->name.'"/', '', $this->html );                                       
-          }          
-             
-          $this->attachments[] = $upload->stored_location;                          
-       }
-    }                            
-    
-    //add headers
-    $headers = "MIME-Version: 1.0\n" ;
-    $headers .= "Content-Type: text/html; charset='utf-8'\n";
-    $headers .= "From: " . $this->from . "\r\n";
-        
-    if(trim($this->html) == ''){       
-       $this->html = $this->text;       
-    }                  
-    
-    //content of mail
-    $message = '<html><head><title>' . $this->subject . '</title></head><body>' . wpautop($this->html) . '</body></html>';        
-    
-    //send it
-    return wp_mail($to, $this->subject, $message, $headers, $this->attachments);
+		// Add any attachments
+		$attach = new EmailAttachment ($template);
+		$attachments = $attach->get ();
+		$attachments = array_merge ($attachments, $this->attachments);
+
+		if (count ($attachments) > 0)
+		{
+			foreach ($attachments AS $upload)
+			{
+				$info = getimagesize ($upload->stored_location);
+				
+				// Embed an image or add attachment
+				if ($info[2] != 0 && preg_match ('/"(.*?)'.$upload->name.'"/', $this->html) > 0)
+					$this->html = preg_replace ('/"(.*?)'.$upload->name.'"/', '"'.$message->attach (new Swift_Message_Image (new Swift_File ($upload->stored_location), $upload->name)).'"', $this->html);
+				else
+					$message->attach (new Swift_Message_Attachment (new Swift_File ($upload->stored_location), $upload->name));
+			}
+		}
+
+		// Mangling for the horrible OS X Eudora client
+		$this->text = str_replace ("\n", "\r", $this->text);
+		
+		// Attach the parts
+		$message->attach (new Swift_Message_Part ($this->text));
+		if (strlen ($this->html) > 0)
+		{
+			$this->html = '<html><head><title>'.$subject.'</title></head><body>'.wpautop ($this->html).'</body></html>';
+			$message->attach (new Swift_Message_Part ($this->html, 'text/html'));
+		}
+		
+		// Get recipients
+		$recipients = &new Swift_RecipientList();
+		foreach ($to AS $address)
+			$recipients->addTo ($this->get_email ($address));
+		
+		// Send it
+		$result = @$this->swift->send ($message, $recipients, $this->get_email ($from));
+
+		if ($result == 0)
+			return sprintf (__ ('An error occurred while sending an email', 'filled-in'));
+		return true;
 	}
 	
 	function get_email ($address)
@@ -235,7 +274,7 @@ class Post_Email extends FI_Post
 	
 	function name ()
 	{
-		return __ ("Send as email", 'filled-in');
+		return __ ("Send as email (deprecated)", 'filled-in');
 	}
 	
 	function edit ()
@@ -254,7 +293,7 @@ class Post_Email extends FI_Post
 			  <option value="default"><?php _e ('Default', 'filled-in'); ?></option>
 			<?php if (count ($templates) > 0) : ?>
 			  <?php foreach ($templates AS $temp) : ?>
-			  <option value="<?php echo $temp->name ?>" <?php if ($temp->name == $this->config['template'] ? $this->config['template'] : '') echo ' selected="selected"' ?>><?php echo $temp->name ?></option>
+			  <option value="<?php echo $temp->name ?>" <?php if ($temp->name == isset($this->config['template']) ? $this->config['template'] : '') echo ' selected="selected"' ?>><?php echo $temp->name ?></option>
 			  <?php endforeach; ?>
 			<?php endif; ?>
 			</select>
@@ -285,5 +324,5 @@ class Post_Email extends FI_Post
 	function is_editable () { return true;}
 }
 
-$this->register ('Post_Email');
+$this->register ('Post_Email_Deprecated');
 ?>
