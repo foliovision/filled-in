@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: johnny5
+Contributors: johnny5, FolioVision
 Donate link: http://urbangiraffe.com/about/
 Tags: form, contact, validate
 Requires at least: 2.7
-Tested up to: 3.2.1
+Tested up to: 3.3.2
 Stable tag: trunk 
 
 Generic form processor allowing forms to be painlessly processed and aggregated, with numerous options to validate data and perform custom commands
