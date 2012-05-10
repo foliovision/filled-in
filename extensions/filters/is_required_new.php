@@ -1,24 +1,24 @@
 <?php
 
-class Filter_Is_Required extends FI_Filter
+class Filter_Is_Required_WP extends FI_Filter
 {
 	function filter (&$value, $all_data)
 	{
 		if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
 		{
-			if (count ($value) >= $this->config['smallest'] && count ($value) <= $this->config['largest'])
+			if (strlen ($value) >= $this->config['smallest'] && strlen ($value) <= $this->config['largest'])
 				return true;
 			return sprintf (__ ('between %d and %d items are required', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		}
 		else if ($this->config['smallest'] > 0)
 		{
-			if (count ($value) < $this->config['smallest'])
+			if (strlen ($value) > $this->config['smallest'])
 				return true;
 			return sprintf (__ ("at least %d items are required", 'filled-in'), $this->config['smallest']);
 		}
 		else if ($this->config['largest'] > 0)
 		{
-			if (count ($value) > $this->config['largest'])
+			if (strlen ($value) < $this->config['largest'])
 				return true;
 			return sprintf (__ ("no more than %d items are required", 'filled-in'), $this->config['largest']);
 		}
@@ -29,7 +29,7 @@ class Filter_Is_Required extends FI_Filter
 	
 	function name ()
 	{
-		return __ ("Is Required (deprecated)", 'filled-in');
+		return __ ("Is Required", 'filled-in');
 	}
 	
 	function save ($config)
@@ -67,5 +67,5 @@ class Filter_Is_Required extends FI_Filter
 	}
 }
 
-$this->register ('Filter_Is_Required');
+$this->register ('Filter_Is_Required_WP');
 ?>
