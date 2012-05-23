@@ -72,7 +72,7 @@ class Post_Email_WP extends FI_Post
     
     //add headers
     $headers = "MIME-Version: 1.0\n" ;
-    $headers .= "Content-Type: text/html; charset='utf-8'\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\n";
     $headers .= "From: " . $this->from . "\r\n";
         
     if(trim($this->html) == ''){       
