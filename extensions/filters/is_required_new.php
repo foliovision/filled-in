@@ -4,25 +4,25 @@ class Filter_Is_Required_WP extends FI_Filter
 {
 	function filter (&$value, $all_data)
 	{
-		if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
+    if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
 		{
-			if (strlen ($value) >= $this->config['smallest'] && strlen ($value) <= $this->config['largest'])
+			if ((is_string($value) && strlen($value) >= $this->config['smallest'] && strlen($value) <= $this->config['largest']) || (is_array($value) && count($value) >= $this->config['smallest'] && count($value) <= $this->config['largest'])) 
 				return true;
 			return sprintf (__ ('between %d and %d items are required', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		}
 		else if ($this->config['smallest'] > 0)
 		{
-			if (strlen ($value) > $this->config['smallest'])
+			if ((is_string($value) && strlen($value) > $this->config['smallest']) || (is_array($value) && count($value) >= $this->config['smallest'])) 
 				return true;
 			return sprintf (__ ("at least %d items are required", 'filled-in'), $this->config['smallest']);
 		}
 		else if ($this->config['largest'] > 0)
 		{
-			if (strlen ($value) < $this->config['largest'])
+			if ((is_string($value) && strlen($value) < $this->config['largest']) || (is_array($value) && count($value) <= $this->config['largest']))
 				return true;
 			return sprintf (__ ("no more than %d items are required", 'filled-in'), $this->config['largest']);
 		}
-		else if (strlen ($value) > 0)
+		else if ((is_string($value) && strlen($value) > 0) || (is_array($value) && count($value) > 0))
 			return true;
 		return __ ("a value is required", 'filled-in');
 	}
