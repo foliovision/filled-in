@@ -31,6 +31,7 @@ class Filled_In extends Filled_In_Plugin
 		$this->add_action ('template_redirect', 'pre_load', 2);      // Determines if this page has any forms so we know if we need CSS
 		$this->add_filter ('the_content');                           // Munges any forms in post content
 		$this->add_filter ('the_excerpt', 'the_content');            // Munges any forms in excerpt
+      $this->add_filter ('widget_text', 'the_content');
 		$this->add_filter ('the_filled_in_form');
 		$this->add_filter ('the_content', 'form_clean', 15);
 		$this->add_filter ('the_excerpt', 'form_clean', 15);
