@@ -136,7 +136,8 @@ class Filled_In_Admin extends Filled_In_Plugin
 	
 	function admin_menu ()
 	{
-		add_management_page (__("Filled In", 'filled-in'), __("Filled In", 'filled-in'), "administrator", 'filled_in.php', array ($this, "display_admin_screen"));
+		//add_management_page (__("Filled In", 'filled-in'), __("Filled In", 'filled-in'), "administrator", 'filled_in.php', array ($this, "display_admin_screen"));
+		add_management_page (__("Filled In", 'filled-in'), __("Filled In", 'filled-in'), "publish_pages", 'filled_in.php', array ($this, "display_admin_screen"));
 	}
 	
 	function upgrade_tables ()
@@ -555,7 +556,8 @@ class Filled_In_Admin extends Filled_In_Plugin
 				$columns = explode (',', $form->quickview);
 			else if (count ($stats) > 0)
 				$columns = array_slice (array_keys ($stats[0]->sources['post']->data), 0, 4);
-	
+                        
+                         
 			$title = $type == 'errors' ? __ ('Failed results', 'filled-in') : __ ('Successful results', 'filled-in');
 			$this->render_admin ('stat/statistics', array ('title' => $title, 'form' => $form, 'stats' => $stats, 'columns' => $columns, 'pager' => $pager));
 		}

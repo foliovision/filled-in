@@ -142,6 +142,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 * Any custom extensions now can be put into wp-content/plugins/filled-in-extensions to survive plugin upgrades
 * New e-mail extension is using wp_mail
 
+= 1.8.3 =
+* Editor user can see submitted forms and email templates
+
 == Upgrade Notice ==
 
 = 1.9 =
