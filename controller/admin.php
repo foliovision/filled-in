@@ -308,9 +308,9 @@ class Filled_In_Admin extends Filled_In_Plugin
 		if (isset($_GET['sub'])) {
 	    if ($_GET['sub'] == 'templates')
 	      return $this->display_email_screen ();
-	    else if ($_GET['sub'] == 'options' && current_user_can ('edit_plugins'))
+	    else if ($_GET['sub'] == 'options' && current_user_can ('activate_plugins'))
 	      return $this->display_options ();
-	    else if ($_GET['sub'] == 'reports' && current_user_can ('edit_plugins'))
+	    else if ($_GET['sub'] == 'reports' && current_user_can ('activate_plugins'))
 			{
 				if (isset ($_GET['edit']))
 					return $this->edit_report (intval ($_GET['edit']));
@@ -321,7 +321,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 		else
 		{
 			// What we display depends on the GET arguments
-			if (isset ($_GET['edit']) && current_user_can ('edit_plugins'))
+			if (isset ($_GET['edit']) && current_user_can ('activate_plugins'))
 				$this->display_edit_page ($_GET['edit']);
 			else if (isset ($_GET['total']))
 				$this->display_stats ($_GET['total']);
@@ -494,7 +494,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 	
 		$pager = new FI_Pager ($_GET, $_SERVER['REQUEST_URI'], 'name', 'ASC');
 		$base  = $url;
-		$admin = current_user_can ('edit_plugins');
+		$admin = current_user_can ('activate_plugins');
 		
 		$stats = new FI_FormStats (FI_Form::load_all ($pager), $pager);
 		$this->render_admin ('form/list', array ('forms' => $stats->forms, 'base' => $base, 'admin' => $admin, 'pager' => $pager));

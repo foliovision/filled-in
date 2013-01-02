@@ -9,7 +9,7 @@ $id = basename ($_GET['id']);
 $id = preg_replace ('/[\*\?\^%\/\\~]/', '', $id);
 $uploaded = false;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && current_user_can ('edit_plugins'))
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && current_user_can ('activate_plugins'))
 {
   if (is_uploaded_file ($_FILES['attachment']['tmp_name']))
   {
@@ -29,7 +29,7 @@ else if (isset ($_GET['file']) && current_user_can ('publish_pages'))
 	$attachment = new EmailAttachment ($id);
 	$attachment->download ($file);
 	return;
-} elseif (!isset ($_GET['file']) && current_user_can ('publish_pages') && !current_user_can ('edit_plugins')) {
+} elseif (!isset ($_GET['file']) && current_user_can ('publish_pages') && !current_user_can ('activate_plugins')) {
     die ('<p style="color: red">You are not allowed access to this resource</p>');
 }
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
