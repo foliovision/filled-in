@@ -145,6 +145,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 = 1.8.3 =
 * Editor user can see submitted forms and email templates
 
+= 1.8.4 =
+* Removed dependency on $post and $posts variables
+
 == Upgrade Notice ==
 
 = 1.9 =
