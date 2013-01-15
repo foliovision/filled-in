@@ -19,6 +19,6 @@ $fi_globals = array ();
 
 // And the shortest plugin award goes to...
 if (is_admin ())
-	include ('controller/admin.php');
+	include (dirname (__FILE__).'/controller/admin.php');
 else
-	include ('controller/front.php');
+	include (dirname (__FILE__).'/controller/front.php');
