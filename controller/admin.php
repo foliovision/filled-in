@@ -454,7 +454,8 @@ class Filled_In_Admin extends Filled_In_Plugin
 		{
 		  if (isset ($_POST['save']) && check_admin_referer ('filledin-save_options'))
 		  {
-		    update_option ('filled_in_css',         isset ($_POST['css']) ? 'true' : 'false');
+		    update_option ('filled_in_notice',      isset ($_POST['notice']) ? 'true' : 'false');
+        update_option ('filled_in_css',         isset ($_POST['css']) ? 'true' : 'false');
 				update_option ('filled_in_smtp_host',   $_POST['smtp_host']);
 				update_option ('filled_in_smtp_port',   intval ($_POST['smtp_port']));
 				update_option ('filled_in_smtp_ssl',    $_POST['smtp_ssl']);
@@ -575,7 +576,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 		$wpdb->query ("DROP TABLE {$wpdb->prefix}filled_in_forms");
 		$wpdb->query ("DROP TABLE {$wpdb->prefix}filled_in_useragents");
 		
-		$options = array ('filled_in', 'filled_in_attachments', 'filled_in_cookies', 'filled_in_css', 'filled_in_from', 'filled_in_smtp_host', 'filled_in_smtp_port', 'filled_in_smtp_ssl', 'filled_in_templates', 'filled_in_uploads');
+		$options = array ('filled_in', 'filled_in_attachments', 'filled_in_cookies', 'filled_in_css', 'filled_in_from', 'filled_in_smtp_host', 'filled_in_smtp_port', 'filled_in_smtp_ssl', 'filled_in_templates', 'filled_in_uploads', 'filled_in_notice');
 		array_walk ($options, 'delete_option');
 		
 		$current = get_option('active_plugins');

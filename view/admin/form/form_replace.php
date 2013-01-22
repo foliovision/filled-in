@@ -1,6 +1,7 @@
 <?php 
   if (!defined ('ABSPATH')) die ('No direct access allowed');
-  if( current_user_can('manage_options') ) {
+  $bNotice = get_option('filled_in_notice');
+  if( current_user_can('manage_options') && $bNotice == 'false' ) {
       include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); 
       $bActive = is_plugin_active('fv-antispam/fv-antispam.php');    
       if (!$bActive) { ?>
@@ -12,7 +13,7 @@
         $aOptions = get_option('fv_antispam');
         if (!$aOptions['protect_filledin']) { ?>
           <p>
-            <small>(For better protection of this form check the "Protect Filled in forms" in <a href="<?php echo site_url() . '/wp-admin/options-general.php?page=fv-antispam/fv-antispam.php'?>">FV Antispam</a> options.)</small>
+            <small>(For better protection check the "<i>Protect Filled in forms</i>" in <a href="<?php echo site_url() . '/wp-admin/options-general.php?page=fv-antispam/fv-antispam.php'?>">FV Antispam</a> options.)</small>
           </p>  
   <?php }
       }
