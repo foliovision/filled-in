@@ -20,7 +20,13 @@ class Post_Email_WP extends FI_Post
 		$post = $source->get_source ('post');
 
 	  $this->from    = '"'.get_option ('blogname').'" <'.get_option ('admin_email').'>';
-	  $this->subject = 'Submission to form: '.$post->form->name;
+	  
+		$subject = $this->config['subject'];				
+		if( strlen(trim($subject)) == 0 ) {
+	  	$this->subject = 'Submission to form: '.$post->form->name;
+	  } else {
+	  	$this->subject = $subject;
+	  }
 	  
 		$to = $this->fill_in_details ($source, $this->config['address']);
     $this->load_template ($this->config['template']);
@@ -246,7 +252,7 @@ class Post_Email_WP extends FI_Post
    <tr>
      <th width="50"><?php _e ('To', 'filled-in'); ?>:</th>
      <td><input style="width: 95%" type="text" name="address" value="<?php echo htmlspecialchars (isset($this->config['address']) ? $this->config['address'] : '') ?>"/><br />
-     <small>(use </small>;<small> to separate multiple addresses)</small></td>
+     <small>(use </small>;<small> to separate multiple addresses; enter $field_name$ to use any of the form field)</small></td>
    </tr>
 	<tr>
 		<th><?php _e ('Template', 'filled-in'); ?>:</th>
@@ -261,6 +267,11 @@ class Post_Email_WP extends FI_Post
 			</select>
 		</td>
 	</tr>
+	<tr>
+		<th><?php _e ('Subject', 'filled-in'); ?>:</th>
+    <td><input style="width: 95%" type="text" name="subject" value="<?php echo htmlspecialchars (isset($this->config['subject']) ? $this->config['subject'] : '') ?>"/><br />
+    <small>(works with default template - leave blank for default subject (form name); enter $field_name$ to use any of the form field)</small></td>
+	</tr>	
 	  <?php
 	}
 	
@@ -275,12 +286,14 @@ class Post_Email_WP extends FI_Post
 		if ($template == '')
 			$template = __ ('<em>&lt;not configured&gt;</em>');
 			
-		printf (__ (' to <strong>%s</strong>, with template \'%s\'', 'filled-in'), $to, $template);
+		$subject = htmlspecialchars (strlen($this->config['subject']) ? 'and subject \''.$this->config['subject'].'\'' : '');	
+			
+		printf (__ (' to <strong>%s</strong>, with template \'%s\' %s', 'filled-in'), $to, $template, $subject);
 	}
 	
 	function save ($config)
 	{
-		return array ('address' => $config['address'], 'template' => $config['template']);
+		return array ('address' => $config['address'], 'template' => $config['template'], 'subject' => $config['subject']);
   }
 
 	function is_editable () { return true;}
