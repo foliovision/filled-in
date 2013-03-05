@@ -49,6 +49,8 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugins/filled-in/) page.
 
 == Changelog ==
+= 1.8.9 =
+* Replace entire post was still replacing text in some posts with different Filled in form
 
 = 1.8.8 =
 * Really fixed email filter and it's parsing regex

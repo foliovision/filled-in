@@ -6,6 +6,7 @@ class Filled_In extends Filled_In_Plugin
 	var $grab          = null;
 	var $regex         = '@(?:<p>\s*)?<form([^>]*)id="(.*?)"(.*?)>(.*?)</form>(?:\s*</p>)?@s';
 	var $regexp        = '@(?:<p>\s*)?<form([^>]*)id="(.*?)"(.*?)>(.*?)<!--formout-->(?:\s*</p>)?@s';
+	var $regexid       = '@<form([^>]*)id="%id%"@s';
 	var $have_ajax     = false;
 	var $is_ajax       = false;
 	var $original_text = null;
@@ -29,7 +30,7 @@ class Filled_In extends Filled_In_Plugin
 		
 		// Standard filters & actions
 		$this->add_action ('template_redirect', 'pre_load', 2);      // Determines if this page has any forms so we know if we need CSS
-		$this->add_filter ('the_content');                           // Munges any forms in post content
+		$this->add_filter ( 'the_content', 'the_content' );      // Munges any forms in post content
 		$this->add_filter ('the_excerpt', 'the_content');            // Munges any forms in excerpt
       $this->add_filter ('widget_text', 'the_content');
 		$this->add_filter ('the_filled_in_form');
@@ -102,10 +103,19 @@ class Filled_In extends Filled_In_Plugin
 	
 	function the_content ($text)
 	{
-		$text = preg_replace_callback ($this->regex, array (&$this, 'replace_form'), $text);
-		if( isset( $this->replace_entire_post ) && preg_match( $this->regex, $text ) )
-			return $this->replace_entire_post;
-		return $text;
+      $bForm = false;
+      if( $this->grab ){
+         $strRegex = str_replace( '%id%', preg_quote( $this->grab->name ), $this->regexid );
+         if( preg_match( $strRegex, $text ) )
+            $bForm = true;
+      }
+
+      $text = preg_replace_callback ($this->regex, array (&$this, 'replace_form'), $text);
+
+      if( isset( $this->replace_entire_post ) && $bForm )
+         return trim( $this->replace_entire_post );
+
+      return $text;
 	}
 	
 	function handle_ajax ()
