@@ -105,11 +105,9 @@ class FI_Data_POST extends FI_Data_Source
 	}
 
    function LinkUrl( $strText, $strField ){
-      
+
       if( isset( $this->aSpecialFormat[$strField] ) )
-         $strText = preg_replace( '~(http://[\S]*)~i', '<a href="$1">$1</a>', $strText );
-      if( isset( $_COOKIE['fv-debug'] ) )
-         var_dump( $strField, isset( $this->aSpecialFormat[$strField] ), $strText );
+         $strText = preg_replace( '~(http(?:s)?://[\S]*)~i', '<a href="$1">$1</a>', $strText );
 
       return $strText;
    }
