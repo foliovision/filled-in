@@ -21,7 +21,7 @@ class Post_Email_WP extends FI_Post
 
 	  $this->from    = '"'.get_option ('blogname').'" <'.get_option ('admin_email').'>';
 	  
-		$subject = $this->config['subject'];				
+		$subject = $this->config['subject'];
 		if( strlen(trim($subject)) == 0 ) {
 	  	$this->subject = 'Submission to form: '.$post->form->name;
 	  } else {
@@ -55,39 +55,39 @@ class Post_Email_WP extends FI_Post
 	}
 	
 	function send ($from, $to, $subject, $template)
-	{	   						
+	{
     $this->from = $from;
-    $this->subject = $subject;                		        
-    
+    $this->subject = $subject;
+
     //add attachments
     $attach = new EmailAttachment( $template );
-    $attachments = $attach->get();    
-    $attachments = array_merge( $attachments, $this->attachments );    
+    $attachments = $attach->get();
+    $attachments = array_merge( $attachments, $this->attachments );
 
     if( count( $attachments ) > 0 ){
        foreach( $attachments AS $upload ){
           $info = getimagesize( $upload->stored_location );
 
           if( $info[2] != 0 && preg_match( '/"(.*?)'.$upload->name.'"/', $this->html ) > 0 ){
-             $this->html = preg_replace( '/"(.*?)'.$upload->name.'"/', '', $this->html );                                       
-          }          
-             
-          $this->attachments[] = $upload->stored_location;                          
+             $this->html = preg_replace( '/"(.*?)'.$upload->name.'"/', '', $this->html );
+          }
+
+          $this->attachments[] = $upload->stored_location;
        }
-    }                            
-    
+    }
+
     //add headers
     $headers = "MIME-Version: 1.0\n" ;
     $headers .= "Content-Type: text/html; charset=UTF-8\n";
     $headers .= "From: " . $this->from . "\r\n";
-        
-    if(trim($this->html) == ''){       
-       $this->html = $this->text;       
-    }                  
-    
+
+    if(trim($this->html) == ''){
+       $this->html = $this->text;
+    }
+
     //content of mail
-    $message = '<html><head><title>' . $this->subject . '</title></head><body>' . wpautop($this->html) . '</body></html>';        
-    
+    $message = '<html><head><title>' . $this->subject . '</title></head><body>' . wpautop($this->html) . '</body></html>';
+
     //send it
     return wp_mail($to, $this->subject, $message, $headers, $this->attachments);
 	}
@@ -130,7 +130,7 @@ class Post_Email_WP extends FI_Post
 	function add_html_row ($field, $value)
 	{
 		// We add a <br/> because of the OS X Eudora client
-		return '<tr><th align="right" style="padding: 0 3px">'.$field.':</th><td>'.htmlspecialchars ($value)."<br/></td></tr>\r\n";
+		return '<tr><th align="right" style="padding: 0 3px">'.$field.':</th><td>'.$value."<br/></td></tr>\r\n";
 	}
 
 	function fill_in_details ($source, $text, $encode = false)
@@ -178,19 +178,19 @@ class Post_Email_WP extends FI_Post
 		
 		$body = '<table cellpadding="4" cellspacing="1">'."\r\n";
 		$body .= '<colgroup span="1" style="background-color: #DFE3E4"/>'."\r\n";
-		$body .= $this->add_html_row ('Remote host', $server->remote_host);
-		$body .= $this->add_html_row ('Browser',     $server->user_agent);
+		$body .= $this->add_html_row ('Remote host', htmlspecialchars ($server->remote_host));
+		$body .= $this->add_html_row ('Browser',     htmlspecialchars ($server->user_agent));
 
 		if (count ($post->data) > 0)
 		{
 			foreach ($post->data AS $key => $field)
-		    $body .= $this->add_html_row ($key, $post->display ($key, false));
+		    $body .= $this->add_html_row( $key, $post->display( $key, false, true ) );
 		}
 		
 		if (count ($cookie->data) > 0 && is_array ($cookie->data))
 		{
 			foreach ($cookie->data AS $key => $field)
-		    $body .= $this->add_html_row ($key, $field);
+		    $body .= $this->add_html_row( $key, htmlspecialchars( $field ) );
 		}
 		
 		$body .= "</table>";
