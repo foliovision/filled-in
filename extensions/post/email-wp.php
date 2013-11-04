@@ -121,17 +121,7 @@ class Post_Email_WP extends FI_Post
 	    $this->html = '$contents$';
 	  }
 	}
-	
-	function add_text_row ($field, $value, $biggest)
-	{
-		return $field.str_repeat (' ', max (1, $biggest - strlen ($field))).': '.$value."\r\n";
-	}
-	
-	function add_html_row ($field, $value)
-	{
-		// We add a <br/> because of the OS X Eudora client
-		return '<tr><th align="right" style="padding: 0 3px">'.$field.':</th><td>'.$value."<br/></td></tr>\r\n";
-	}
+
 
 	function fill_in_details ($source, $text, $encode = false)
 	{
@@ -177,7 +167,6 @@ class Post_Email_WP extends FI_Post
 		$cookie = $source->get_source ('cookies');
 		
 		$body = '<table cellpadding="4" cellspacing="1">'."\r\n";
-		$body .= '<colgroup span="1" style="background-color: #DFE3E4"/>'."\r\n";
 		$body .= $this->add_html_row ('Remote host', htmlspecialchars ($server->remote_host));
 		$body .= $this->add_html_row ('Browser',     htmlspecialchars ($server->user_agent));
 

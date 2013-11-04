@@ -49,6 +49,10 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugins/filled-in/) page.
 
 == Changelog ==
+= 1.8.11 =
+* Changed the default email template (better for mobile devices)
+* The default email template is built into main extension class
+
 = 1.8.10 =
 * Added possibility to for extensions to send special data marks between them
 
