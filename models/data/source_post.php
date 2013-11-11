@@ -112,8 +112,7 @@ class FI_Data_POST extends FI_Data_Source
       return $strText;
    }
 
-   function replace ($text, $encode = false)
-   {
+   function replace( $text, $encode = false, $bWpAutop = false ){
       assert (is_string ($text));
       assert (is_bool ($encode));
 
@@ -134,6 +133,9 @@ class FI_Data_POST extends FI_Data_Source
 
                $text = str_replace( "\$$key\$", $value, $text );
             }
+
+            if( $bWpAutop )
+               $text = wpautop( $text );
          }
       }
 
