@@ -49,6 +49,9 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugins/filled-in/) page.
 
 == Changelog ==
+= 1.8.13 =
+* Removed assert which caused PHP warnings
+
 = 1.8.12 =
 * Added "Reply to" option to default email extension
 * Added possibility to setup an anchor to which to move after submission
