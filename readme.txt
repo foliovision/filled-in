@@ -49,6 +49,9 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugins/filled-in/) page.
 
 == Changelog ==
+= 1.8.14 =
+* Added option to form settings about predecessor/successor form
+
 = 1.8.13 =
 * Removed assert which caused PHP warnings
 
