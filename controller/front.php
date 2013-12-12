@@ -23,7 +23,7 @@ class Filled_In extends Filled_In_Plugin
     // Decide what to do depending if this a GET or POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['filled_in_form']))
     {
-      $this->add_action ('plugins_loaded', 'grab_post_data');
+      $this->add_action ('wp_loaded', 'grab_post_data');
       if (isset ($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
         $this->add_action ('template_redirect', 'handle_ajax');
     }
@@ -123,6 +123,8 @@ class Filled_In extends Filled_In_Plugin
     // We only execute this on an AJAX call - basically we stop WordPress from
     // running through its full loop and instead output only the part of the post we want
     $this->is_ajax = true;
+
+	$bDidSomething = false;
     
     global $posts;
 
@@ -136,9 +138,28 @@ class Filled_In extends Filled_In_Plugin
         if (preg_match ($regex, $posts[$pos]->post_content, $matches) > 0)
         {
           echo preg_replace_callback ($regex, array (&$this, 'replace_form'), $matches[0]);
+          $bDidSomething = true;
           break;
         }
       }
+    }
+
+    //  we need to do something for the Ajax forms which are not part of any post content, here we go:
+    if( !$bDidSomething && $form = $this->grab ) {         
+      foreach ($form->extensions['result'] AS $key => $result) {
+        $form->extensions['result'][$key]->original_text = $this->original_text;
+        if ($result->is_enabled ())
+          $newtext[] = $form->extensions['result'][$key]->process ($form->sources);
+      }
+  
+      $text = '';
+      if (count ($newtext) > 0)
+        $text = implode ('', $newtext);
+        
+      if (!$this->is_ajax && strpos ($text, 'id="'.$form->name.'"') === false)
+        $text = '<div id="'.$form->name.'">'.$text.'</div>';
+  
+      echo $text;      
     }
 
     exit;
