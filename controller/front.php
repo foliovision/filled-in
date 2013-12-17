@@ -312,7 +312,7 @@ class Filled_In extends Filled_In_Plugin
   {
     assert (is_a ($form, 'FI_Form'));
     assert (is_string ($text));
-    assert ('$url != ""');
+    //assert ('$url != ""'); // $url is not required because it will be parsed from other params
 
     if (preg_match ('@<form(.*?)>(.*?)</form>@s', $text, $matches) > 0)
     {
