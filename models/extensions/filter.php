@@ -42,7 +42,7 @@ class FI_Filter extends FI_Extension
 			{
 				if (isset ($this->config['error']) && strlen ($this->config['error']) > 0)
 					$this->errors = array ($this->name, $this->config['error']);
-				else
+				if (!empty($result) && !empty($value))
 					$this->errors = array ($this->name, $this->name.' - '.$result);
 			}
 			
