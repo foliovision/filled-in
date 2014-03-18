@@ -87,7 +87,7 @@ class FI_Data_POST extends FI_Data_Source
 		return stripslashes ($data);
 	}
 	
-	function refill_data ($text, $errors)
+	function refill_data ($text, $errors, $id = false)
 	{
 		// Insert data back into form
 		foreach ($this->data AS $field => $value)
