@@ -6,7 +6,11 @@ function filled_in_cron_delete_failed_sumbmitions() {
   
   global $wpdb;
   
-  $sql = "DELETE e.*, d.* FROM {$wpdb->prefix}filled_in_errors as e LEFT JOIN {$wpdb->prefix}filled_in_data as d  ON e.data_id = d.id WHERE d.created < (NOW() - INTERVAL 1 MONTH )";
+  $sql = "DELETE e.*, d.* FROM {$wpdb->prefix}filled_in_errors as e
+          LEFT JOIN {$wpdb->prefix}filled_in_data as d  ON e.data_id = d.id
+          LEFT JOIN {$wpdb->prefix}filled_in_useragents as u ON u.id = d.id
+          WHERE d.created < (NOW() - INTERVAL 1 MONTH )";
+          
   $wpdb->query ($sql);
 
   $sql = "OPTIMIZE TABLE {$wpdb->prefix}filled_in_errors, {$wpdb->prefix}filled_in_data;";
