@@ -456,6 +456,7 @@ class Filled_In_Admin extends Filled_In_Plugin
          {
             update_option ('filled_in_notice',      isset ($_POST['notice']) ? 'true' : 'false');
             update_option ('filled_in_css',         isset ($_POST['css']) ? 'true' : 'false');
+            update_option ('filled_in_cron_delete_failed',  isset ($_POST['cron_delete_failed']) ? 'true' : 'false');
             update_option ('filled_in_smtp_host',   $_POST['smtp_host']);
             update_option ('filled_in_smtp_port',   intval ($_POST['smtp_port']));
             update_option ('filled_in_smtp_ssl',    $_POST['smtp_ssl']);
