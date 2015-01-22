@@ -27,7 +27,7 @@
     </tr>
     
     <tr>
-  	<th width="180" ><?php _e ('Delete failed submitions:', 'filled-in') ?>:<br/><span class="sub"><?php _e ('Run cron once per day, deleting failed submitions older than 30 days', 'filled-in'); ?></span></th>
+  	<th width="180" ><?php _e ('Delete failed submission:', 'filled-in') ?>:<br/><span class="sub"><?php _e ('Run cron once per day. Delete failed submission older than 30 days', 'filled-in'); ?></span></th>
   	<td>
       <input type="checkbox" name="cron_delete_failed"<?php if (get_option ('filled_in_cron_delete_failed') == 'true') echo ' checked="checked"' ?>/>
       <?php
