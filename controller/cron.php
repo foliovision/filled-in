@@ -26,7 +26,7 @@ function filled_in_deactivation() {
 register_deactivation_hook( dirname(dirname(__FILE__))."/filled_in.php", 'filled_in_deactivation');
 
 if ( !wp_next_scheduled( 'filled_in_cron_delete_failed_sumbmitions_event' ) ) {
-  wp_schedule_event( time(), 'daily', 'filled_in_cron_delete_failed_sumbmitions_event' );
+  wp_schedule_event( time() + 3600, 'daily', 'filled_in_cron_delete_failed_sumbmitions_event' );
 }
 
 ?>
