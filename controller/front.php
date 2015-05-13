@@ -68,9 +68,11 @@ class Filled_In extends Filled_In_Plugin
         {
           foreach ($matches[2] AS $name)
           {
-            $newform = FI_Form::load_by_name ($name);
-            if ($newform !== false)
-              $this->forms[$name] = $newform;
+            if( empty($this->forms[$name]) ) {
+              $newform = FI_Form::load_by_name ($name);
+              if ($newform !== false)
+                $this->forms[$name] = $newform;
+            }
           }
         }
       }
