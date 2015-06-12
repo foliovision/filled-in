@@ -30,10 +30,13 @@ class Filter_Is_Equal extends FI_Filter
 				return sprintf (__ ("must not equal '%s'", 'filled-in'), $value);
 			else if ($matched == false && $this->config['not'] != 'true')
 			{
-				if (count ($equals) == 1)
+				if($this->config['error']){
+					return __ ($this->config['error'],'filled-in');					
+				}elseif (count ($equals) == 1){
 					return sprintf (__ ("must equal '%s'", 'filled-in'), $this->config['values']);
-				else
+				}else{
 					return sprintf (__ ('must equal one of: %s', 'filled-in'), "'".implode ('\' or \'', $equals)."'");
+				}
 			}
 		}
 		
