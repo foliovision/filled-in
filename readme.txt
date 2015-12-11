@@ -49,9 +49,14 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugins/filled-in/) page.
 
 == Changelog ==
-= 1.8.15 =
-* Added daily executed cron, deleting failed sumbitions older than 30 days
+= 1.8.16 =
+* Added deletion of useragent entries along with failed submissions. 
+* If you want to delete redundant entries from fiiled_in_useragents table, created before this version of plugin, please run filled_in_cleaner.php script. You can find it in filled_in/custom_scripts directory.
 
+= 1.8.15 =
+* Added daily executed cron, deleting failed submissions older than 30 days
+
+== Changelog ==
 = 1.8.14 =
 * Added option to form settings about predecessor/successor form
 
