@@ -11,9 +11,12 @@ function filled_in_cron_delete_failed_sumbmitions() {
           WHERE d.created < (NOW() - INTERVAL 1 MONTH )";
   $wpdb->query ($sql);
 
-  //DELETE FROM wp_filled_in_useragents WHERE id NOT IN ( SELECT id FROM wp_filled_in_data WHERE 1)
+  $sql = "DELETE FROM {$wpdb->prefix}filled_in_useragents 
+          WHERE id NOT IN ( SELECT user_agent FROM {$wpdb->prefix}filled_in_data WHERE 1)
+          LIMIT 1000";
+  $wpdb->query ($sql);
   
-  $sql = "OPTIMIZE TABLE {$wpdb->prefix}filled_in_errors, {$wpdb->prefix}filled_in_data;";
+  $sql = "OPTIMIZE TABLE {$wpdb->prefix}filled_in_errors, {$wpdb->prefix}filled_in_data, {$wpdb->prefix}filled_in_useragents;";
   $wpdb->query ($sql);
   
   update_option ('filled_in_cron_delete_failed_last_run', time() );
@@ -26,7 +29,7 @@ function filled_in_deactivation() {
 register_deactivation_hook( dirname(dirname(__FILE__))."/filled_in.php", 'filled_in_deactivation');
 
 if ( !wp_next_scheduled( 'filled_in_cron_delete_failed_sumbmitions_event' ) ) {
-  wp_schedule_event( time() + 3600, 'daily', 'filled_in_cron_delete_failed_sumbmitions_event' );
+  wp_schedule_event( time(), 'daily', 'filled_in_cron_delete_failed_sumbmitions_event' );
 }
 
 ?>
