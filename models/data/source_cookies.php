@@ -44,7 +44,7 @@ class FI_Data_COOKIES extends FI_Data_Source
     //return preg_replace ('/%(.*?)%/', '-', $text);
     $text = preg_replace_callback( '/(src|href)=\'.*?\'/', 'FI_Data_COOKIES::protect_attributes', $text );
     $text = preg_replace_callback( '/(src|href)=".*?"/', 'FI_Data_COOKIES::protect_attributes', $text );
-    return preg_replace ('/%(.*?)%/', '-', $text);
+    return preg_replace ('/%([^0-9].*?)%/', '-', $text);
     /// End of modification
 	}
 
