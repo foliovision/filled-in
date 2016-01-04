@@ -79,7 +79,7 @@ class FI_Data
 		return false;
 	}
 	
-	function save ($filters)
+	function save ( $filters = array() )
 	{
 		global $wpdb;
 		
