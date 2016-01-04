@@ -104,9 +104,9 @@ class FI_Data_POST extends FI_Data_Source
 		return $text;
 	}
 
-   function LinkUrl( $strText, $strField ){
+   function LinkUrl( $strText, $strField = false ){
 
-      if( isset( $this->aSpecialFormat[$strField] ) )
+      if( $strField && isset( $this->aSpecialFormat[$strField] ) )
          $strText = preg_replace( '~(http(?:s)?://[\S]*)~i', '<a href="$1">$1</a>', $strText );
 
       return $strText;
