@@ -17,7 +17,13 @@ class Result_Display_Message extends FI_Results
 			global $filled_in;
 			$filled_in->replace_entire_post = true;
 		}
+    
+    $post = $source->get_source ('post');
 		
+    if( isset($post->form->id) ) {
+      $text = '<div id="filled_in_result" data-form-id="'.$post->form->id.'">'.$text.'</div>';
+    }
+    
 		return $text;
 	}
 
