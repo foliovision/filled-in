@@ -3,7 +3,7 @@ Contributors: johnny5, FolioVision
 Donate link: http://foliovision.com/donate/
 Tags: form, contact, validate
 Requires at least: 2.7
-Tested up to: 4.1
+Tested up to: 4.5
 Stable tag: trunk 
 
 Generic form processor allowing forms to be painlessly processed and aggregated, with numerous options to validate data and perform custom commands
