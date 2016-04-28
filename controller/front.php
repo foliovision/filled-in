@@ -36,6 +36,20 @@ class Filled_In extends Filled_In_Plugin
     $this->add_filter ('the_filled_in_form');
     $this->add_filter ('the_content', 'form_clean', 15);
     $this->add_filter ('the_excerpt', 'form_clean', 15);
+    
+    add_filter( 'spu/popup/content', array( $this, 'popups_support' ) );
+
+  }
+  
+  function popups_support( $content ) {
+    if( stripos($content,'<form') === false ) return $content;
+    
+    $content = apply_filters('the_content',$content);
+    if( stripos($content,'filled_in_form') !== false ) {
+      $this->wp_head();
+    }
+    
+    return $content;
   }
 
   function form_clean ($text)
@@ -145,6 +159,25 @@ class Filled_In extends Filled_In_Plugin
         }
       }
     }
+    
+    //  Support for Popups plugin https://timersys.com/free-plugins/social-popup/
+    if( !$bDidSomething ) {
+      $posts = get_posts( array( 'post_type' => 'spucpt', 'posts_per_page' => -1 ) );
+      $regex = str_replace ('id="(.*?)"', 'id="('.$this->grab->name.')"', $this->regex);
+      
+      if( is_array( $posts ) && 0 < count ($posts) )
+      {
+        foreach ($posts AS $pos => $item)
+        {
+          if (preg_match ($regex, $posts[$pos]->post_content, $matches) > 0)
+          {
+            echo preg_replace_callback ($regex, array (&$this, 'replace_form'), $matches[0]);
+            $bDidSomething = true;
+            break;
+          }
+        }
+      }
+    }
 
     //  we need to do something for the Ajax forms which are not part of any post content, here we go:
     if( !$bDidSomething && $form = $this->grab ) {         
@@ -202,7 +235,11 @@ class Filled_In extends Filled_In_Plugin
         $ajax = true;
     }
     
-    $this->render ('head', array ('css' => $css, 'ajax' => $ajax));
+    if( $ajax ) {
+      wp_enqueue_script( 'filled_in', $this->url()."/js/filled_in.js", array( 'jquery' ), 0, true );    
+    }
+    
+    $this->render ('head', array ('css' => $css) );
   }
 
 	function replace_form ($matches)
