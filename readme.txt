@@ -3,7 +3,7 @@ Contributors: johnny5, FolioVision
 Donate link: http://foliovision.com/donate/
 Tags: form, contact, validate
 Requires at least: 2.7
-Tested up to: 4.5
+Tested up to: 4.5.1
 Stable tag: trunk 
 
 Generic form processor allowing forms to be painlessly processed and aggregated, with numerous options to validate data and perform custom commands
@@ -49,6 +49,10 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugins/filled-in/) page.
 
 == Changelog ==
+
+= 1.8.17 =
+* Support for "Popups - WordPress Popup" plugin - make sure you enable Ajax for the form which you put in there!
+
 = 1.8.16 =
 * Added deletion of useragent entries along with failed submissions. 
 * If you want to delete redundant entries from fiiled_in_useragents table, created before this version of plugin, please run filled_in_cleaner.php script. You can find it in filled_in/custom_scripts directory.
