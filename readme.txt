@@ -51,7 +51,7 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 == Changelog ==
 
 = 1.8.17 =
-* Support for "Popups - WordPress Popup" plugin - make sure you enable Ajax for the form which you put in there!
+* Support for "Popups - WordPress Popup" plugin - make sure you enable Ajax (in FilledIn plugin) for the form which you put in there! AJAX in "Popups" plugin settings has to be disabled.
 
 = 1.8.16 =
 * Added deletion of useragent entries along with failed submissions. 
