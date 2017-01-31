@@ -8,7 +8,7 @@ class FI_Errors
 	var $type;
 	var $message;
 	
-	function FI_Errors ($values = '')
+	function __construct ($values = '')
 	{
 		if (is_array ($values))
 		{
@@ -49,8 +49,8 @@ class FI_Errors
 		$this->form_id = $form_id;
 		$this->data_id = $data_id;
 
-		$group   = $wpdb->escape ($this->type);
-		$message = $wpdb->escape (serialize ($this->message));
+		$group   = esc_sql ($this->type);
+		$message = esc_sql (serialize ($this->message));
 		$result = $wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_errors (form_id,data_id,type,message) VALUES ('$form_id','$data_id','$group','$message')");
 		$this->id = $wpdb->insert_id;
 		return $result !== false;

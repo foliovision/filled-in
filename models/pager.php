@@ -71,7 +71,7 @@ class FI_Pager
 	 * @param string $id An ID for the pager to separate it from other pagers (typically the plugin name)
 	 * @return void
 	 **/
-	function FI_Pager ($data, $url, $orderby = '', $direction = 'DESC', $id = 'default', $tags = '')
+	function __construct ($data, $url, $orderby = '', $direction = 'DESC', $id = 'default', $tags = '')
 	{
 		// Remove all pager params from the url
 		$this->id  = $id;
@@ -81,7 +81,7 @@ class FI_Pager
 			$this->current_page = intval ($data['curpage']);
 
 		global $user_ID;
-		$per_page = get_usermeta ($user_ID, 'ug_per_page');
+		$per_page = get_user_meta ($user_ID, 'ug_per_page',true);
 		if (isset ($data['perpage']))
 		{
 			$this->per_page = intval ($data['perpage']);

@@ -6,7 +6,7 @@ class FI_Data_POST extends FI_Data_Source
 	var $form             = null;
 	var $page             = null;
 
-	function FI_Data_POST ($data, $config = '')
+	function __construct ($data, $config = '')
 	{
 		if (is_array ($data))
 		{

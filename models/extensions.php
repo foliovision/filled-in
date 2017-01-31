@@ -18,7 +18,7 @@ class FI_Extension
 	
 	var $errors    = null;
 	
-	function FI_Extension ($values)
+	function __construct ($values)
 	{
 		assert (is_array ($values));
 		
@@ -29,7 +29,7 @@ class FI_Extension
 			$this->config = unserialize ($this->config);
 	}
 
-	function load_by_form ($formid)
+	public static function load_by_form ($formid)
 	{
 		assert ('intval ($formid) > 0');
 		
@@ -52,7 +52,7 @@ class FI_Extension
 		return $items;
 	}
 	
-	function load ($id)
+	public static function load ($id)
 	{
 		assert ('intval ($id) > 0');
 		
@@ -74,16 +74,16 @@ class FI_Extension
 		assert (is_a ($config, 'FI_Data_POST'));
 
  		global $wpdb;
- 		$this->name   = $wpdb->escape ($name);
+ 		$this->name   = esc_sql ($name);
 		$this->config = $this->save ($config->data);
 		if (!is_null ($extraconfig))
 			$this->config = array_merge ($this->config, $extraconfig);
 			
-		$config       = $wpdb->escape (serialize ($this->config));
+		$config       = esc_sql (serialize ($this->config));
  		return $wpdb->query ("UPDATE {$wpdb->prefix}filled_in_extensions SET name='{$this->name}', config='$config' WHERE id='{$this->id}'") == 1;
   }
 
-	function create ($formid, $type)
+	public static function create ($formid, $type)
 	{
 		assert ('intval ($formid) > 0');
 		assert (is_string ($type));
@@ -91,7 +91,7 @@ class FI_Extension
 		global $wpdb;
 		
 		$type = FI_Form::sanitize_name ($type);
-		$type = $wpdb->escape ($type);
+		$type = esc_sql ($type);
 
 		if (class_exists ($type))
 		{

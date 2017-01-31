@@ -4,7 +4,7 @@ class EmailAttachment extends Filled_In_Plugin
 {
 	var $template;
 	
-	function EmailAttachment ($template)
+	function __construct ($template)
 	{
 		assert ('strlen ($template) > 0');
 		$this->register_plugin ('filled-in', dirname (__FILE__));

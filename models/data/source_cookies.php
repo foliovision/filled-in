@@ -2,7 +2,7 @@
 
 class FI_Data_COOKIES extends FI_Data_Source
 {
-	function FI_Data_COOKIES ($data, $config = '')
+	function __construct ($data, $config = '')
 	{
 		if (is_array ($data))
 		{

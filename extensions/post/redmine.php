@@ -10,21 +10,21 @@ class PostToRedmine extends FI_Post
 		$data   = $source->get_source ('post');
 		$server = $source->get_source ("server");
 
-		$email    = $wpdb->escape ($data->data[$this->config['email']]);
-		$username = $wpdb->escape ($data->data[$this->config['username']]);
+		$email    = esc_sql ($data->data[$this->config['email']]);
+		$username = esc_sql ($data->data[$this->config['username']]);
 		$prefix   = $this->config['prefix'];
 
 		// Split full name into parts
 		$parts = explode (' ', $data->data[$this->config['name_full']]);
 		$parts = array_filter ($parts);
 		
-		$first_name = $wpdb->escape ($parts[0]);
+		$first_name = esc_sql ($parts[0]);
 		if (count ($parts) > 1)
-			$last_name = $wpdb->escape ($parts[count ($parts) - 1]);
+			$last_name = esc_sql ($parts[count ($parts) - 1]);
 
 		global $filled_in;
 		$password = $filled_in->shared['password'];
-		$password = $wpdb->escape (sha1 ($password));
+		$password = esc_sql (sha1 ($password));
 		
 		// Check that email doesnt already exist
 		if ($wpdb->get_var ("SELECT COUNT(*) FROM {$prefix}users WHERE mail='$email'") == 0)

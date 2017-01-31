@@ -12,7 +12,7 @@ class Email_Template extends Filled_In_Plugin
 	var $attachments = array ();
 	var $to          = null;
   
-  function Email_Template ($arr)
+  function __construct ($arr)
   {
 		$this->register_plugin ('filled-in', dirname (__FILE__));
 

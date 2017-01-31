@@ -6,7 +6,7 @@ class FI_Data_SERVER extends FI_Data_Source
 	var $user_agent     = '';
 	var $user_agent_id  = 0;
 	
-	function FI_Data_SERVER ($data, $config = '')
+	function __construct ($data, $config = '')
 	{
 		if (is_array ($data))
 		{
@@ -34,7 +34,7 @@ class FI_Data_SERVER extends FI_Data_Source
 		$agent = $wpdb->get_row ("SELECT * FROM {$wpdb->prefix}filled_in_useragents WHERE agent='{$this->user_agent}'");
 		if (!$agent)
 		{
-			$wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_useragents (agent) VALUES('".$wpdb->escape ($this->user_agent)."')");
+			$wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_useragents (agent) VALUES('".esc_sql ($this->user_agent)."')");
 			$this->user_agent_id = intval ($wpdb->insert_id);
 		}
 		else

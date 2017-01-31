@@ -8,7 +8,7 @@ class FI_Data_Source
 	var $data = null;
 	var $aSpecialFormat = array();
 
-	function FI_Data_Source ($data, $config = '')
+	function __construct ($data, $config = '')
 	{
 	}
 
@@ -28,7 +28,7 @@ class FI_Data
 
 	var $sources;
 	
-	function FI_Data ($values = null, $time = null)
+	function __construct ($values = null, $time = null)
 	{
 		if (is_object ($values))
 		{
@@ -94,7 +94,7 @@ class FI_Data
 		foreach ($values AS $key => $value)
 		{
 			if (!empty ($value))
-				$parts[] = "$key='".$wpdb->escape ($value)."'";
+				$parts[] = "$key='".esc_sql ($value)."'";
 		}
 
 		global $wpdb;

@@ -50,6 +50,10 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.8.18 =
+* Removing the phpMailer library. If you are still using the old email extension, make sure you check your email sending.
+* PHP7 fixes
+
 = 1.8.17 =
 * Support for "Popups - WordPress Popup" plugin - make sure you enable Ajax (in FilledIn plugin) for the form which you put in there! AJAX in "Popups" plugin settings has to be disabled.
 

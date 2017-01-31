@@ -18,7 +18,7 @@ class FI_Form
 
    public static $aForms = array();
 
-   function FI_Form ($values)
+   function __construct ($values)
    {
       foreach ($values AS $key => $value)
           $this->$key = $value;
@@ -29,7 +29,7 @@ class FI_Form
       $this->errors     = new FI_Errors;
    }
 
-   function load_all (&$pager, $type = 'form')
+   public static function load_all (&$pager, $type = 'form')
    {
       assert (is_a ($pager, 'FI_Pager'));
       global $wpdb;
@@ -68,14 +68,14 @@ class FI_Form
    {
       global $wpdb;
       
-      $name = $wpdb->escape ($name);
+      $name = esc_sql ($name);
       $form = $wpdb->get_row ("SELECT * FROM {$wpdb->prefix}filled_in_forms WHERE name='$name' AND type='$type'", ARRAY_A);
       if ($form)
          return new FI_Form ($form);
       return false;
    }
 
-   function create ($name, $type = 'form')
+   public static function create ($name, $type = 'form')
    {
       if (strlen ($name) > 0)
       {
@@ -86,7 +86,7 @@ class FI_Form
          // First check if form already exists
          if ($wpdb->get_var ("SELECT count(id) FROM {$wpdb->prefix}filled_in_forms WHERE name='$name' AND type='$type'") == 0)
          {
-            $name = $wpdb->escape ($name);
+            $name = esc_sql ($name);
             $wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_forms (name,type) VALUES ('$name','$type')");
             return true;
          }
@@ -119,7 +119,7 @@ class FI_Form
       $this->options['custom_id'] = $customid;
       $this->options['submit-anchor'] = $strSubmitAnchor;
 
-      $custom = $wpdb->escape( serialize( $this->options ) );
+      $custom = esc_sql( serialize( $this->options ) );
       $wpdb->query( "UPDATE {$wpdb->prefix}filled_in_forms SET options='$custom' WHERE id='{$this->id}'" );
 
       return true;
@@ -138,17 +138,17 @@ class FI_Form
       if (strlen ($name) > 0)
       {
          // First check if name is a duplicate
-         if ($this->name == $name || $wpdb->get_var ("SELECT count(id) FROM {$wpdb->prefix}filled_in_forms WHERE name='".$wpdb->escape ($name)."' AND type='$type'") == 0)
+         if ($this->name == $name || $wpdb->get_var ("SELECT count(id) FROM {$wpdb->prefix}filled_in_forms WHERE name='".esc_sql ($name)."' AND type='$type'") == 0)
          {
             $this->quickview = trim (preg_replace ('/[^A-Za-z0-9,\-_\[\]]/', '', $quick));
             $this->options['ajax']   = $special == 'ajax' ? 'true' : 'false';
             $this->options['upload'] = $special == 'upload' ? 'true' : 'false';
 
-            $quick   = $wpdb->escape ($this->quickview);
+            $quick   = esc_sql ($this->quickview);
             $options = serialize ($this->options);
 
             $this->name = $name;
-            $sql = "UPDATE {$wpdb->prefix}filled_in_forms SET name='".$wpdb->escape ($name)."', quickview='$quick', options='$options' WHERE id='{$this->id}'";
+            $sql = "UPDATE {$wpdb->prefix}filled_in_forms SET name='".esc_sql ($name)."', quickview='$quick', options='$options' WHERE id='{$this->id}'";
             if ($wpdb->query ($sql) !== false)
                return true;
 
@@ -161,7 +161,7 @@ class FI_Form
       return sprintf (__ ("Invalid %s name", 'filled-in'), $type);
    }
 
-   function sanitize_name ($name)
+   public static function sanitize_name ($name)
    {
       // Sanitize the form name
       $name = trim ($name);

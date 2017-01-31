@@ -48,7 +48,10 @@ class Post_Email extends FI_Post
    /// foliovision
    function send( $from, $to, $subject, $template ){
       //assert ('strlen ($template) > 0');
-      require_once( dirname (__FILE__).'/../../lib/phpmailer/class.phpmailer.php' );
+      if( !class_exists('PHPMailer') ) {
+        require_once ABSPATH . WPINC . '/class-phpmailer.php';
+        require_once ABSPATH . WPINC . '/class-smtp.php';
+      }
 
       $objMail = new PHPMailer();
 

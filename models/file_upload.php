@@ -6,7 +6,7 @@ class FI_Upload
 	var $name;
 	var $stored_location;
 	
-	function FI_Upload ($values)
+	function __construct ($values)
 	{
 		$this->id              = $values['id'];
 		$this->name            = basename ($values['name']);

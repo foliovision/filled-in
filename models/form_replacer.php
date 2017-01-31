@@ -7,7 +7,7 @@ class Form_Replacer extends Filled_In_Plugin
 	var $error    = false;
 	var $modified = false;
 	
-	function Form_Replacer ($field, $value, $error)
+	function __construct ($field, $value, $error)
 	{
 		$this->register_plugin ('filled-in', dirname (__FILE__));
 

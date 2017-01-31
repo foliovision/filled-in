@@ -6,7 +6,7 @@ define ('FILLED_IN_DB', '4');
 
 class Filled_In_Admin extends Filled_In_Plugin
 {
-	function Filled_In_Admin ()
+	function __construct ()
 	{
     parent::__construct();
     
@@ -187,7 +187,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 			if (count ($forms) > 0)
 			{
 				foreach ($forms AS $form)
-					$wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_extensions (form_id,type,base, config,status) VALUES ('{$form->id}','Result_Display_Message','result', '".$wpdb->escape (serialize (array ('message' => $form->thankyou, 'autop' => 'true')))."','on')");
+					$wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_extensions (form_id,type,base, config,status) VALUES ('{$form->id}','Result_Display_Message','result', '".esc_sql (serialize (array ('message' => $form->thankyou, 'autop' => 'true')))."','on')");
 			}
 			
 			// Convert all processors and filters to new extension format
@@ -229,7 +229,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 			{
 				foreach ($list AS $error)
 				{
-					$wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_errors (form_id,data_id,type,message) VALUES ('{$error->form_id}','{$error->id}','{$error->status}','".$wpdb->escape ($error->message)."')");
+					$wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_errors (form_id,data_id,type,message) VALUES ('{$error->form_id}','{$error->id}','{$error->status}','".esc_sql ($error->message)."')");
 				}
 			}
 

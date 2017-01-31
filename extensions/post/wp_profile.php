@@ -29,7 +29,8 @@ class Add_To_Profile extends FI_Post
 			
 		if ($user->ID > 0)
 		{
-			$meta = get_usermeta ($user->ID, $this->config['data_key']);
+			$meta = get_user_meta ($user->ID, $this->config['data_key']);
+      if ( count($meta) == 1 ) $meta = $meta[0];
 
 			if ($this->config['add_method'] == 'append_add')
 			{

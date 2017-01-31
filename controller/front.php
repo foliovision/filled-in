@@ -12,7 +12,7 @@ class Filled_In extends Filled_In_Plugin
 	var $original_text = null;
 	var $shared        = array ();
 
-  function Filled_In ()
+  function __construct ()
   {
     include_once (dirname (__FILE__).'/../models/form.php');
 

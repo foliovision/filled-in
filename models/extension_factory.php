@@ -6,7 +6,7 @@ class FI_Extension_Factory
 {
 	var $available;
 	
-	function FI_Extension_Factory ()
+	function __construct ()
 	{
 		/*include the regular extensions directory*/
     $this->include_extensions(ABSPATH.'wp-content/plugins/filled-in/extensions/*', false);
@@ -51,7 +51,7 @@ class FI_Extension_Factory
   }
 	
 	// The static method - get a reference to the only Filter_Factory object
-	function get ()
+	public static function get ()
 	{
 		global $fi_globals;
 		if (!isset ($fi_globals['extension_factory']))

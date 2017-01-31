@@ -6,7 +6,7 @@ class FI_Data_FILES extends FI_Data_Source
 	var $recovered_data;
 	var $form_id;
 	
-	function FI_Data_FILES ($data, $config = '')
+	function __construct ($data, $config = '')
 	{
 		$this->data = array ();
 		

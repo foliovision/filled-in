@@ -4,7 +4,7 @@ class FI_FormStats
 {
 	var $forms;
 	
-	function FI_FormStats ($forms, &$pager)
+	function __construct ($forms, &$pager)
 	{
 		// Get stats for each form
 		if (count ($forms) > 0)
