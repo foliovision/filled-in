@@ -41,10 +41,5 @@ class Email_Template extends Filled_In_Plugin
 		$name = preg_replace ('/ +/', ' ', $name);
 		return $name;
 	}
-	
-	function show ($template)
-	{
-		$this->render_admin ('email/item', array ('template' => $template));
-	}
 }
 ?>

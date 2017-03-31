@@ -61,7 +61,7 @@ class Filled_In_Admin_AJAX extends Filled_In_Plugin
     
 	  update_option ('filled_in_templates', $items);
   
-	  Email_Template::show ($items[$id]);
+  	$this->render_admin ('email/item', array ( 'template' => $items[$id] ));
 	}
 	
 	function delete_templates ($id)
@@ -80,7 +80,7 @@ class Filled_In_Admin_AJAX extends Filled_In_Plugin
 	function cancel_template ($id)
 	{
 	  $items = get_option ('filled_in_templates');
-	  Email_Template::show ($items[$id]);
+	  $this->render_admin ('email/item', array ( 'template' => $items[$id] ));
 	}
 
 	// ====================

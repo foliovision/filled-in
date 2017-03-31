@@ -38,7 +38,7 @@
 		
     <?php foreach ($templates AS $template) : ?>
       <tr id="temp_<?php echo $template->name ?>">
-				<?php Email_Template::show ($template); ?>
+        <?php $this->render_admin ('email/item', array ('template' => $template)); ?>
       </tr>
     <?php endforeach; ?>
   </table>
