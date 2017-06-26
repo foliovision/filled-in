@@ -50,6 +50,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.8.19 =
+* More PHP 7 fixes - broken email template editing
+
 = 1.8.18 =
 * Removing the phpMailer library. If you are still using the old email extension, make sure you check your email sending.
 * PHP7 fixes
