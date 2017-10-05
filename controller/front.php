@@ -394,7 +394,7 @@ class Filled_In extends Filled_In_Plugin
         'name'    => $form->name,
         'pageid'  => $post,
         'action'  => $strUrl,
-        'upload'  => $form->options['upload'] == 'true' ? ' enctype="multipart/form-data"' : '',
+        'upload'  => ( isset($form->options['upload']) && $form->options['upload'] == 'true' ) ? ' enctype="multipart/form-data"' : '',
         'time'    => $time == '' ? time () : $time,
         'base'    => $strUrl,
         'waiting' => isset($form->options['custom_submit']) ? $form->options['custom_submit'] : '',
@@ -403,11 +403,11 @@ class Filled_In extends Filled_In_Plugin
             : ''
       );
 
-      if ($form->options['ajax'] == 'true')
+      if ( isset( $form->options['ajax'] ) && $form->options['ajax'] == 'true')
         $arr['ajax'] = $this->capture_admin ('form/form_observe', $arr);
     
       // Then mix together for 5 minutes
-      if ($isajax == true || $form->options['ajax'] != 'true')
+      if ($isajax == true || ( isset($form->options['ajax']) && $form->options['ajax'] != 'true') )
         $text = $this->capture_admin ('form/form_replace', $arr);
       else
         $text = $this->capture_admin ('form/form_replace_ajax', $arr);
