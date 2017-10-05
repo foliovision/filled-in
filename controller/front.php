@@ -216,7 +216,7 @@ class Filled_In extends Filled_In_Plugin
       if (($this->grab = FI_Form::load_by_id (intval ($_POST['filled_in_form']))))
       {
         $this->grab->submit ($data);
-        $this->have_ajax = $this->grab->options['ajax'] == 'true' ? true : false;
+        $this->have_ajax = ( isset($this->grab->options['ajax']) && $this->grab->options['ajax'] == 'true' );
       }
 
       $_POST  = array ();
