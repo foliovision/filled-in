@@ -51,6 +51,7 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 == Changelog ==
 
 = 1.8.20 =
+* JavaScript - fixed to allow deferred loading of jQuery
 
 = 1.8.19 =
 * More PHP 7 fixes - broken email template editing
