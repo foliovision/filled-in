@@ -9,8 +9,7 @@
 </div>
 
 <script type="text/javascript">
-jQuery(document).ready(function()
-{
+document.addEventListener("DOMContentLoaded", function(event) { 
 	jQuery('#<?php echo $name ?>').submit (function (item)
 		{
 			form_submit(this,'<?php echo $base ?>',<?php echo ($top == '' ? 'false' : 'true') ?>);
