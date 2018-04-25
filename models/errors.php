@@ -52,6 +52,19 @@ class FI_Errors
 		$group   = esc_sql ($this->type);
 		$message = esc_sql (serialize ($this->message));
 		$result = $wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_errors (form_id,data_id,type,message) VALUES ('$form_id','$data_id','$group','$message')");
+    
+    if( ip2long($_SERVER['REMOTE_ADDR']) > 0 ) {
+      $entries = $wpdb->get_col( "select * from {$wpdb->prefix}filled_in_data as d join {$wpdb->prefix}filled_in_errors as e on d.id = e.data_id where ip = '".ip2long($_SERVER['REMOTE_ADDR'])."' order by id desc" );
+      if( count($entries) > 100 ) {
+        $entries = array_slice($entries,100);
+        $ids = implode($entries,',');
+        //file_put_contents( ABSPATH.'/fi-errors-save.log', date('r')." submission from ".$_SERVER['REMOTE_ADDR']." deleting ".count($entries)." items: ".$ids."\n", FILE_APPEND );
+        $wpdb->query( "delete from {$wpdb->prefix}filled_in_data where id IN ($ids)" );
+        $wpdb->query( "delete from {$wpdb->prefix}filled_in_errors where data_id IN ($ids)" );
+      }
+    }
+    
+    
 		$this->id = $wpdb->insert_id;
 		return $result !== false;
 	}

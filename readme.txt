@@ -50,6 +50,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.8.21 =
+* Database - only keeping last 100 failed submissions per IP
+
 = 1.8.20 =
 * JavaScript - fixed to allow deferred loading of jQuery
 
