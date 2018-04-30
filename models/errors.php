@@ -54,7 +54,7 @@ class FI_Errors
 		$result = $wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_errors (form_id,data_id,type,message) VALUES ('$form_id','$data_id','$group','$message')");
     
     if( ip2long($_SERVER['REMOTE_ADDR']) > 0 ) {
-      $entries = $wpdb->get_col( "select * from {$wpdb->prefix}filled_in_data as d join {$wpdb->prefix}filled_in_errors as e on d.id = e.data_id where ip = '".ip2long($_SERVER['REMOTE_ADDR'])."' order by d.id asc" );
+      $entries = $wpdb->get_col( "select d.id from {$wpdb->prefix}filled_in_data as d join {$wpdb->prefix}filled_in_errors as e on d.id = e.data_id where ip = '".ip2long($_SERVER['REMOTE_ADDR'])."' order by d.id asc" );
       if( count($entries) > 100 ) {
         $entries = array_slice($entries,100);
         $ids = implode($entries,',');
