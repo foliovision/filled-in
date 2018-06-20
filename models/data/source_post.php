@@ -94,6 +94,8 @@ class FI_Data_POST extends FI_Data_Source
 		{	
 			// Find the input in the HTML
 			$replacer = new Form_Replacer ($field, $value, $errors->in_error ($field));
+      
+      $field = preg_quote($field,'/');
 	
 			// Replace any input, select, or textarea fields
 			$text = preg_replace_callback( '/<input([^>]+?)name="'.$field.'(\[\])?"(.*?)(?:\/)?>/', array( $replacer, 'replace_input' ), $text );

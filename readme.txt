@@ -52,6 +52,7 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 = 1.8.21 =
 * Database - only keeping last 100 failed submissions per IP
+* Fix for form errors not appearing if some input name had / symbol in it
 
 = 1.8.20 =
 * JavaScript - fixed to allow deferred loading of jQuery
