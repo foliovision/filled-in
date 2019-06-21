@@ -8,6 +8,8 @@ class Result_Display_Message extends FI_Results
 		
 		$text = $this->config['message'];
 		$text = $this->fill_in_details( $source, $text );
+    
+    $text = do_shortcode($text);
 
 		if ($this->config['autop'] == 'true')
 			$text = wpautop ($text);
