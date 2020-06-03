@@ -50,6 +50,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.8.22 =
+* Fixing bad pagination of form submissions
+
 = 1.8.21 =
 * Database - only keeping last 100 failed submissions per IP
 * Fix for form errors not appearing if some input name had / symbol in it

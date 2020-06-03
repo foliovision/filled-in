@@ -477,8 +477,41 @@ class FI_Pager
 											number_format_i18n ($this->current_page () * $this->per_page > $this->total ? $this->total : $this->current_page () * $this->per_page),
 											number_format_i18n ($this->total));
 
-		$links = paginate_links (array ('base' => str_replace ('99', '%#%', $this->url (99)), 'format' => '%#%', 'current' => $this->current_page (), 'total' => $this->total_pages (), 'end_size' => 3, 'mid_size' => 2, 'prev_next' => true));
-		return $text.$links;
+		// since $this->url() behaves strangely we cannot hook it into paginate_links() like we used to
+		// so instead we get nicely paginated links first
+		$links = paginate_links( array(
+			'base' => 'https://example.com/%_%',
+			'format' => '?curpage=%#%',
+			'current' => $this->current_page (),
+			'total' => $this->total_pages (),
+			'end_size' => 3,
+			'mid_size' => 2,
+			'prev_next' => true,
+			'type' => 'array',
+		) );
+
+		// then replace the links with real ones
+		$current_link = $this->url(99);
+
+		$new_links = '';
+		if( $links && count($links) ) {
+			foreach( $links AS $link ) {				
+				$new_link = $current_link;
+
+				// take the page number out of these nice links
+				if( preg_match( '~curpage=(\d+)~', $link, $num ) ) {
+					$new_link = str_replace( '99', $num[1], $current_link );
+				} else {
+					$new_link = str_replace( '&amp;curpage=99', '', $current_link );
+				}
+
+				// implant it to the current page link and into HTML
+				$new_links .= preg_replace( "~href=[\"'].*?[\"']~", "href='".$new_link."'", $link ).' ';
+				
+			}
+		}
+
+		return $text.$new_links;
 	}
 }
 
