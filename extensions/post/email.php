@@ -48,12 +48,16 @@ class Post_Email extends FI_Post
    /// foliovision
    function send( $from, $to, $subject, $template ){
       //assert ('strlen ($template) > 0');
-      if( !class_exists('PHPMailer') ) {
-        require_once ABSPATH . WPINC . '/class-phpmailer.php';
-        require_once ABSPATH . WPINC . '/class-smtp.php';
-      }
-
-      $objMail = new PHPMailer();
+      if( file_exists( ABSPATH . WPINC . '/PHPMailer/PHPMailer.php' ) ) {
+			require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+			require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+			require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
+			$objMail = new PHPMailer\PHPMailer\PHPMailer( true );
+		} else {
+			require_once ABSPATH . WPINC . '/class-phpmailer.php';
+			require_once ABSPATH . WPINC . '/class-smtp.php';
+			$objMail = new PHPMailer( true );			
+		}
 
       $aFrom = $this->GetEmailAddressAndName( $from );
       $objMail->From = $aFrom['address'];
