@@ -200,7 +200,7 @@ class Post_Email_WP extends FI_Post
 		    $body .= $this->add_html_row( $key, $post->display( $key, false, true ) );
 		}
 		
-		if (count ($cookie->data) > 0 && is_array ($cookie->data))
+		if ( is_array ($cookie->data) && count ($cookie->data) > 0 )
 		{
 			foreach ($cookie->data AS $key => $field)
 		    $body .= $this->add_html_row( $key, htmlspecialchars( $field ) );
@@ -223,7 +223,7 @@ class Post_Email_WP extends FI_Post
 		// First figure out the biggest field
 		foreach (array ($post, $cookie) AS $datasource)
 		{
-			if (count ($datasource->data) > 0)
+			if ( is_array($datasource->data) && count ($datasource->data) > 0)
 			{
 				foreach ($datasource AS $key => $field)
 				{
@@ -243,7 +243,7 @@ class Post_Email_WP extends FI_Post
 		    $body .= $this->add_text_row ($key, $post->display ($key, false), $biggest);
 		}
 		
-		if (count ($cookie->data) > 0 && is_array ($cookie->data))
+		if ( is_array ($cookie->data) && count ($cookie->data) > 0 )
 		{
 			foreach ($cookie->data AS $key => $field)
 		    $body .= $this->add_text_row ($key, $field, $biggest);

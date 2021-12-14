@@ -33,7 +33,7 @@ class FI_Data_COOKIES extends FI_Data_Source
 		assert (is_string ($text));
 		assert (is_bool ($encode));
 		
-		if (count ($this->data) > 0 && is_array ($this->data))
+		if ( is_array ($this->data) && count ($this->data) > 0 )
 		{
     	foreach ($this->data as $key => $value)
       	$text = str_replace ("%$key%", $encode == true ? htmlspecialchars ($value) : $value, $text);
