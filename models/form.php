@@ -64,7 +64,7 @@ class FI_Form
       return false;
    }
 
-   function load_by_name ($name, $type='form')
+   public static function load_by_name ($name, $type='form')
    {
       global $wpdb;
       

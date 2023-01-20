@@ -130,7 +130,7 @@ class FI_Data
 		return $text;
 	}
 	
-	function load_by_form ($formid, &$pager, $startdate = '', $enddate = '')
+	public static function load_by_form ($formid, &$pager, $startdate = '', $enddate = '')
 	{
 		assert (is_a ($pager, 'FI_Pager'));
 		global $wpdb;
@@ -164,7 +164,7 @@ class FI_Data
 		return $results;
 	}
 	
-	function load_by_form_errors ($formid, &$pager)
+	public static function load_by_form_errors ($formid, &$pager)
 	{
 		assert (is_a ($pager, 'FI_Pager'));
 

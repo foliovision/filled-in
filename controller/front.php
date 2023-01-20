@@ -239,7 +239,7 @@ class Filled_In extends Filled_In_Plugin
       wp_enqueue_script( 'filled_in', $this->url()."/js/filled_in.js", array( 'jquery' ), 0, true );    
     }
     
-    $this->render ('head', array ('css' => $css) );
+    $this->render ('head', array ( 'ajax' => $ajax, 'css' => $css) );
   }
 
 	function replace_form ($matches)
@@ -378,9 +378,9 @@ class Filled_In extends Filled_In_Plugin
             $matches[2] = $form->extensions['filter'][$key]->modify ($matches[2]);
         }
       }
-      
-      if( intval($formID) != '' ){
-        $newid = $formID;
+
+      if( intval($formID) > 0 ){
+        $newid = intval($formID);
       }
       else{
         $newid = $form->id;
@@ -405,7 +405,7 @@ class Filled_In extends Filled_In_Plugin
 
       if ( isset( $form->options['ajax'] ) && $form->options['ajax'] == 'true')
         $arr['ajax'] = $this->capture_admin ('form/form_observe', $arr);
-    
+
       // Then mix together for 5 minutes
       if ($isajax == true || ( isset($form->options['ajax']) && $form->options['ajax'] != 'true') )
         $text = $this->capture_admin ('form/form_replace', $arr);

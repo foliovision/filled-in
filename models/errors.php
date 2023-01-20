@@ -24,7 +24,7 @@ class FI_Errors
 		}
 	}
 	
-	function load ($dataid)
+	public static function load ($dataid)
 	{
 		global $wpdb;
 		
@@ -57,7 +57,7 @@ class FI_Errors
       $entries = $wpdb->get_col( "select d.id from {$wpdb->prefix}filled_in_data as d join {$wpdb->prefix}filled_in_errors as e on d.id = e.data_id where ip = '".ip2long($_SERVER['REMOTE_ADDR'])."' order by d.id asc" );
       if( count($entries) > 100 ) {
         $entries = array_slice($entries,100);
-        $ids = implode($entries,',');
+        $ids = implode( ',', $entries);
         //file_put_contents( ABSPATH.'/fi-errors-save.log', date('r')." submission from ".$_SERVER['REMOTE_ADDR']." deleting ".count($entries)." items: ".$ids."\n", FILE_APPEND );
         $wpdb->query( "delete from {$wpdb->prefix}filled_in_data where id IN ($ids)" );
         $wpdb->query( "delete from {$wpdb->prefix}filled_in_errors where data_id IN ($ids)" );

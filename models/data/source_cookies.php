@@ -50,7 +50,7 @@ class FI_Data_COOKIES extends FI_Data_Source
 
 	function save ($dataid, $filters)
 	{
-		if (count ($this->data) > 0)
+		if ( is_array($this->data) && count ($this->data) > 0)
 			return array ('cookie' => serialize ($this->data));
 		return array ();
 	}
