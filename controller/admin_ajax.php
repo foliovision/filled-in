@@ -4,7 +4,7 @@ include ('../../../../wp-config.php');
 
 class Filled_In_Admin_AJAX extends Filled_In_Plugin
 {
-	function Filled_In_Admin_AJAX ($id, $command)
+	function __construct ($id, $command)
 	{
 		if (!current_user_can ('edit_posts'))
 			die ('<p style="color: red">You are not allowed access to this resource</p>');
