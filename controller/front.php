@@ -231,7 +231,7 @@ class Filled_In extends Filled_In_Plugin
     
     foreach ($this->forms AS $form)
     {
-      if ($form->options['ajax'] == 'true')
+      if (isset($form->options['ajax']) && $form->options['ajax'] == 'true')
         $ajax = true;
     }
     
