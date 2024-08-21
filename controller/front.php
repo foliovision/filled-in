@@ -215,6 +215,17 @@ class Filled_In extends Filled_In_Plugin
       // and also of removing the data from $_POST so as not to collide with WordPress
       if (($this->grab = FI_Form::load_by_id (intval ($_POST['filled_in_form']))))
       {
+
+        // If we have a redirect extension, we need to buffer the output so that it can do the redirection
+        if ( ! empty( $this->grab->extensions['result'] ) ) {
+          foreach( $this->grab->extensions['result'] as $module ) {
+            if ( stripos( $module->type, 'Redirect' ) !== false ) {
+              ob_start();
+              break;
+            }
+          }
+        }
+
         $this->grab->submit ($data);
         $this->have_ajax = ( isset($this->grab->options['ajax']) && $this->grab->options['ajax'] == 'true' );
       }
@@ -329,6 +340,16 @@ class Filled_In extends Filled_In_Plugin
 				$form->extensions['result'][$key]->original_text = $this->original_text;
 				if ($result->is_enabled ())
 					$newtext[] = $form->extensions['result'][$key]->process ($form->sources);
+			}
+
+      // If we have a redirect extension, now is the time to allow the output to go through
+      if ( ! empty( $this->grab->extensions['result'] ) ) {
+        foreach( $this->grab->extensions['result'] as $module ) {
+          if ( stripos( $module->type, 'Redirect' ) !== false ) {
+            ob_flush();
+            break;
+          }
+        }
 			}
 
 			$text = '';
