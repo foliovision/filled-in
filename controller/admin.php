@@ -542,7 +542,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 			if ($result === true && $msg != '')
 				$this->render_message ($msg);
 			else if ($result !== true)
-				$this->render_error ($error);
+				$this->render_error ($result);
 			
 			global $wp_roles;
 			$this->render_admin ('form/edit', array ('form' => $form, 'roles' => $wp_roles));

@@ -6,5 +6,5 @@
     <?php echo $inside; ?>
   </form>
 
-	<?php echo $ajax ?>
+	<?php echo ( isset($ajax) ? $ajax : '') ?>
 </div>

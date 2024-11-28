@@ -185,11 +185,11 @@ class FI_Form
          $first = $this->run_stage (isset($this->extensions['pre']) ? $this->extensions['pre'] : array(), 'pre');
 
          // Pre filter
-         $save = $this->sources->save ($this->extensions['filter']);
+         $save = $this->sources->save (isset($this->extensions['filter']) ? $this->extensions['filter'] : array() );
 
          // Filter and post
-         if ($first && $this->run_stage ($this->extensions['filter'], 'filter'))
-            $this->run_stage ($this->extensions['post'], 'post');
+         if ($first && $this->run_stage (isset($this->extensions['filter']) ? $this->extensions['filter'] : array(), 'filter'))
+            $this->run_stage (isset($this->extensions['post']) ? $this->extensions['post'] : array() , 'post');
 
          return $save;
       }
@@ -199,7 +199,7 @@ class FI_Form
 
    function run_stage ($extensions, $group)
    {
-      if (count ($extensions) > 0)
+      if ( is_array($extensions) && count($extensions) > 0)
       {
          $errors = false;
          foreach ($extensions AS $pos => $extension)

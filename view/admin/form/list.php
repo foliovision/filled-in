@@ -6,7 +6,7 @@
 	<h2><?php _e ('Form List', 'filled-in') ?></h2>
 	<?php $this->submenu (true); ?>
 
-	<?php if (count ($forms) > 0) : ?>
+	<?php if ( is_array($forms) && count($forms) > 0) : ?>
 
       <?php if( $bDisplayPostError ) : ?>
 

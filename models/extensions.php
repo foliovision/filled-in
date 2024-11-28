@@ -15,6 +15,7 @@ class FI_Extension
 	var $config    = null;
 	var $position  = null;
 	var $status    = null;
+	var $base      = null;
 	
 	var $errors    = null;
 	
@@ -24,8 +25,8 @@ class FI_Extension
 		
 		foreach ($values AS $key => $value)
 		 	$this->$key = $value;
-		
-		if (!is_array ($this->config) && strlen ($this->config) > 0)
+
+		if ( $this->config && !is_array ($this->config) && strlen ($this->config) > 0)
 			$this->config = unserialize ($this->config);
 	}
 
