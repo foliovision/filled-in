@@ -50,6 +50,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.9 =
+* PHP 8.2 fixes
+
 = 1.8.23 =
 * Fix for WordPress 5.5 - depreation of class-phpmailer.php
 
