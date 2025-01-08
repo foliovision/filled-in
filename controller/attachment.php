@@ -68,7 +68,7 @@ else if (isset ($_GET['file']) && current_user_can ('publish_pages'))
 
 <?php if ($uploaded) : ?>
 	<script type="text/javascript" charset="utf-8">
-		window.parent.refresh_files ('<?php echo $id ?>');
+		window.parent.refresh_files ('<?php echo esc_attr( $id ) ?>');
 	</script>
 <?php endif; ?>
 </body>

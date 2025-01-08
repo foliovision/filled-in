@@ -103,7 +103,7 @@ class PostToPommoNewsletter extends FI_Post
 					<span class="sub"><?php esc_html_e('One field per line as FIELD=[poMMo field ID] (i.e. name=1)', 'filled-in'); ?></span>
 				</td>
 	      <td>
-					<textarea name="fields" rows="5" cols="40"><?php echo $this->config['fields'] ?></textarea>
+					<textarea name="fields" rows="5" cols="40"><?php echo esc_textarea( $this->config['fields'] ) ?></textarea>
 				</td>
 			</tr>
 	  <?php

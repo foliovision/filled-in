@@ -103,7 +103,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 		if ( ( isset ($_GET['page']) && $_GET['page'] == 'filled_in.php') ) {
 			$this->render_admin ('head');
 
-			echo '<link rel="stylesheet" href="'.$this->url ().'/controller/admin.css" type="text/css" media="screen" title="no title" charset="utf-8"/>';
+			echo '<link rel="stylesheet" href="' . esc_attr( $this->url () ).'/controller/admin.css" type="text/css" media="screen" title="no title" charset="utf-8"/>';
 
 			if (!function_exists ('wp_enqueue_style'))
 				echo '<style type="text/css" media="screen">
