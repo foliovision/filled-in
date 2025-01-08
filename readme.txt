@@ -5,6 +5,8 @@ Tags: form, contact, validate
 Requires at least: 2.7
 Tested up to: 6.3.3
 Stable tag: trunk 
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Generic form processor allowing forms to be painlessly processed and aggregated, with numerous options to validate data and perform custom commands
 

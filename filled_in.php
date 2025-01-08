@@ -6,6 +6,8 @@ Description: Generic form processor allowing forms to be painlessly processed an
 Author: John Godley
 Version: 1.9
 Author URI: http://urbangiraffe.com/
+License: GPL-3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 */
 
 /// Addition  1.7.6 - additional API
