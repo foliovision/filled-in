@@ -55,7 +55,7 @@ class Filter_Is_Greater extends FI_Filter
 			_e ('is <strong>Greater Than</strong> ', 'filled-in');
 			
 		if (!isset ($this->config['value']))
-			_e ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
 		else
 			echo $this->config['value'];
 	}

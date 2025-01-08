@@ -113,7 +113,7 @@ class Save_To_CSV extends FI_Post
 		$filename = $this->config['filename'];
 		
 		if ($filename == '')
-			$filename    = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$filename    = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
 		if ($this->config['overwrite'] == 'true')
 			$overwrite = __ ('(file is overwritten)', 'filled-in');

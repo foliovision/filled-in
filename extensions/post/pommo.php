@@ -125,7 +125,7 @@ class PostToPommo extends FI_Post
 		
 		$email = $this->config['email'];
 		if ($email == '')
-			$email = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$email = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
 		$fields = preg_split ('/[\n\r]+/', $this->config['fields']);
 		if ($this->config['fields'] != '' && count ($fields) > 0)

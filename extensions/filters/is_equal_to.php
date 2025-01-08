@@ -58,7 +58,7 @@ class Filter_Is_Equal extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><label for="not"><?php _e ('Not equal')?>:</label></th>
+		<th><label for="not"><?php _e('Not equal', 'filled-in')?>:</label></th>
 		<td valign="top">
 			<input type="checkbox" name="not" id="not" <?php if ($this->config['not'] == 'true') echo ' checked="checked"' ?>/>
 		</td>
@@ -72,7 +72,7 @@ class Filter_Is_Equal extends FI_Filter
 		</td>
 	</tr>
 	<tr>
-		<th><label for="regex"><?php _e ('Regex')?>:</label></th>
+		<th><label for="regex"><?php _e('Regex', 'filled-in')?>:</label></th>
 		<td valign="top">
 			<input type="checkbox" name="regex" id="regex" <?php if ($this->config['regex'] == 'true') echo ' checked="checked"' ?>/>
 		</td>
@@ -93,7 +93,7 @@ class Filter_Is_Equal extends FI_Filter
 			_e ('is <strong>Equal To</strong>: ', 'filled-in');
 			
 		if (!isset ($this->config['values']) || $this->config['values'] == '')
-			_e ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
 		else
 		{
 			$values = preg_split ('/[\n\r]+/', $this->config['values']);

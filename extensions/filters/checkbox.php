@@ -75,11 +75,11 @@ class Filter_Checkbox extends FI_Filter
 		parent::show ();
 		_e ('is a <strong>Checkbox/Radio</strong>', 'filled-in');
 		if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
-			printf (__ (' with between %d and %d items'), $this->config['smallest'], $this->config['largest']);
+			printf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		else if ($this->config['smallest'] > 0)
-			printf (__ (' with at least %d item(s)'), $this->config['smallest']);
+			printf (__(' with at least %d item(s)', 'filled-in'), $this->config['smallest']);
 		else if ($this->config['largest'] > 0)
-			printf (__ (' with less than %d item(s)'), $this->config['largest']);
+			printf (__(' with less than %d item(s)', 'filled-in'), $this->config['largest']);
 	}
 }
 

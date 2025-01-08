@@ -59,11 +59,11 @@ class Filter_Is_Required_WP extends FI_Filter
 		parent::show ();
 		_e ('is <strong>Required</strong>', 'filled-in');
 		if (isset($this->config['smallest']) && $this->config['smallest'] > 0 && $this->config['largest'] > 0)
-			printf (__ (' with between %d and %d items'), $this->config['smallest'], $this->config['largest']);
+			printf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		else if (isset($this->config['smallest']) && $this->config['smallest'] > 0)
-			printf (__ (' with at least %d items'), $this->config['smallest']);
+			printf (__(' with at least %d items', 'filled-in'), $this->config['smallest']);
 		else if (isset($this->config['largest']) && $this->config['largest'] > 0)
-			printf (__ (' with less than %d items'), $this->config['largest']);
+			printf (__(' with less than %d items', 'filled-in'), $this->config['largest']);
 	}
 }
 

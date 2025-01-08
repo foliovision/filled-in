@@ -58,9 +58,9 @@ class Post_Save_Upload extends FI_Post
 		$field     = $this->config['field'];
 		$directory = $this->config['directory'];
 		if ($field == '')
-			$field = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$field = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		if ($directory == '')
-			$directory = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$directory = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
 		printf (__ (" from field '<strong>%s</strong>' into '<strong>%s</strong>'", 'filled-in'), $field, $directory);
 	}

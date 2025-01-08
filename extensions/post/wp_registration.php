@@ -126,11 +126,11 @@ class WordPress_Registration extends FI_Post
 					
 					unset ($data->data['password']);
 					
-					$message  = sprintf(__('New user registration on your blog %s:'), get_option('blogname')) . "\r\n\r\n";
-					$message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
-					$message .= sprintf(__('E-mail: %s'), $user_email) . "\r\n";
+					$message  = sprintf(__('New user registration on your blog %s:', 'filled-in'), get_option('blogname')) . "\r\n\r\n";
+					$message .= sprintf(__('Username: %s', 'filled-in'), $user_login) . "\r\n\r\n";
+					$message .= sprintf(__('E-mail: %s', 'filled-in'), $user_email) . "\r\n";
 
-					@wp_mail(get_option('admin_email'), sprintf(__('[%s] New User Registration'), get_option('blogname')), $message);
+					@wp_mail(get_option('admin_email'), sprintf(__('[%s] New User Registration', 'filled-in'), get_option('blogname')), $message);
 				}
 				else
 					wp_new_user_notification ($user_id, $password);
@@ -211,10 +211,10 @@ class WordPress_Registration extends FI_Post
 		$email    = $this->config['email'];
 		
 		if ($email == '')
-			$email    = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$email    = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 			
 		if ($username == '')
-			$username = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$username = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 	  
 		printf (__ (" with field '<strong>%s</strong>' for email, and '<strong>%s</strong>' for username", 'filled-in'), $email, $username);
 	}

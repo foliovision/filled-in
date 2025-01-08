@@ -64,7 +64,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 	{
 		if ($screen == 'tools_page_filled_in')
 		{
-			$help .= '<h5>' . __('Filled In Help') . '</h5><div class="metabox-prefs">';
+			$help .= '<h5>' . __('Filled In Help', 'filled-in') . '</h5><div class="metabox-prefs">';
 			$help .= '<a href="http://urbangiraffe.com/plugins/filled-in/">'.__ ('Filled In Documentation', 'filled-in').'</a><br/>';
 			$help .= '<a href="http://urbangiraffe.com/support/forum/filled-in">'.__ ('Filled In Support Forum', 'filled-in').'</a><br/>';
 			$help .= '<a href="http://urbangiraffe.com/tracker/projects/filled-in/issues?set_filter=1&tracker_id=1">'.__ ('Filled In Bug Tracker', 'filled-in').'</a><br/>';
@@ -418,18 +418,18 @@ class Filled_In_Admin extends Filled_In_Plugin
 			$months = $wp_locale->months;     // WordPress 2.1
 		else
 		{
-			$months['01'] = __('January');
-			$months['02'] = __('February');
-			$months['03'] = __('March');
-			$months['04'] = __('April');
-			$months['05'] = __('May');
-			$months['06'] = __('June');
-			$months['07'] = __('July');
-			$months['08'] = __('August');
-			$months['09'] = __('September');
-			$months['10'] = __('October');
-			$months['11'] = __('November');
-			$months['12'] = __('December');
+			$months['01'] = __('January', 'filled-in');
+			$months['02'] = __('February', 'filled-in');
+			$months['03'] = __('March', 'filled-in');
+			$months['04'] = __('April', 'filled-in');
+			$months['05'] = __('May', 'filled-in');
+			$months['06'] = __('June', 'filled-in');
+			$months['07'] = __('July', 'filled-in');
+			$months['08'] = __('August', 'filled-in');
+			$months['09'] = __('September', 'filled-in');
+			$months['10'] = __('October', 'filled-in');
+			$months['11'] = __('November', 'filled-in');
+			$months['12'] = __('December', 'filled-in');
 		}
 		
 		$this->render_admin ('report/report', array ('reports' => $reports, 'forms' => $forms, 'base' => $base, 'end_date' => $end_date, 'start_date' => $start_date, 'months' => $months));
@@ -478,7 +478,7 @@ class Filled_In_Admin extends Filled_In_Plugin
          else if (isset ($_POST['destroy']) && check_admin_referer ('filledin-remove_plugin'))
          {
             $this->remove_everything ();
-            $this->render_message (__ ('All Filled In data has been removed and the plugin de-activated'));
+            $this->render_message (__('All Filled In data has been removed and the plugin de-activated', 'filled-in'));
             return;
          }
 
@@ -646,11 +646,11 @@ class Filled_In_Admin extends Filled_In_Plugin
     if( isset($notifications['filled_in_cron_delete_failed_notice']) && $notifications['filled_in_cron_delete_failed_notice'] ) {
         $this->pointer_boxes['filled_in_cron_delete_failed_notice'] = array(
           'id' => '#wpadminbar',
-          'heading' => __('Filled In: Failed submissions', 'filled_in'),
-          'content' => __('From now on failed submissions older than 30 days are automatically deleted from database.<br/><br />If you want to turn this off, go to <a href="http://localhost/site/wp-admin/tools.php?page=filled_in.php&sub=options">Filled In Options</a> and check "Delete failed submission" off. However then you should be checking if your database is not too big.<br />', 'filled_in'),
+          'heading' => __('Filled In: Failed submissions', 'filled-in'),
+          'content' => __('From now on failed submissions older than 30 days are automatically deleted from database.<br/><br />If you want to turn this off, go to <a href="http://localhost/site/wp-admin/tools.php?page=filled_in.php&sub=options">Filled In Options</a> and check "Delete failed submission" off. However then you should be checking if your database is not too big.<br />', 'filled-in'),
           'position' => array( 'edge' => 'top', 'align' => 'right' ),
-          'button1' => __('I understand', 'filled_in'),
-          'button2' => __('I\'ll check this later', 'filled_in')
+          'button1' => __('I understand', 'filled-in'),
+          'button2' => __('I\'ll check this later', 'filled-in')
         );
     }
 

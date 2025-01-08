@@ -43,7 +43,7 @@ class Pre_Exclude_Fields extends FI_Pre
 		
 		$fields = $this->config['fields'];
 		if ($fields == '')
-			echo __ (' <em>&lt;not configured&gt;</em>', 'filled-in');
+			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
 		else
 			echo " '$fields'";
 	}

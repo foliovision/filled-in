@@ -59,13 +59,13 @@ class Filter_Word_Count extends FI_Filter
 		parent::show ();
 		_e ('with <strong>Word Count</strong> ', 'filled-in');
 		if ($this->config['shortest'] > 0 && $this->config['longest'] > 0)
-			printf (__ ('between %d and %d words long'), $this->config['shortest'], $this->config['longest']);
+			printf (__('between %d and %d words long', 'filled-in'), $this->config['shortest'], $this->config['longest']);
 		else if ($this->config['shortest'] > 0)
-			printf (__ ('at least %d words long'), $this->config['shortest']);
+			printf (__('at least %d words long', 'filled-in'), $this->config['shortest']);
 		else if ($this->config['longest'] > 0)
-			printf (__ ('less than %d words long'), $this->config['longest']);
+			printf (__('less than %d words long', 'filled-in'), $this->config['longest']);
 		else
-			printf (__ ('<em>&lt;not configured&gt;</em>', 'filled-in'));
+			printf ( '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>' );
 	}
 }
 

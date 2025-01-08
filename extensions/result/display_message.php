@@ -59,7 +59,7 @@ class Result_Display_Message extends FI_Results
 		if (isset($this->config['message']) && $this->config['message'] != '')
 			$message = htmlspecialchars (substr (strip_tags ($this->config['message']), 0, 50));
 		else
-			$message = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$message = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
 		printf (__ (" with '%s'", 'filled-in'), $message);
 	}

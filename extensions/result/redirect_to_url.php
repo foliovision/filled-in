@@ -47,7 +47,7 @@ class Result_Redirect_URL extends FI_Results
 		if (isset ($this->config['url']) != 0)
 			$url = $this->config['url'];
 		else
-			$url = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$url = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		echo ' '.$url;
 	}
 	

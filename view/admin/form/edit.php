@@ -41,16 +41,16 @@
 <div class="wrap">
   <h2><?php _e ('Extensions', 'filled-in') ?></h2>
 
-	<h3><?php _e ('Pre Processors', 'filled-in') ?>: <span class="sub"><?php _e ('what we do before we begin') ?></span></h3>
+	<h3><?php _e ('Pre Processors', 'filled-in') ?>: <span class="sub"><?php _e('what we do before we begin', 'filled-in') ?></span></h3>
 	<?php $this->render_admin ('extension/current', array ('form' => $form, 'group' => 'pre'))?>
 	
-	<h3><?php _e ('Filters', 'filled-in') ?>: <span class="sub"><?php _e ('ensure the data is correct') ?></span></h3>
+	<h3><?php _e ('Filters', 'filled-in') ?>: <span class="sub"><?php _e('ensure the data is correct', 'filled-in') ?></span></h3>
 	<?php $this->render_admin ('extension/current', array ('form' => $form, 'group' => 'filter'))?>
 	
-	<h3><?php _e ('Post Processors', 'filled-in') ?>: <span class="sub"><?php _e ('what to do with the data when accepted') ?></span></h3>
+	<h3><?php _e ('Post Processors', 'filled-in') ?>: <span class="sub"><?php _e('what to do with the data when accepted', 'filled-in') ?></span></h3>
 	<?php $this->render_admin ('extension/current', array ('form' => $form, 'group' => 'post')) ?>
 	
-	<h3><?php _e ('Result Processor', 'filled-in') ?>: <span class="sub"><?php _e ('what to show the user after correct submission') ?></span></h3>
+	<h3><?php _e ('Result Processor', 'filled-in') ?>: <span class="sub"><?php _e('what to show the user after correct submission', 'filled-in') ?></span></h3>
 	<?php $this->render_admin ('extension/current', array ('form' => $form, 'group' => 'result'))?>
 </div>
 

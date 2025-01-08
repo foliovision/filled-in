@@ -35,9 +35,9 @@ class Prepare_for_mailto extends FI_Pre
 		$field     = $this->config['field'];
 		$newfield = $this->config['newfield'];
 		if ($field == '')
-			$field = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$field = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		if ($newfield == '')
-			$newfield = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$newfield = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
 		printf (__ (" from field '<strong>%s</strong>' into '<strong>%s</strong>'", 'filled-in'), $field, $newfield);
 	}

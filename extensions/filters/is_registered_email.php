@@ -15,7 +15,7 @@ class Filter_WP_Email extends FI_Filter
 		else if (email_exists ($email))
 			return __ ('already exists, please choose another', 'filled-in');
 		elseif (!is_email( $email ))
-			return __('please enter a valid username.');
+			return __('please enter a valid username.', 'filled-in');
 
 		return true;
 	}

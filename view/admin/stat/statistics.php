@@ -14,7 +14,7 @@
 			<input type="hidden" name="page" value="filled_in.php"/>
 			<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
 			<p class="search-box">
-				<label for="post-search-input" class="hidden"><?php _e ('Search') ?>:</label>
+				<label for="post-search-input" class="hidden"><?php _e('Search', 'filled-in') ?>:</label>
 
 				<input type="text" class="search-input" name="search" value="<?php echo isset($_GET['search']) ? htmlspecialchars ($_GET['search']) : ''?>"/>
 				<?php if (isset ($_GET['search']) && $_GET['search'] != '') : ?>
@@ -28,15 +28,15 @@
                             <?php if (current_user_can ('administrator')): ?>
 				<div class="alignleft actions">
 					<select name="action2" id="action2_select">
-						<option value="-1" selected="selected"><?php _e('Bulk Actions'); ?></option>
-						<option value="delete"><?php _e('Delete'); ?></option>
+						<option value="-1" selected="selected"><?php _e('Bulk Actions', 'filled-in'); ?></option>
+						<option value="delete"><?php _e('Delete', 'filled-in'); ?></option>
 					</select>
 
-					<input type="submit" value="<?php _e('Apply'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
+					<input type="submit" value="<?php _e('Apply', 'filled-in'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
 
 					<?php $pager->per_page ('filled-in'); ?>
 
-					<input type="submit" value="<?php _e('Filter'); ?>" class="button-secondary" />
+					<input type="submit" value="<?php _e('Filter', 'filled-in'); ?>" class="button-secondary" />
 
 					<br class="clear" />
 				</div>

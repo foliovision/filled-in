@@ -113,10 +113,10 @@ class Add_To_Profile extends FI_Post
 		$fields = $this->config['fields'];
 		
 		if ($key == '')
-			$key    = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$key    = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 			
 		if ($fields == '')
-			$fields = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$fields = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 	  
 		printf (__ (" with key '<strong>%s</strong>', and fields '<strong>%s</strong>'", 'filled-in'), $key, $fields);
 	}

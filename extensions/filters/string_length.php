@@ -61,13 +61,13 @@ class Filter_String_Length extends FI_Filter
 		parent::show ();
 		_e ('with <strong>String Length</strong> ', 'filled-in');
 		if (isset($this->config['shortest']) && $this->config['shortest'] > 0 && $this->config['longest'] > 0)
-			printf (__ ('between %d and %d characters long'), $this->config['shortest'], $this->config['longest']);
+			printf (__('between %d and %d characters long', 'filled-in'), $this->config['shortest'], $this->config['longest']);
 		else if (isset($this->config['shortest']) && $this->config['shortest'] > 0)
-			printf (__ ('at least %d characters long'), $this->config['shortest']);
+			printf (__('at least %d characters long', 'filled-in'), $this->config['shortest']);
 		else if (isset($this->config['longest']) && $this->config['longest'] > 0)
-			printf (__ ('less than %d characters long'), $this->config['longest']);
+			printf (__('less than %d characters long', 'filled-in'), $this->config['longest']);
 		else
-			printf (__ ('<em>&lt;not configured&gt;</em>', 'filled-in'));
+			printf ( '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>' );
 	}
 }
 

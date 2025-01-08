@@ -15,7 +15,7 @@ class Filter_Username extends FI_Filter
 		else if (username_exists ($user_login))
 			return __ ('already exists, please choose another', 'filled-in');
 		elseif (!validate_username ($user_login ))
-			return __('please enter a valid username.');
+			return __('please enter a valid username.', 'filled-in');
 
 		return true;
 	}

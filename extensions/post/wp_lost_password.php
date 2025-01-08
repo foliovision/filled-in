@@ -35,14 +35,14 @@ class WordPress_Lost_Password extends FI_Post
 			// Now insert the new pass md5'd into the db
 			$wpdb->query("UPDATE $wpdb->users SET user_activation_key = '$key' WHERE user_login = '$my_user_login'");
 			
-			$message = __('Someone has asked to reset the password for the following site and username.') . "\r\n\r\n";
+			$message = __('Someone has asked to reset the password for the following site and username.', 'filled-in') . "\r\n\r\n";
 			$message .= get_option('home') . "\r\n\r\n";
-			$message .= sprintf(__('Username: %s'), $my_user_login) . "\r\n\r\n";
-			$message .= __('To reset your password visit the following address, otherwise just ignore this email and nothing will happen.') . "\r\n\r\n";
+			$message .= sprintf(__('Username: %s', 'filled-in'), $my_user_login) . "\r\n\r\n";
+			$message .= __('To reset your password visit the following address, otherwise just ignore this email and nothing will happen.', 'filled-in') . "\r\n\r\n";
 			$message .= get_option('siteurl') . "/wp-login.php?action=rp&key=$key\r\n";
 		
-			if (FALSE == wp_mail($my_user_email, sprintf(__('[%s] Password Reset'), get_option('blogname')), $message))
-				return __('the e-mail could not be sent.');
+			if (FALSE == wp_mail($my_user_email, sprintf(__('[%s] Password Reset', 'filled-in'), get_option('blogname')), $message))
+				return __('the e-mail could not be sent.', 'filled-in');
 			return true;
 		}
 		
@@ -75,10 +75,10 @@ class WordPress_Lost_Password extends FI_Post
 		$email = $this->config['email'];
 		
 		if ($email == '')
-			$email    = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$email    = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 			
 		if ($username == '')
-			$username = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$username = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 
 		printf (__ (" with field '<strong>%s</strong>' for email, and '<strong>%s</strong>' for username", 'filled-in'), $email, $username);
 	}

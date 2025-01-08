@@ -53,7 +53,7 @@ class Result_Redirect_Post extends FI_Results
 				$post = $this->config['post'];
 		}
 		else
-			$post = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$post = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		echo ' '.$post;
 	}
 	

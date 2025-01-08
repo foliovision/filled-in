@@ -343,11 +343,11 @@ class Post_Email_WP extends FI_Post
       parent::show ();
       $to = htmlspecialchars (isset($this->config['address']) ? $this->config['address'] : '');
       if ($to == '')
-         $to = __ ('<em>&lt;not configured&gt;</em>');
+         $to = '<em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
 
       $template = htmlspecialchars (isset($this->config['template']) ? $this->config['template'] : '');
       if ($template == '')
-         $template = __ ('<em>&lt;not configured&gt;</em>');
+         $template = '<em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
 
       $subject = htmlspecialchars (strlen($this->config['subject']) ? 'and subject \''.$this->config['subject'].'\'' : '');	
 

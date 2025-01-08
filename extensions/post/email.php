@@ -292,11 +292,11 @@ class Post_Email extends FI_Post
       parent::show ();
       $to = htmlspecialchars ($this->config['address']);
       if ($to == '')
-         $to = __ ('<em>&lt;not configured&gt;</em>');
+         $to = '<em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
 
       $template = htmlspecialchars ($this->config['template']);
       if ($template == '')
-         $template = __ ('<em>&lt;not configured&gt;</em>');
+         $template = '<em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
          
       printf (__ (' to <strong>%s</strong>, with template \'%s\'', 'filled-in'), $to, $template);
    }

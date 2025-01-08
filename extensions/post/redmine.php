@@ -76,7 +76,7 @@ class PostToRedmine extends FI_Post
 		
 		$email = $this->config['email'];
 		if ($email == '')
-			$email = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$email = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 ?>
  with email taken from '<?php echo $email ?>' <?php echo $fields?>
 <?php

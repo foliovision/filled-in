@@ -70,10 +70,10 @@ class WordPress_Login extends FI_Post
 		$password = $this->config['password'];
 		
 		if ($password == '')
-			$password    = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$password    = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 			
 		if ($username == '')
-			$username = __ ('<em>&lt;not configured&gt;</em>', 'filled-in');
+			$username = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 
 		printf (__ (" with field '<strong>%s</strong>' for password, and '<strong>%s</strong>' for username", 'filled-in'), $password, $username);
 	}

@@ -404,8 +404,8 @@ class FI_Pager
 
 		if ($this->total_pages () > 1)
 		{
-			$previous = __ ('Previous', 'redirection');
-			$next     = __ ('Next', 'redirection');
+			$previous = __ ('Previous', 'filled-in');
+			$next     = __ ('Next', 'filled-in');
 			
 			if ($this->have_previous_page ())
 				$pages[] = '<a href="'.$this->url ($this->current_page - 1).'">'.$previous.'</a> |';
@@ -472,7 +472,7 @@ class FI_Pager
 	
 	function page_links ()
 	{
-		$text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s' ) . '</span>',
+		$text = sprintf( '<span class="displaying-num">' . __('Displaying %s&#8211;%s of %s', 'filled-in') . '</span>',
 											number_format_i18n (($this->current_page () - 1) * $this->per_page + 1),
 											number_format_i18n ($this->current_page () * $this->per_page > $this->total ? $this->total : $this->current_page () * $this->per_page),
 											number_format_i18n ($this->total));
