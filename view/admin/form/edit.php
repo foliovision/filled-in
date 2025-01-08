@@ -6,7 +6,7 @@
 		  <tr>
 			<th width="120" valign="top"><?php _e ('Name', 'filled-in') ?>:<br/><span class="sub"><?php _e ('Identifies the form', 'filled-in') ?></span></th>
 			<td>
-				<input class="regular-text" size="40" type="text" name="new_name" value="<?php echo $form->name ?>"/>
+				<input class="regular-text" size="40" type="text" name="new_name" value="<?php echo esc_attr( $form->name ) ?>"/>
 
 			</td>
 		  </tr>
@@ -15,7 +15,7 @@
 				<?php _e ('Quick view', 'filled-in') ?>:<br/>
 				<span class="sub"><?php _e ('Fields/cookies to display in the results list', 'filled-in') ?></span>
 			</th>
-			<td><input class="regular-text" type="text" name="quickview" size="40" value="<?php echo htmlspecialchars ($form->quickview) ?>"/> <span class="sub"><?php _e ('separate with comma', 'filled-in') ?></span></td>
+			<td><input class="regular-text" type="text" name="quickview" size="40" value="<?php echo esc_attr( $form->quickview ) ?>"/> <span class="sub"><?php _e ('separate with comma', 'filled-in') ?></span></td>
 		  </tr>
 			<tr>
 				<th width="120" valign="top"><?php _e ('Special Options','filled-in') ?>:<br/><span class="sub">Enable AJAX or file uploads</span></th>
@@ -57,31 +57,31 @@
 <div class="wrap">
 	<h2><?php _e ('Custom Options', 'filled-in') ?></h2>
 
-	<form method="post" action="<?php echo str_replace ('&', '&amp;', $_SERVER['REQUEST_URI']) ?>">
+	<form method="post" action="<?php echo esc_attr( str_replace ('&', '&amp;', $_SERVER['REQUEST_URI']) ) ?>">
 	<table class="form-table">
 		<tr>
 			<th width="180" valign="top"><?php _e( 'Submit anchor', 'filled-in' ); ?>:<br/><span class="sub"><?php _e ('When a form is submitted the user will be taken to specified anchor. Leave empty to submit to top of page', 'filled-in'); ?></span></th>
 			<td valign="top">
-				<input type="text" name="submit-anchor" value="<?php echo $form->options['submit-anchor']; ?>" />
+				<input type="text" name="submit-anchor" value="<?php echo esc_attr( $form->options['submit-anchor'] ); ?>" />
 			</td>
 		</tr>
     <tr>
       <th width="180" valign="top"><?php _e ('Predecessor\'s form allowed ID', 'filled-in'); ?>:<br/><span class="sub"><?php _e ('Define allowed predecessor\'s form ID which has been submitted before this form has shown', 'filled-in'); ?></span></th>
       <td>
-        <input type="text" name="custom_id" value="<?php echo $form->options['custom_id']; ?>" />
+        <input type="text" name="custom_id" value="<?php echo esc_attr( $form->options['custom_id'] ); ?>" />
       </td>
     </tr>
 		<tr>
 			<th width="180" valign="top"><?php _e ('Custom submit code', 'filled-in'); ?>:<br/><span class="sub"><?php _e ('Override the default AJAX loading notice', 'filled-in'); ?></span></th>
 			<td>
-				<textarea class="large-text" name="custom_submit" rows="2"><?php echo htmlspecialchars (stripslashes (isset($form->options['custom_submit']) ? $form->options['custom_submit'] : '')) ?></textarea>
+				<textarea class="large-text" name="custom_submit" rows="2"><?php echo esc_textarea( wp_unslash( ! empty( $form->options['custom_submit'] ) ? $form->options['custom_submit'] : '' ) ) ?></textarea>
 			</td>
 		</tr>
 		<tr>
 			<th valign="top"><span class="sub"><?php _e ('Default submit code', 'filled-in'); ?>:</span></th>
 			<td>
 				<code style="font-size: 0.9em" class="sub">
-				&lt;img src=&quot;<?php echo preg_replace ('@http://(.*?)/(.*)@', '/$2', get_bloginfo ('wpurl')) ?>/wp-content/plugins/filled-in/images/loading.gif&quot; alt=&quot;loading&quot; width=&quot;32&quot; height=&quot;32&quot;/&gt;
+				&lt;img src=&quot;<?php echo esc_attr( preg_replace ('@http://(.*?)/(.*)@', '/$2', get_bloginfo ('wpurl')) ) ?>/wp-content/plugins/filled-in/images/loading.gif&quot; alt=&quot;loading&quot; width=&quot;32&quot; height=&quot;32&quot;/&gt;
 				<?php _e ('Please wait...', 'filled-in'); ?>
 				</code>
 			</td>
