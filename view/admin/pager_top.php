@@ -10,7 +10,7 @@
 
 
 		<?php esc_html_e('Search', 'filled-in'); ?>: 
-		<input type="text" name="search" value="<?php echo htmlspecialchars ($_GET['search']) ?>"/>
+		<input type="text" name="search" value="<?php echo esc_attr ($_GET['search']) ?>"/>
 		
 		<?php esc_html_e('Results per page', 'filled-in') ?>: 
 		<select name="perpage">

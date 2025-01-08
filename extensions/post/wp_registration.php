@@ -158,31 +158,31 @@ class WordPress_Registration extends FI_Post
 		?>
     <tr>
       <td width="130"><?php esc_html_e('Field for username', 'filled-in') ?>:</td>
-      <td><input style="width: 95%" type="text" name="username" value="<?php echo htmlspecialchars ($this->config['username']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="username" value="<?php echo esc_attr ($this->config['username']) ?>"/></td>
     </tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Field for email', 'filled-in') ?>:</td>
-      <td><input style="width: 95%" type="text" name="email" value="<?php echo htmlspecialchars ($this->config['email']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="email" value="<?php echo esc_attr ($this->config['email']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Field for first name', 'filled-in') ?>:<br/><span class="sub">Optional</span></td>
-      <td><input style="width: 95%" type="text" name="name_first" value="<?php echo htmlspecialchars ($this->config['name_first']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="name_first" value="<?php echo esc_attr ($this->config['name_first']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Field for last name', 'filled-in') ?>:<br/><span class="sub">Optional</span></td>
-      <td><input style="width: 95%" type="text" name="name_last" value="<?php echo htmlspecialchars ($this->config['name_last']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="name_last" value="<?php echo esc_attr ($this->config['name_last']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Field for full name', 'filled-in') ?>:<br/><span class="sub">Optional</span></td>
-      <td><input style="width: 95%" type="text" name="name_full" value="<?php echo htmlspecialchars ($this->config['name_full']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="name_full" value="<?php echo esc_attr ($this->config['name_full']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Field for nickname', 'filled-in') ?>:<br/><span class="sub">Optional</span></td>
-      <td><input style="width: 95%" type="text" name="name_nick" value="<?php echo htmlspecialchars ($this->config['name_nick']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="name_nick" value="<?php echo esc_attr ($this->config['name_nick']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Field for URL', 'filled-in') ?>:<br/><span class="sub">Optional</span></td>
-      <td><input style="width: 95%" type="text" name="url" value="<?php echo htmlspecialchars ($this->config['url']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="url" value="<?php echo esc_attr ($this->config['url']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><label for="duplicates"><?php esc_html_e('Ignore duplicates', 'filled-in') ?></label>:<br/><span class="sub">Don't report an error on duplicate user</span></td>

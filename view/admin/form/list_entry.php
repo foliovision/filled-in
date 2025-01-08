@@ -8,7 +8,7 @@
 		<?php if ($admin) : ?>
 		<a href="<?php echo esc_attr( $base ) ?>&amp;edit=<?php echo $form['form']->id ?>">
 		<?php endif; ?>
-		<?php echo htmlspecialchars ($form['form']->name) ?>
+		<?php echo esc_html( $form['form']->name) ?>
 		<?php if ($admin) : ?>
 		</a>
 		<?php endif; ?>

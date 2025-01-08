@@ -7,23 +7,23 @@
 	  <table width="100%" class="form-table">
 	    <tr>
 	      <th><?php esc_html_e('From', 'filled-in'); ?>:</th>
-	      <td><input <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="regular-text" type="text" name="from" value="<?php echo htmlspecialchars (stripslashes ($template->from)) ?>" size="40"/> (<?php esc_html_e('Leave blank for admin email address', 'filled-in') ?>)</td>
+	      <td><input <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="regular-text" type="text" name="from" value="<?php echo esc_attr (stripslashes ($template->from)) ?>" size="40"/> (<?php esc_html_e('Leave blank for admin email address', 'filled-in') ?>)</td>
 	    </tr>
 	    <tr>
 	      <th><?php esc_html_e('Subject', 'filled-in'); ?>:</th>
-	      <td><input <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="regular-text" type="text" name="subject" value="<?php echo htmlspecialchars (stripslashes ($template->subject)) ?>" size="40"/></td>
+	      <td><input <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="regular-text" type="text" name="subject" value="<?php echo esc_attr (stripslashes ($template->subject)) ?>" size="40"/></td>
 	    </tr>
 
 	    <tr>
 	      <th valign="top"><?php esc_html_e('HTML content', 'filled-in'); ?>:<br/><small><a href="#" onclick="jQuery('#text_<?php echo $template->name ?>').toggle (); return false">plain text</a></small></th>
 	      <td>
-					<textarea <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="large-text" name="html" rows="10"><?php echo htmlspecialchars (stripslashes ($template->html)) ?></textarea>
+					<textarea <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="large-text" name="html" rows="10"><?php echo esc_textarea( stripslashes ($template->html)) ?></textarea>
 				</td>
 	    </tr>
 
 	    <tr <?php if (strlen ($template->text) == 0) echo 'style="display: none"'; ?> id="text_<?php echo $template->name ?>">
 	      <th valign="top"><?php esc_html_e('Text content', 'filled-in'); ?>:</th>
-	      <td><textarea <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="large-text" name="text" rows="10"><?php echo htmlspecialchars (stripslashes ($template->text)) ?></textarea></td>
+	      <td><textarea <?php echo (!current_user_can ('administrator'))?'readonly':''; ?> class="large-text" name="text" rows="10"><?php echo esc_textarea( stripslashes ($template->text)) ?></textarea></td>
 	    </tr>
 
 			<tr>

@@ -4,5 +4,5 @@
 			<img src="<?php echo $this->url (); ?>/images/delete.png" alt="report" width="16" height="16"/>
 		</a>
 	</div>
-	<a href="<?php echo esc_attr( $base ) ?>&amp;sub=reports&amp;edit=<?php echo $report->id ?>"><?php echo htmlspecialchars ($report->name) ?></a>
+	<a href="<?php echo esc_attr( $base ) ?>&amp;sub=reports&amp;edit=<?php echo $report->id ?>"><?php echo esc_html ($report->name) ?></a>
 </div>

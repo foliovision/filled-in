@@ -19,12 +19,12 @@
  <?php if ($errors && $errors->what_type () == 'pre') : ?>
  	<tr class="error">
 		<th><?php esc_html_e('Pre-Processor failure', 'filled-in') ?>:</th>
-		<td><?php echo htmlspecialchars ($errors->message) ?></td>
+		<td><?php echo esc_html ($errors->message) ?></td>
 	</tr>
  <?php elseif ($errors && $errors->what_type () == 'post') : ?>
  	<tr class="error">
 		<th><?php esc_html_e('Post-Processor failure', 'filled-in') ?>:</th>
-		<td><?php echo htmlspecialchars ($errors->message) ?></td>
+		<td><?php echo esc_html ($errors->message) ?></td>
 	</tr>
  <?php endif; ?>
  
@@ -34,14 +34,14 @@
    <th valign="top" class="data"><?php echo $key ?>:</th>
    <td>
      <strong><?php echo $errors->show_error ($key) ?></strong>
-     (<?php echo ($value == '' ? __('&lt;no data&gt;', 'filled-in') : htmlspecialchars ($value)) ?>)
+     (<?php echo ($value == '' ? __('&lt;no data&gt;', 'filled-in') : esc_html ($value)) ?>)
    </td>
    
    <?php else : ?>
  	<tr>
    <th valign="top" class="data"><?php echo $key ?>:</th>
    <td>
-     <?php echo htmlspecialchars ($post->display ($key)) ?>
+     <?php echo esc_html ($post->display ($key)) ?>
    </td>
  	</tr>
    
@@ -67,7 +67,7 @@
 		<?php foreach ($files->data[$key] AS $pos => $item) : ?>
 			<li>
 				<a href="<?php bloginfo ('wpurl') ?>/wp-content/plugins/filled-in/controller/download.php?id=<?php echo $stat->id ?>&amp;name=<?php echo urlencode ($key) ?>&amp;pos=<?php echo $pos ?>" title="download">
-				<?php echo htmlspecialchars ($item->name) ?>
+				<?php echo esc_html ($item->name) ?>
 				</a>
 			</li>
 		<?php endforeach; ?>
@@ -84,7 +84,7 @@
  <tr class="cookie">
    <th valign="top"><?php echo $key ?>:</th>
    <td>
-     <?php echo htmlspecialchars (stripslashes ($value)); ?>
+     <?php echo esc_html (stripslashes ($value)); ?>
    </td>
  </tr>
  <?php endforeach; ?>

@@ -90,14 +90,14 @@ class PostToPommo extends FI_Post
 	    <tr>
 	      <td width="130"><?php esc_html_e('poMMo directory', 'filled-in') ?>:</td>
 	      <td>
-					<input type="text" name="pommo_dir" value="<?php echo htmlspecialchars ($this->config['pommo_dir']) ?>"/>
+					<input type="text" name="pommo_dir" value="<?php echo esc_attr ($this->config['pommo_dir']) ?>"/>
 					<span class="sub"><?php esc_html_e('Full directory to the poMMo installation', 'filled-in'); ?></span>
 				</td>
 	    </tr>
 	    <tr>
 	      <td width="130"><?php esc_html_e('Email field', 'filled-in') ?>:</td>
 	      <td>
-					<input type="text" name="email" value="<?php echo htmlspecialchars ($this->config['email']) ?>"/>
+					<input type="text" name="email" value="<?php echo esc_attr ($this->config['email']) ?>"/>
 					<span class="sub"><?php esc_html_e('Name of the Filled In field you want to use as the email address', 'filled-in'); ?></span>
 				</td>
 	    </tr>

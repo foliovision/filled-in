@@ -70,7 +70,7 @@ class Filter_CAPTCHA extends FI_Filter
 	<tr>
 		<th><?php esc_html_e('Blocked message', 'filled-in'); ?>:</th>
 		<td>
-			<input type="text" size="40" name="toomany" value="<?php echo htmlspecialchars ($this->config['toomany']) ?>" id="toomany"/>
+			<input type="text" size="40" name="toomany" value="<?php echo esc_attr ($this->config['toomany']) ?>" id="toomany"/>
 			<span class="sub"><?php esc_html_e('What to display when blocked', 'filled-in'); ?></span>
 		</td>
 	</tr>

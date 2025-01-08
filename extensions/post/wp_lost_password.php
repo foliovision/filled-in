@@ -59,11 +59,11 @@ class WordPress_Lost_Password extends FI_Post
 		?>
     <tr>
       <td width="130"><?php esc_html_e('Field for username', 'filled-in') ?>:</td>
-      <td><input style="width: 95%" type="text" name="username" value="<?php echo htmlspecialchars ($this->config['username']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="username" value="<?php echo esc_attr ($this->config['username']) ?>"/></td>
     </tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Field for email', 'filled-in') ?>:</td>
-      <td><input style="width: 95%" type="text" name="email" value="<?php echo htmlspecialchars ($this->config['email']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="email" value="<?php echo esc_attr ($this->config['email']) ?>"/></td>
 		</tr>
 	  <?php
 	}

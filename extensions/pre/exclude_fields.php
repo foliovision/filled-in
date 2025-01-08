@@ -30,7 +30,7 @@ class Pre_Exclude_Fields extends FI_Pre
 		<tr>
 			<th><?php esc_html_e('Fields', 'filled-in'); ?>:</th>
 			<td>
-				<input size="40" type="text" name="fields" value="<?php echo htmlspecialchars ($this->config['fields']) ?>"/>
+				<input size="40" type="text" name="fields" value="<?php echo esc_attr ($this->config['fields']) ?>"/>
 				<span class="sub"><?php esc_html_e('separate fields with comma', 'filled-in'); ?></span>
 			</td>
 		</tr>

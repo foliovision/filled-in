@@ -2,9 +2,9 @@
 <div class="wrap">
 	<h2>
 <?php if (true || current_user_can ('administrator')) : ?>
-		<?php echo $title ?> for '<a href="<?php bloginfo ('wpurl') ?>/wp-admin/edit.php?page=filled_in.php&amp;edit=<?php echo $form->id ?>"><?php echo htmlspecialchars ($form->name) ?></a>'
+		<?php echo esc_html( $title ) ?> for '<a href="<?php bloginfo ('wpurl') ?>/wp-admin/edit.php?page=filled_in.php&amp;edit=<?php echo $form->id ?>"><?php echo esc_html ($form->name) ?></a>'
 <?php else : ?>
-	<?php echo $title ?> for '<?php echo htmlspecialchars ($form->name) ?>'
+	<?php echo esc_html( $title ) ?> for '<?php echo esc_html ($form->name) ?>'
 <?php endif; ?>
 	</h2>
 	
@@ -16,9 +16,9 @@
 			<p class="search-box">
 				<label for="post-search-input" class="hidden"><?php esc_html_e('Search', 'filled-in') ?>:</label>
 
-				<input type="text" class="search-input" name="search" value="<?php echo isset($_GET['search']) ? htmlspecialchars ($_GET['search']) : ''?>"/>
+				<input type="text" class="search-input" name="search" value="<?php echo isset($_GET['search']) ? esc_attr( $_GET['search'] ) : ''?>"/>
 				<?php if (isset ($_GET['search']) && $_GET['search'] != '') : ?>
-					<input type="hidden" name="ss" value="<?php echo htmlspecialchars ($_GET['search']) ?>"/>
+					<input type="hidden" name="ss" value="<?php echo esc_attr ($_GET['search']) ?>"/>
 				<?php endif;?>
 
 				<input type="submit" class="button" value="Search"/>

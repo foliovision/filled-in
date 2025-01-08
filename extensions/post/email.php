@@ -269,7 +269,7 @@ class Post_Email extends FI_Post
      ?>
    <tr>
      <th width="50"><?php esc_html_e('To', 'filled-in'); ?>:</th>
-     <td><input style="width: 95%" type="text" name="address" value="<?php echo htmlspecialchars ($this->config['address']) ?>"/></td>
+     <td><input style="width: 95%" type="text" name="address" value="<?php echo esc_attr ($this->config['address']) ?>"/></td>
    </tr>
    <tr>
       <th><?php esc_html_e('Template', 'filled-in'); ?>:</th>

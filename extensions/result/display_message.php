@@ -39,7 +39,7 @@ class Result_Display_Message extends FI_Results
 		?>
 		<tr>
 			<td colspan="2">
-    		<textarea style="width: 95%; margin-top: 10px" rows="10" name="message"><?php echo htmlspecialchars (isset($this->config['message']) ? $this->config['message'] : '') ?></textarea>
+    		<textarea style="width: 95%; margin-top: 10px" rows="10" name="message"><?php echo esc_textarea (isset($this->config['message']) ? $this->config['message'] : '') ?></textarea>
 			</td>
 		</tr>
 		<tr>

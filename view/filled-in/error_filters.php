@@ -9,7 +9,7 @@
 	<ul class="err_lst">
 		<?php foreach ($errors->message AS $field => $error) : ?>
 			<?php foreach ($error AS $err) :?>
-			<li><?php echo htmlspecialchars (ucfirst ($err)); ?></li>
+			<li><?php echo esc_html (ucfirst ($err)); ?></li>
 			<?php endforeach; ?>
 		<?php endforeach; ?>
 	</ul>

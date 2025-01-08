@@ -8,7 +8,7 @@
 
 	<ul>
 <?php foreach ($uploads AS $upload): ?>
-		<li><?php echo htmlspecialchars ($upload->name) ?></li>
+		<li><?php echo esc_html ($upload->name) ?></li>
 <?php endforeach; ?>
 	</ul>
 </div>

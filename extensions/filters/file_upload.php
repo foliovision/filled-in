@@ -90,7 +90,7 @@ class Filter_File_Upload extends FI_Filter
 	<tr>
 		<th valign="top"><?php esc_html_e('File types', 'filled-in'); ?>:</th>
 		<td>
-			<input type="text" name="file_type" value="<?php echo htmlspecialchars (stripslashes ($this->config['file_type'])) ?>"/>
+			<input type="text" name="file_type" value="<?php echo esc_attr (stripslashes ($this->config['file_type'])) ?>"/>
 			<em><?php esc_html_e('Separate file types with a comma.  No period is required', 'filled-in'); ?></em>
 			<p><?php esc_html_e('Note: Restriction is only on filename and does not prevent a user uploading a renamed file', 'filled-in'); ?></p>
 		</td>

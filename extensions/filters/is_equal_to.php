@@ -68,7 +68,7 @@ class Filter_Is_Equal extends FI_Filter
 			<span class="sub"><?php esc_html_e('Each value on a separate line.', 'filled-in'); ?></span>
 		</th>
 		<td>
-			<textarea name="values" rows="5" style="width: 95%"><?php echo htmlspecialchars ($this->config['values']) ?></textarea>
+			<textarea name="values" rows="5" style="width: 95%"><?php echo esc_textarea($this->config['values']) ?></textarea>
 		</td>
 	</tr>
 	<tr>

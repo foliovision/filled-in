@@ -5,7 +5,7 @@
 <td>
 	<a href="<?php echo $this->url () ?>/controller/admin_ajax.php?cmd=edit_template&amp;id=<?php echo $template->name ?>" class="filledin-template-edit"><?php echo $template->name ?></a>
 </td>
-<td><?php echo htmlspecialchars ($template->from); ?></td>
-<td><?php echo htmlspecialchars ($template->to); ?></td>
+<td><?php echo esc_html ($template->from); ?></td>
+<td><?php echo esc_html ($template->to); ?></td>
 
 

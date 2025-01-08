@@ -159,15 +159,15 @@ class Filled_In_Foliopress_Plugin
                             //echo '<ul style="list-style: disc; margin-left: 20px;">';
                             $ul = true;
                         }
-                        $line = preg_replace('~^\s*\*\s*~', '', htmlspecialchars($line));
+                        $line = preg_replace('~^\s*\*\s*~', '', esc_html($line));
                         echo '<li style="width: 50%; margin: 0; float: left; ' . ($index % 2 == 0 ? 'clear: left;' : '') . '">' . $line . '</li>';
                     } else {
                         if ($ul) {
                             //echo '</ul><div style="clear: left;"></div>';
                             $ul = false;
                         }
-                        $line = preg_replace('~^\s*\*\s*~', '', htmlspecialchars($line));
-                        echo '<p style="margin: 5px 0;">' . htmlspecialchars($line) . '</p>';
+                        $line = preg_replace('~^\s*\*\s*~', '', esc_html($line));
+                        echo '<p style="margin: 5px 0;">' . esc_html($line) . '</p>';
                     }
                 }
                 

@@ -98,7 +98,7 @@ class Save_To_CSV extends FI_Post
 		?>
     <tr>
       <td width="130"><?php esc_html_e('CSV Filename', 'filled-in') ?>:</td>
-      <td><input style="width: 95%" type="text" name="filename" value="<?php echo htmlspecialchars ($this->config['filename']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="filename" value="<?php echo esc_attr ($this->config['filename']) ?>"/></td>
     </tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Overwrite', 'filled-in') ?>:</td>

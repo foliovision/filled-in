@@ -42,7 +42,7 @@
     <tr>
   	<th valign="top" width="180" ><?php esc_html_e('Track cookies', 'filled-in') ?>:<br/><span class="sub"><?php esc_html_e('Store these cookies in collected data<br/>Each cookie on a separate line', 'filled-in'); ?></span></th>
   	<td>
-      <textarea name="cookies" style="width: 95%" rows="5"><?php echo htmlspecialchars (get_option ('filled_in_cookies')) ?></textarea>
+      <textarea name="cookies" style="width: 95%" rows="5"><?php echo esc_textarea( get_option ('filled_in_cookies')) ?></textarea>
   	</td>
     </tr>
 
@@ -85,8 +85,8 @@
 				<br/><span class="sub"><?php esc_html_e('Leave blank for default', 'filled-in'); ?></span>
 			</th>
 			<td>
-				<input class="regular-text" type="text" name="smtp_username" value="<?php echo htmlspecialchars (get_option ('filled_in_smtp_username')) ?>" id="smtp_username"/>
-				<?php esc_html_e('Password', 'filled-in'); ?>: <input type="password" name="smtp_password" value="<?php echo htmlspecialchars (get_option ('filled_in_smtp_password')) ?>" id="smtp_password"/>
+				<input class="regular-text" type="text" name="smtp_username" value="<?php echo esc_attr (get_option ('filled_in_smtp_username')) ?>" id="smtp_username"/>
+				<?php esc_html_e('Password', 'filled-in'); ?>: <input type="password" name="smtp_password" value="<?php echo esc_attr (get_option ('filled_in_smtp_password')) ?>" id="smtp_password"/>
 			</td>
 		</tr>
 

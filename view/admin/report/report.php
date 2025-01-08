@@ -18,7 +18,7 @@
 <?php if (count ($forms) > 0) : ?>
 				<select name="form">
 					<?php foreach ($forms AS $form) : ?>
-					<option value="<?php echo esc_attr( $form->id ); ?>"><?php echo htmlspecialchars ($form->name) ?></option>
+					<option value="<?php echo esc_attr( $form->id ); ?>"><?php echo esc_html($form->name) ?></option>
 					<?php endforeach; ?>
 				</select>
 <?php endif; ?>
@@ -27,7 +27,7 @@
 				<?php esc_html_e('through', 'filled-in'); ?>: 
 				<select name="report">
 				<?php foreach ($reports AS $report) : ?>
-				<option value="<?php echo esc_attr( $report->id ); ?>"><?php echo htmlspecialchars ($report->name) ?></option>
+				<option value="<?php echo esc_attr( $report->id ); ?>"><?php echo esc_html($report->name) ?></option>
 				<?php endforeach; ?>
 				</select>
 <?php endif; ?>

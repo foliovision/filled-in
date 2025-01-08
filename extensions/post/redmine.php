@@ -46,26 +46,26 @@ class PostToRedmine extends FI_Post
 	    <tr>
 	      <td width="130"><?php esc_html_e('Redmine DB prefix', 'filled-in') ?>:</td>
 	      <td>
-					<input type="text" name="prefix" value="<?php echo htmlspecialchars ($this->config['prefix']) ?>"/>
+					<input type="text" name="prefix" value="<?php echo esc_attr ($this->config['prefix']) ?>"/>
 				</td>
 	    </tr>
 	    <tr>
 	      <td width="130"><?php esc_html_e('Username field', 'filled-in') ?>:</td>
 	      <td>
-					<input type="text" name="username" value="<?php echo htmlspecialchars ($this->config['username']) ?>"/>
+					<input type="text" name="username" value="<?php echo esc_attr ($this->config['username']) ?>"/>
 					<span class="sub"><?php esc_html_e('Name of the Filled In field you want to use as the newsletter field', 'filled-in'); ?></span>
 				</td>
 	    </tr>
 	    <tr>
 	      <td width="130"><?php esc_html_e('Email field', 'filled-in') ?>:</td>
 	      <td>
-					<input type="text" name="email" value="<?php echo htmlspecialchars ($this->config['email']) ?>"/>
+					<input type="text" name="email" value="<?php echo esc_attr ($this->config['email']) ?>"/>
 					<span class="sub"><?php esc_html_e('Name of the Filled In field you want to use as the email address', 'filled-in'); ?></span>
 				</td>
 	    </tr>
 			<tr>
 				<td width="130"><?php esc_html_e('Field for full name', 'filled-in') ?>:</td>
-	      <td><input type="text" name="name_full" value="<?php echo htmlspecialchars ($this->config['name_full']) ?>"/></td>
+	      <td><input type="text" name="name_full" value="<?php echo esc_attr ($this->config['name_full']) ?>"/></td>
 			</tr>
 	  <?php
 	}

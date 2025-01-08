@@ -78,11 +78,11 @@ class Add_To_Profile extends FI_Post
 		?>
     <tr>
       <td width="130"><?php esc_html_e('Data key', 'filled-in') ?>:<br/><span class="sub"><?php esc_html_e('Name of the profile data', 'filled-in'); ?></span></td>
-      <td><input style="width: 95%" type="text" name="data_key" value="<?php echo htmlspecialchars ($this->config['data_key']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="data_key" value="<?php echo esc_attr ($this->config['data_key']) ?>"/></td>
     </tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Fields', 'filled-in') ?>:<br/><span class="sub"><?php esc_html_e('Comma-separated list of fields to add to profile', 'filled-in'); ?></span></td>
-      <td><input style="width: 95%" type="text" name="fields" value="<?php echo htmlspecialchars ($this->config['fields']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="fields" value="<?php echo esc_attr ($this->config['fields']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Add method', 'filled-in') ?>:<br/><span class="sub"><?php esc_html_e('How to add the data', 'filled-in'); ?></span></td>
@@ -97,11 +97,11 @@ class Add_To_Profile extends FI_Post
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Append key', 'filled-in') ?>:<br/><span class="sub"><?php esc_html_e('Key for append/merge method', 'filled-in'); ?></span></td>
-      <td><input style="width: 95%" type="text" name="append_key" value="<?php echo htmlspecialchars ($this->config['append_key']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="append_key" value="<?php echo esc_attr ($this->config['append_key']) ?>"/></td>
 		</tr>
 		<tr>
 			<td width="130"><?php esc_html_e('Logic field', 'filled-in') ?>:<br/><span class="sub"><?php esc_html_e('Only add if this field is present', 'filled-in'); ?></span></td>
-      <td><input style="width: 95%" type="text" name="logic_field" value="<?php echo htmlspecialchars ($this->config['logic_field']) ?>"/></td>
+      <td><input style="width: 95%" type="text" name="logic_field" value="<?php echo esc_attr ($this->config['logic_field']) ?>"/></td>
 		</tr>
 	  <?php
 	}

@@ -1,6 +1,6 @@
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?>
 <div class="wrap">
-	<h2><?php esc_html_e('Edit Batch', 'filled-in'); ?>: <?php echo htmlspecialchars ($report->name)?></h2>
+	<h2><?php esc_html_e('Edit Batch', 'filled-in'); ?>: <?php echo esc_html ($report->name)?></h2>
 	<?php $this->submenu (true); ?>
 	
 	<form method="post" action="<?php echo str_replace ('&', '&amp;', $_SERVER['REQUEST_URI']) ?>" style="clear:both" class="form-table">
