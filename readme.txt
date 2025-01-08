@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Filled In ===
 Contributors: johnny5, FolioVision
 Donate link: http://foliovision.com/donate/
 Tags: form, contact, validate
