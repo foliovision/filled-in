@@ -60,7 +60,7 @@ class Filter_Is_Equal extends FI_Filter
 	<tr>
 		<th><label for="not"><?php esc_html_e('Not equal', 'filled-in')?>:</label></th>
 		<td valign="top">
-			<input type="checkbox" name="not" id="not" <?php if ($this->config['not'] == 'true') echo ' checked="checked"' ?>/>
+			<input type="checkbox" name="not" id="not" <?php if ( ! empty( $this->config['not'] ) && $this->config['not'] == 'true') echo ' checked="checked"' ?>/>
 		</td>
 	</tr>
 	<tr>
@@ -68,13 +68,13 @@ class Filter_Is_Equal extends FI_Filter
 			<span class="sub"><?php esc_html_e('Each value on a separate line.', 'filled-in'); ?></span>
 		</th>
 		<td>
-			<textarea name="values" rows="5" style="width: 95%"><?php echo esc_textarea($this->config['values']) ?></textarea>
+			<textarea name="values" rows="5" style="width: 95%"><?php echo esc_textarea( ! empty( $this->config['values'] ) ? $this->config['values'] : '' ) ?></textarea>
 		</td>
 	</tr>
 	<tr>
 		<th><label for="regex"><?php esc_html_e('Regex', 'filled-in')?>:</label></th>
 		<td valign="top">
-			<input type="checkbox" name="regex" id="regex" <?php if ($this->config['regex'] == 'true') echo ' checked="checked"' ?>/>
+			<input type="checkbox" name="regex" id="regex" <?php if ( ! empty( $this->config['regex'] ) && $this->config['regex'] == 'true') echo ' checked="checked"' ?>/>
 		</td>
 	</tr>
 	<tr>
@@ -87,7 +87,7 @@ class Filter_Is_Equal extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		if ($this->config['not'] == 'true')
+		if ( ! empty( $this->config['not'] ) && $this->config['not'] == 'true')
 			echo wp_kses( __('is <strong>Not Equal To</strong>: ', 'filled-in'), array( 'strong' => array() ) );
 		else
 			echo wp_kses( __('is <strong>Equal To</strong>: ', 'filled-in'), array( 'strong' => array() ) );

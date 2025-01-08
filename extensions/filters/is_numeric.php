@@ -45,7 +45,7 @@ class Filter_Is_Numeric extends FI_Filter
 	?>
 	<tr>
 		<th><?php esc_html_e('European', 'filled-in'); ?>:</th>
-		<td><input type="checkbox" name="euro" <?php if ($this->config['euro'] == 'true') echo ' checked="checked"' ?>/> <span class="sub"><?php esc_html_e('European-style decimal and thousands', 'filled-in') ?></span></td>
+		<td><input type="checkbox" name="euro" <?php if ( ! empty( $this->config['euro'] ) && $this->config['euro'] == 'true') echo ' checked="checked"' ?>/> <span class="sub"><?php esc_html_e('European-style decimal and thousands', 'filled-in') ?></span></td>
 	</tr>
 	<?php
 	}
@@ -54,7 +54,7 @@ class Filter_Is_Numeric extends FI_Filter
 	{
 		parent::show ();
 		echo wp_kses( 'is <strong>Numeric</strong>', 'filled-in', array( 'strong' => array() ) );
-		if ($this->config['euro'] == 'true')
+		if ( ! empty( $this->config['euro'] ) && $this->config['euro'] == 'true')
 		  esc_html_e(' (European style)', 'filled-in');
 	}
 }

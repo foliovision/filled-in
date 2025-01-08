@@ -61,11 +61,11 @@ class Filter_Checkbox extends FI_Filter
 	?>
 	<tr>
 		<th><?php esc_html_e('Smallest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="smallest" value="<?php echo esc_attr( $this->config['smallest'] ); ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
+		<td><input type="text" name="smallest" value="<?php echo esc_attr( ! empty( $this->config['smallest'] ) ? $this->config['smallest'] : '' ); ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
 	</tr>
 	<tr>
 		<th><?php esc_html_e('Largest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="largest" value="<?php echo esc_attr( $this->config['largest'] ); ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
+		<td><input type="text" name="largest" value="<?php echo esc_attr( ! empty( $this->config['smallest'] ) ? $this->config['largest'] : '' ); ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
 	</tr>
 	<?php
 	}
@@ -74,12 +74,12 @@ class Filter_Checkbox extends FI_Filter
 	{
 		parent::show ();
 		echo wp_kses( __('is a <strong>Checkbox/Radio</strong>', 'filled-in'), array( 'strong' => array() ) );
-		if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
-			printf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']);
-		else if ($this->config['smallest'] > 0)
-			printf (__(' with at least %d item(s)', 'filled-in'), $this->config['smallest']);
-		else if ($this->config['largest'] > 0)
-			printf (__(' with less than %d item(s)', 'filled-in'), $this->config['largest']);
+		if ( ! empty( $this->config['smallest'] ) && ! empty( $this->config['largest'] ) && intval( $this->config['smallest'] ) > 0 && intval( $this->config['largest'] ) > 0)
+			echo esc_html( sprintf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']) );
+		else if ( ! empty( $this->config['smallest'] ) && intval( $this->config['smallest'] ) > 0)
+			echo esc_html( sprintf (__(' with at least %d item(s)', 'filled-in'), $this->config['smallest']) );
+		else if ( ! empty( $this->config['largest'] ) && intval( $this->config['largest'] > 0 ) )
+			echo esc_html( sprintf (__(' with less than %d item(s)', 'filled-in'), $this->config['largest']) );
 	}
 }
 
