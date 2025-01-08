@@ -50,9 +50,9 @@ class Filter_Is_Less extends FI_Filter
 	{
 		parent::show ();
 		if ($this->config['equal'] == 'true')
-			esc_html_e('is <strong>Less Than Or Equal To</strong> ', 'filled-in');
+			echo wp_kses( 'is <strong>Less Than Or Equal To</strong> ', 'filled-in', array( 'strong' => array() ) );
 		else
-			esc_html_e('is <strong>Less Than</strong> ', 'filled-in');
+			echo wp_kses( 'is <strong>Less Than</strong> ', 'filled-in', array( 'strong' => array() ) );
 			
 		if (!isset ($this->config['value']))
 			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';

@@ -20,7 +20,7 @@ class Filter_Is_Password extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('is <strong>Password</strong>', 'filled-in');
+		echo wp_kses( 'is <strong>Password</strong>', 'filled-in', array( 'strong' => array() ) );
 	}
 }
 

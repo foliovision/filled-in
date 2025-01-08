@@ -57,7 +57,7 @@ class Filter_Is_Required extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('is <strong>Required</strong>', 'filled-in');
+		echo wp_kses( 'is <strong>Required</strong>', 'filled-in', array( 'strong' => array() ) );
 		if (isset($this->config['smallest']) && $this->config['smallest'] > 0 && $this->config['largest'] > 0)
 			printf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		else if (isset($this->config['smallest']) && $this->config['smallest'] > 0)

@@ -50,9 +50,9 @@ class Filter_Is_Greater extends FI_Filter
 	{
 		parent::show ();
 		if ($this->config['equal'] == 'true')
-			esc_html_e('is <strong>Greater Than Or Equal To</strong> ', 'filled-in');
+			echo wp_kses( 'is <strong>Greater Than Or Equal To</strong> ', 'filled-in', array( 'strong' => array() ) );
 		else
-			esc_html_e('is <strong>Greater Than</strong> ', 'filled-in');
+			echo wp_kses( 'is <strong>Greater Than</strong> ', 'filled-in', array( 'strong' => array() ) );
 			
 		if (!isset ($this->config['value']))
 			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';

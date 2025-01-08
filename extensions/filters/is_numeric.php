@@ -53,7 +53,7 @@ class Filter_Is_Numeric extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('is <strong>Numeric</strong>', 'filled-in');
+		echo wp_kses( 'is <strong>Numeric</strong>', 'filled-in', array( 'strong' => array() ) );
 		if ($this->config['euro'] == 'true')
 		  esc_html_e(' (European style)', 'filled-in');
 	}

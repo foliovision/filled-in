@@ -17,7 +17,7 @@ class Filter_Email extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('is an <strong>Email Address</strong>', 'filled-in');
+		echo wp_kses( __('is an <strong>Email Address</strong>', 'filled-in'), array( 'strong' => array() ) );
 	}
 }
 

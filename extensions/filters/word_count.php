@@ -57,7 +57,7 @@ class Filter_Word_Count extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('with <strong>Word Count</strong> ', 'filled-in');
+		echo wp_kses( 'with <strong>Word Count</strong> ', 'filled-in', array( 'strong' => array() ) );
 		if ($this->config['shortest'] > 0 && $this->config['longest'] > 0)
 			printf (__('between %d and %d words long', 'filled-in'), $this->config['shortest'], $this->config['longest']);
 		else if ($this->config['shortest'] > 0)

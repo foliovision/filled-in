@@ -101,7 +101,7 @@ class Filter_File_Upload extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('with <strong>File Upload</strong> ', 'filled-in');
+		echo wp_kses( __('with <strong>File Upload</strong> ', 'filled-in'), array( 'strong' => array() ) );
 		$parts = array ();
 		if ($this->config['file_size'] > 0)
 			$parts[] = sprintf (__ ('maximum filesize of %dKB', 'filled-in'), $this->config['file_size']);

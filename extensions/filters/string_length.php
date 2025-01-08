@@ -59,7 +59,7 @@ class Filter_String_Length extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('with <strong>String Length</strong> ', 'filled-in');
+		echo wp_kses( 'with <strong>String Length</strong> ', 'filled-in', array( 'strong' => array() ) );
 		if (isset($this->config['shortest']) && $this->config['shortest'] > 0 && $this->config['longest'] > 0)
 			printf (__('between %d and %d characters long', 'filled-in'), $this->config['shortest'], $this->config['longest']);
 		else if (isset($this->config['shortest']) && $this->config['shortest'] > 0)

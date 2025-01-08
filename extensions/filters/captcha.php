@@ -124,7 +124,7 @@ class Filter_CAPTCHA extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('is a <strong>CAPTCHA</strong>', 'filled-in');
+		echo wp_kses( __('is a <strong>CAPTCHA</strong>', 'filled-in'), array( 'strong' => array() ) );
 	}
 	
 	function modify ($text)

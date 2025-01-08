@@ -88,9 +88,9 @@ class Filter_Is_Equal extends FI_Filter
 	{
 		parent::show ();
 		if ($this->config['not'] == 'true')
-			esc_html_e('is <strong>Not Equal To</strong>: ', 'filled-in');
+			echo wp_kses( __('is <strong>Not Equal To</strong>: ', 'filled-in'), array( 'strong' => array() ) );
 		else
-			esc_html_e('is <strong>Equal To</strong>: ', 'filled-in');
+			echo wp_kses( __('is <strong>Equal To</strong>: ', 'filled-in'), array( 'strong' => array() ) );
 			
 		if (!isset ($this->config['values']) || $this->config['values'] == '')
 			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';

@@ -25,4 +25,6 @@ if (isset ($data->sources['files']->data[$name][$pos]))
 	}
 }
 
-_e ('<p>That file does not exists</p>', 'filled-in');
+echo "<p>";
+esc_html_e('That file does not exist.', 'filled-in');
+echo "</p>";

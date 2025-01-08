@@ -6,7 +6,7 @@
   <h2><?php esc_html_e('Options', 'filled-in'); ?></h2>
 	<?php $this->submenu (true); ?>
 	
-  <p style="clear: both"><?php esc_html_e('NOTE: All save directories <strong>must</strong> be writable by the web server', 'filled-in'); ?></p>
+  <p style="clear: both"><?php echo wp_kses( 'NOTE: All save directories <strong>must</strong> be writable by the web server', 'filled-in', array( 'strong' => array() ) ); ?></p>
 
   <form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>">
 	<?php wp_nonce_field ('filledin-save_options'); ?>
@@ -101,7 +101,7 @@
 
 <div class="wrap">
 	<h2><?php esc_html_e('Remove Filled In', 'filled-in'); ?></h2>
-	<p><?php esc_html_e('This will remove all Filled In configuration and database tables.  Doing this will destroy <strong>all</strong> your Filled In data and does not have an undo - please be sure this is what you want to do!', 'filled-in'); ?></p>
+	<p><?php echo wp_kses( 'This will remove all Filled In configuration and database tables.  Doing this will destroy <strong>all</strong> your Filled In data and does not have an undo - please be sure this is what you want to do!', 'filled-in', array( 'strong' => array() ) ); ?></p>
 	
 	<form action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" method="post" accept-charset="utf-8">
 		<?php wp_nonce_field ('filledin-remove_plugin'); ?>

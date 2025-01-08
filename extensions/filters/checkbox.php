@@ -73,7 +73,7 @@ class Filter_Checkbox extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		esc_html_e('is a <strong>Checkbox/Radio</strong>', 'filled-in');
+		echo wp_kses( __('is a <strong>Checkbox/Radio</strong>', 'filled-in'), array( 'strong' => array() ) );
 		if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
 			printf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		else if ($this->config['smallest'] > 0)
