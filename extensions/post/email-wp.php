@@ -271,7 +271,7 @@ class Post_Email_WP extends FI_Post
    <tr id="replyto-<?php echo $this->id; ?>">
       <th width="150"><?php esc_html_e( 'Use ReplyTo', 'filled-in' ); ?>:</th>
       <td>
-         <input type="checkbox" name="replyto" value="yes" <?php if( 'yes' == $this->config['replyto'] ) echo 'checked="checked"'; ?> />
+         <input type="checkbox" name="replyto" value="yes" <?php if ( ! empty( $this->config['replyto'] ) && 'yes' == $this->config['replyto'] ) echo 'checked="checked"'; ?> />
       </td>
    </tr>
    <tr class="replyto" valign="top">
@@ -308,7 +308,7 @@ class Post_Email_WP extends FI_Post
       <td>
          <select name="template">
             <option value="default"><?php esc_html_e('Default', 'filled-in'); ?></option>
-            <?php if (count ($templates) > 0) : ?>
+            <?php if ( is_array( $templates ) && count ($templates) > 0) : ?>
                <?php foreach ($templates AS $temp) : ?>
                   <option value="<?php echo $temp->name ?>" <?php if ($temp->name == $this->config['template'] ? $this->config['template'] : '') echo ' selected="selected"' ?>><?php echo $temp->name ?></option>
                <?php endforeach; ?>
@@ -349,11 +349,11 @@ class Post_Email_WP extends FI_Post
       if ($template == '')
          $template = '<em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
 
-      $subject = htmlspecialchars (strlen($this->config['subject']) ? 'and subject \''.$this->config['subject'].'\'' : '');	
+      $subject = ! empty( $this->config['subject'] ) ? htmlspecialchars (strlen($this->config['subject']) ? 'and subject \''.$this->config['subject'].'\'' : '') : '';
 
       printf (__ (' to <strong>%s</strong>, with template \'%s\' %s', 'filled-in'), $to, $template, $subject);
 
-      if( 'yes' == $this->config['replyto'] && trim( $this->config['replyto-email'] ) )
+      if ( ! empty( $this->config['replyto'] ) && 'yes' == $this->config['replyto'] && ! empty( $this->config['replyto-email'] ) && trim( $this->config['replyto-email'] ) )
          echo '. Using a ReplyTo link to <em>'.$this->config['replyto-email'].'</em>.';
    }
 
