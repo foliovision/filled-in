@@ -9,16 +9,16 @@
 		<?php endif; ?>
 
 
-		<?php _e ('Search', 'filled-in'); ?>: 
+		<?php esc_html_e('Search', 'filled-in'); ?>: 
 		<input type="text" name="search" value="<?php echo htmlspecialchars ($_GET['search']) ?>"/>
 		
-		<?php _e ('Results per page', 'filled-in') ?>: 
+		<?php esc_html_e('Results per page', 'filled-in') ?>: 
 		<select name="perpage">
 			<?php foreach ($pager->steps AS $step) : ?>
 		  	<option value="<?php echo $step ?>"<?php if ($pager->per_page == $step) echo ' selected="selected"' ?>><?php echo $step ?></option>
 			<?php endforeach; ?>
 		</select>
 		
-		<input type="submit" name="go" value="<?php _e ('go', 'filled-in') ?>"/>
+		<input type="submit" name="go" value="<?php esc_attr_e('go', 'filled-in') ?>"/>
 	</form>
 </div>

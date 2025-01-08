@@ -18,11 +18,11 @@ class Prepare_for_mailto extends FI_Pre
 	{
 		?>
     <tr>
-      <td width="130"><?php _e ('Field name', 'filled-in') ?>:</td>
+      <td width="130"><?php esc_html_e('Field name', 'filled-in') ?>:</td>
       <td><input style="width: 95%" type="text" name="field" value="<?php echo htmlspecialchars ($this->config['field']) ?>"/></td>
     </tr>
 		<tr>
-			<td width="130"><?php _e ('Prepared Field name', 'filled-in') ?>:</td>
+			<td width="130"><?php esc_html_e('Prepared Field name', 'filled-in') ?>:</td>
       <td><input style="width: 95%" type="text" name="newfield" value="<?php echo htmlspecialchars ($this->config['newfield']) ?>"/></td>
 		</tr>
 	  <?php

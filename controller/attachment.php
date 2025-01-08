@@ -49,17 +49,17 @@ else if (isset ($_GET['file']) && current_user_can ('publish_pages'))
 	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td><?php _e ('Name', 'filled-in') ?>:</td>
+				<td><?php esc_html_e('Name', 'filled-in') ?>:</td>
 				<td><input type="text" name="name" value="" id="name"/></td>
 			</tr>
 			<tr>
-				<td><?php _e ('File', 'filled-in'); ?>:</td>
+				<td><?php esc_html_e('File', 'filled-in'); ?>:</td>
 				<td><input type="file" name="attachment"/></td>
 			</tr>
 			<tr>
 				<td/>
 				<td>
-					<input type="submit" value="Upload" name="<?php _e ('Upload', 'filled-in'); ?>"/>
+					<input type="submit" value="Upload" name="<?php esc_attr_e('Upload', 'filled-in'); ?>"/>
 					<input type="hidden" name="id" value="<?php echo $id ?>" id="id"/>
 				</td>
 			</tr>

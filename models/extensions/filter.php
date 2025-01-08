@@ -68,13 +68,13 @@ class FI_Filter extends FI_Extension
 	{
 		?>
 	<tr>
-		<th width="100"><?php _e ('Field', 'filled-in') ?>:</th>
+		<th width="100"><?php esc_html_e('Field', 'filled-in') ?>:</th>
 		<td>
 			<input type="text" name="field_name" value="<?php echo $this->name ?>" style="width: 95%"/>
 		</td>
 	</tr>
 	<tr>
-		<th><?php _e ('Error message', 'filled-in') ?>:</th>
+		<th><?php esc_html_e('Error message', 'filled-in') ?>:</th>
 		<td>
 			<input type="text" name="error" value="<?php echo isset($this->config['error']) ? $this->config['error'] : '' ?>" style="width: 95%"/>
 		</td>

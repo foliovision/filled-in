@@ -2,7 +2,7 @@
 <div id="form_status_<?php echo $formid ?>" style="display: none">
 <?php if ($waiting == '') : ?>
 	<img src="<?php echo $this->url () ?>/images/loading.gif" alt="loading" width="32" height="32"/>
-	<?php _e ('Please wait...', 'filled-in'); ?>
+	<?php esc_html_e('Please wait...', 'filled-in'); ?>
 <?php else : ?>
 	<?php echo $waiting; ?>
 <?php endif; ?>

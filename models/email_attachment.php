@@ -58,7 +58,7 @@ class EmailAttachment extends Filled_In_Plugin
 			readfile ($newname);
 		}
 		else
-			_e ("<p>I'm sorry, but that file does not exist</p>", 'filled-in');
+			esc_html_e("<p>I'm sorry, but that file does not exist</p>", 'filled-in');
 	}
 	
 	function get ()

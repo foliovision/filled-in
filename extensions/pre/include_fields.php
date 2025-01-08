@@ -30,10 +30,10 @@ class Pre_Include_Fields extends FI_Pre
 	{
 	  ?>
 		<tr>
-			<th><?php _e ('Fields', 'filled-in'); ?>:</th>
+			<th><?php esc_html_e('Fields', 'filled-in'); ?>:</th>
 			<td>
 				<input size="40" type="text" name="fields" value="<?php echo htmlspecialchars ($this->config['fields']) ?>"/>
-				<span class="sub"><?php _e ('separate fields with comma', 'filled-in'); ?></span>
+				<span class="sub"><?php esc_html_e('separate fields with comma', 'filled-in'); ?></span>
 			</td>
 		</tr>
 	  <?php

@@ -44,8 +44,8 @@ class Filter_Is_Numeric extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><?php _e ('European', 'filled-in'); ?>:</th>
-		<td><input type="checkbox" name="euro" <?php if ($this->config['euro'] == 'true') echo ' checked="checked"' ?>/> <span class="sub"><?php _e('European-style decimal and thousands', 'filled-in') ?></span></td>
+		<th><?php esc_html_e('European', 'filled-in'); ?>:</th>
+		<td><input type="checkbox" name="euro" <?php if ($this->config['euro'] == 'true') echo ' checked="checked"' ?>/> <span class="sub"><?php esc_html_e('European-style decimal and thousands', 'filled-in') ?></span></td>
 	</tr>
 	<?php
 	}
@@ -53,9 +53,9 @@ class Filter_Is_Numeric extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('is <strong>Numeric</strong>', 'filled-in');
+		esc_html_e('is <strong>Numeric</strong>', 'filled-in');
 		if ($this->config['euro'] == 'true')
-			_e (' (European style)', 'filled-in');
+		  esc_html_e(' (European style)', 'filled-in');
 	}
 }
 

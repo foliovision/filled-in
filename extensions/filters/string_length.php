@@ -46,12 +46,12 @@ class Filter_String_Length extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><?php _e ('Shortest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="shortest" value="<?php echo isset($this->config['shortest']) ? $this->config['shortest'] : '' ?>"/> <span class="sub"><?php _e ('characters, leave empty for no shortest', 'filled-in'); ?></span></td>
+		<th><?php esc_html_e('Shortest', 'filled-in'); ?>:</th>
+		<td><input type="text" name="shortest" value="<?php echo isset($this->config['shortest']) ? $this->config['shortest'] : '' ?>"/> <span class="sub"><?php esc_html_e('characters, leave empty for no shortest', 'filled-in'); ?></span></td>
 	</tr>
 	<tr>
-		<th><?php _e ('Longest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="longest" value="<?php echo isset($this->config['longest']) ? $this->config['longest'] : '' ?>"/> <span class="sub"><?php _e ('characters, leave empty for no longest', 'filled-in'); ?></span></td>
+		<th><?php esc_html_e('Longest', 'filled-in'); ?>:</th>
+		<td><input type="text" name="longest" value="<?php echo isset($this->config['longest']) ? $this->config['longest'] : '' ?>"/> <span class="sub"><?php esc_html_e('characters, leave empty for no longest', 'filled-in'); ?></span></td>
 	</tr>
 	<?php
 	}
@@ -59,7 +59,7 @@ class Filter_String_Length extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('with <strong>String Length</strong> ', 'filled-in');
+		esc_html_e('with <strong>String Length</strong> ', 'filled-in');
 		if (isset($this->config['shortest']) && $this->config['shortest'] > 0 && $this->config['longest'] > 0)
 			printf (__('between %d and %d characters long', 'filled-in'), $this->config['shortest'], $this->config['longest']);
 		else if (isset($this->config['shortest']) && $this->config['shortest'] > 0)

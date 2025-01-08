@@ -1,4 +1,4 @@
-<?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><div class="pager"><?php _e ('Results per page', 'filled-in') ?>: 
+<?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><div class="pager"><?php esc_html_e('Results per page', 'filled-in') ?>: 
 	<form method="get" action="<?php echo $pager->url ?>">
 		<input type="hidden" name="page" value="filled_in.php"/>
 		<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
@@ -9,6 +9,6 @@
 			<?php endforeach; ?>
 		</select>
 		
-		<input type="submit" name="go" value="<?php _e ('go', 'filled-in') ?>"/>
+		<input type="submit" name="go" value="<?php esc_attr_e('go', 'filled-in') ?>"/>
 	</form>
 </div>

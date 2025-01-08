@@ -28,7 +28,7 @@ class Filter_WP_Email extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('is not a registered <strong>WordPress Email</strong>', 'filled-in');
+		esc_html_e('is not a registered <strong>WordPress Email</strong>', 'filled-in');
 	}
 }
 

@@ -17,7 +17,7 @@ class Filter_Email extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('is an <strong>Email Address</strong>', 'filled-in');
+		esc_html_e('is an <strong>Email Address</strong>', 'filled-in');
 	}
 }
 

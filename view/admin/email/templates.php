@@ -3,9 +3,9 @@
 	<?php $this->render_admin ('annoy'); ?>
 	<?php screen_icon(); ?>
 
-  <h2><?php _e ('Email templates', 'filled-in') ?></h2>
+  <h2><?php esc_html_e('Email templates', 'filled-in') ?></h2>
 	<?php $this->submenu (true); ?>
-  <p style="clear: both"><?php _e ('Filled In can email the contents of a form to you when it is successfully completed.  You can edit that email here.', 'filled-in'); ?></p>
+  <p style="clear: both"><?php esc_html_e('Filled In can email the contents of a form to you when it is successfully completed.  You can edit that email here.', 'filled-in'); ?></p>
 
   <?php if (is_array ($templates) && count ($templates) > 0) : ?>
 		<?php if (current_user_can ('administrator')) : ?>
@@ -13,11 +13,11 @@
 			<div class="tablenav">
 				<div class="alignleft actions">
 					<select name="action2" id="action2_select">
-						<option value="-1" selected="selected"><?php _e('Bulk Actions', 'filled-in'); ?></option>
-						<option value="delete"><?php _e('Delete', 'filled-in'); ?></option>
+						<option value="-1" selected="selected"><?php esc_html_e('Bulk Actions', 'filled-in'); ?></option>
+						<option value="delete"><?php esc_html_e('Delete', 'filled-in'); ?></option>
 					</select>
 
-					<input type="submit" value="<?php _e('Apply', 'filled-in'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
+					<input type="submit" value="<?php esc_attr_e('Apply', 'filled-in'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
 					<br class="clear" />
 				</div>
 			</div>
@@ -30,9 +30,9 @@
 				<?php if (current_user_can ('administrator')) : ?><th width="16" class="check-column">
 					<input type="checkbox" name="select_all" class="select-all"/>
 				</th><?php endif; ?>
-				<th><?php _e ('Name', 'filled-in')?></th>
-				<th><?php _e ('From', 'filled-in')?></th>
-				<th><?php _e ('To', 'filled-in')?></th>
+				<th><?php esc_html_e('Name', 'filled-in')?></th>
+				<th><?php esc_html_e('From', 'filled-in')?></th>
+				<th><?php esc_html_e('To', 'filled-in')?></th>
 			</tr>
 		</thead>
 		
@@ -52,7 +52,7 @@
   <?php if (current_user_can ('administrator')) : ?><form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="form-table">
 		<?php wp_nonce_field ('filledin-add_template'); ?>
    	<input type="text" name="name" class="regular-text" size="20"/>
-		<input class="button-primary" type="submit" name="create" value="<?php _e ('Create Template', 'filled-in') ?>"/>
+		<input class="button-primary" type="submit" name="create" value="<?php esc_attr_e('Create Template', 'filled-in') ?>"/>
   </form>
 	<br/><?php endif; ?>
 </div>

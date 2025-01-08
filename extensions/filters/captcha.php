@@ -60,23 +60,23 @@ class Filter_CAPTCHA extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><?php _e ('Max attempts', 'filled-in'); ?>:
+		<th><?php esc_html_e('Max attempts', 'filled-in'); ?>:
 		</th>
 		<td>
 			<input type="text" name="attempts" size="4" value="<?php echo $this->config['attempts'] ?>"/>
-			<span class="sub"><?php _e ('Number of attempts before being blocked', 'filled-in'); ?></span>
+			<span class="sub"><?php esc_html_e('Number of attempts before being blocked', 'filled-in'); ?></span>
 		</td>
 	</tr>
 	<tr>
-		<th><?php _e ('Blocked message', 'filled-in'); ?>:</th>
+		<th><?php esc_html_e('Blocked message', 'filled-in'); ?>:</th>
 		<td>
 			<input type="text" size="40" name="toomany" value="<?php echo htmlspecialchars ($this->config['toomany']) ?>" id="toomany"/>
-			<span class="sub"><?php _e ('What to display when blocked', 'filled-in'); ?></span>
+			<span class="sub"><?php esc_html_e('What to display when blocked', 'filled-in'); ?></span>
 		</td>
 	</tr>
 	<tr>
-		<th><?php _e ('Warning', 'filled-in'); ?>:<br/>
-			<span class="sub"><?php _e ('Overlaid warning', 'filled-in'); ?></span>
+		<th><?php esc_html_e('Warning', 'filled-in'); ?>:<br/>
+			<span class="sub"><?php esc_html_e('Overlaid warning', 'filled-in'); ?></span>
 		</th>
 		<td>
 			<input type="text" style="width: 95%" name="warning" value="<?php echo $this->config['warning'] ?>"/>
@@ -84,18 +84,18 @@ class Filter_CAPTCHA extends FI_Filter
 	</tr>
 
 	<tr>
-		<th><?php _e ('Word generation', 'filled-in'); ?>:</th>
+		<th><?php esc_html_e('Word generation', 'filled-in'); ?>:</th>
 		<td>
 			<select name="words">
 				<option value="dict"<?php if ($this->config['words'] == 'dict') echo ' selected="selected"' ?>>Dictionary</option>
 				<option value="random"<?php if ($this->config['words'] == 'random') echo ' selected="selected"' ?>>Random</option>
 			</select>
 			
-			<?php _e ('Length', 'filled-in'); ?>: <input type="text" size="4" name="length" value="<?php echo $this->config['length'] ?>" id="length"/>
+			<?php esc_html_e('Length', 'filled-in'); ?>: <input type="text" size="4" name="length" value="<?php echo $this->config['length'] ?>" id="length"/>
 		</td>
 	</tr>
 	<tr>
-		<th><?php _e ('Image type', 'filled-in'); ?>:</th>
+		<th><?php esc_html_e('Image type', 'filled-in'); ?>:</th>
 		<td>
 			<select name="imagetype">
 				<option value="png"<?php if ($this->config['imagetype'] == 'png') echo ' selected="selected"' ?>>PNG</option>
@@ -105,7 +105,7 @@ class Filter_CAPTCHA extends FI_Filter
 		</td>
 	</tr>
 	<tr>
-		<th><?php _e ('Background', 'filled-in'); ?>:</th>
+		<th><?php esc_html_e('Background', 'filled-in'); ?>:</th>
 		<td>
 			<select name="background">
 				<option value="0"<?php if ($this->config['background'] == '0') echo ' selected="selected"' ?>>Transparent</option>
@@ -114,7 +114,7 @@ class Filter_CAPTCHA extends FI_Filter
 				<option value="3"<?php if ($this->config['background'] == '3') echo ' selected="selected"' ?>>Morphed blocks</option>
 			</select>
 			
-			<label for="blur"><?php _e ('Blurred', 'filled-in'); ?>:</label>
+			<label for="blur"><?php esc_html_e('Blurred', 'filled-in'); ?>:</label>
 			<input type="checkbox" name="blur" id="blur"<?php if ($this->config['blur'] == 'true') echo ' checked="checked"' ?>/>
 		</td>
 	</tr>
@@ -124,7 +124,7 @@ class Filter_CAPTCHA extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('is a <strong>CAPTCHA</strong>', 'filled-in');
+		esc_html_e('is a <strong>CAPTCHA</strong>', 'filled-in');
 	}
 	
 	function modify ($text)

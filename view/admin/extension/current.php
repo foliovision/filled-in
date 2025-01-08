@@ -12,7 +12,7 @@
 	<?php endif; ?>
 
 	<form method="post" action="<?php echo str_replace ('&', '&amp;', $_SERVER['REQUEST_URI']) ?>" onsubmit="add_extension(<?php echo $form->id ?>,'<?php echo $group ?>', this,'<?php echo wp_create_nonce ('filledin-add_extension'); ?>'); return false">
-		<?php _e ('Add new', 'filled-in') ?>
+		<?php esc_html_e('Add new', 'filled-in') ?>
 		<?php $factory = FI_Extension_Factory::get (); $this->render_admin ('extension/available', array ('extensions' => $factory->group ($group), 'group' => $group)) ?>
 		<input class="button-secondary" type="submit" name="add" value="Add"/>
 	</form>

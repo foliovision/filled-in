@@ -268,14 +268,14 @@ class Post_Email extends FI_Post
 
      ?>
    <tr>
-     <th width="50"><?php _e ('To', 'filled-in'); ?>:</th>
+     <th width="50"><?php esc_html_e('To', 'filled-in'); ?>:</th>
      <td><input style="width: 95%" type="text" name="address" value="<?php echo htmlspecialchars ($this->config['address']) ?>"/></td>
    </tr>
    <tr>
-      <th><?php _e ('Template', 'filled-in'); ?>:</th>
+      <th><?php esc_html_e('Template', 'filled-in'); ?>:</th>
       <td>
          <select name="template">
-           <option value="default"><?php _e ('Default', 'filled-in'); ?></option>
+           <option value="default"><?php esc_html_e('Default', 'filled-in'); ?></option>
          <?php if (count ($templates) > 0) : ?>
            <?php foreach ($templates AS $temp) : ?>
            <option value="<?php echo $temp->name ?>" <?php if ($temp->name == $this->config['template']) echo ' selected="selected"' ?>><?php echo $temp->name ?></option>

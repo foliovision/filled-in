@@ -58,28 +58,28 @@ class Filter_Is_Equal extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><label for="not"><?php _e('Not equal', 'filled-in')?>:</label></th>
+		<th><label for="not"><?php esc_html_e('Not equal', 'filled-in')?>:</label></th>
 		<td valign="top">
 			<input type="checkbox" name="not" id="not" <?php if ($this->config['not'] == 'true') echo ' checked="checked"' ?>/>
 		</td>
 	</tr>
 	<tr>
-		<th valign="top"><?php _e ('Values', 'filled-in') ?>:<br/>
-			<span class="sub"><?php _e ('Each value on a separate line.', 'filled-in'); ?></span>
+		<th valign="top"><?php esc_html_e('Values', 'filled-in') ?>:<br/>
+			<span class="sub"><?php esc_html_e('Each value on a separate line.', 'filled-in'); ?></span>
 		</th>
 		<td>
 			<textarea name="values" rows="5" style="width: 95%"><?php echo htmlspecialchars ($this->config['values']) ?></textarea>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="regex"><?php _e('Regex', 'filled-in')?>:</label></th>
+		<th><label for="regex"><?php esc_html_e('Regex', 'filled-in')?>:</label></th>
 		<td valign="top">
 			<input type="checkbox" name="regex" id="regex" <?php if ($this->config['regex'] == 'true') echo ' checked="checked"' ?>/>
 		</td>
 	</tr>
 	<tr>
 		<th></th>
-		<td><span class="sub"><?php _e ('Remember that you can use other fields (i.e. this field is less than <code>$otherfield$</code>)', 'filled-in') ?></span></td>
+		<td><span class="sub"><?php esc_html_e('Remember that you can use other fields (i.e. this field is less than <code>$otherfield$</code>)', 'filled-in') ?></span></td>
 	</tr>
 	<?php
 	}
@@ -88,9 +88,9 @@ class Filter_Is_Equal extends FI_Filter
 	{
 		parent::show ();
 		if ($this->config['not'] == 'true')
-			_e ('is <strong>Not Equal To</strong>: ', 'filled-in');
+			esc_html_e('is <strong>Not Equal To</strong>: ', 'filled-in');
 		else
-			_e ('is <strong>Equal To</strong>: ', 'filled-in');
+			esc_html_e('is <strong>Equal To</strong>: ', 'filled-in');
 			
 		if (!isset ($this->config['values']) || $this->config['values'] == '')
 			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';

@@ -49,15 +49,15 @@ class WordPress_Login extends FI_Post
 	{
 		?>
     <tr>
-      <td width="130"><?php _e ('Field for username', 'filled-in') ?>:</td>
+      <td width="130"><?php esc_html_e('Field for username', 'filled-in') ?>:</td>
       <td><input style="width: 95%" type="text" name="username" value="<?php echo htmlspecialchars ($this->config['username']) ?>"/></td>
     </tr>
 		<tr>
-			<td width="130"><?php _e ('Field for password', 'filled-in') ?>:</td>
+			<td width="130"><?php esc_html_e('Field for password', 'filled-in') ?>:</td>
       <td><input style="width: 95%" type="text" name="password" value="<?php echo htmlspecialchars ($this->config['password']) ?>"/></td>
 		</tr>
 		<tr>
-			<td width="130"><?php _e ('Field for \'remember me\'', 'filled-in') ?>:</td>
+			<td width="130"><?php esc_html_e('Field for \'remember me\'', 'filled-in') ?>:</td>
       <td><input style="width: 95%" type="text" name="remember" value="<?php echo htmlspecialchars ($this->config['remember']) ?>"/></td>
 		</tr>
 	  <?php

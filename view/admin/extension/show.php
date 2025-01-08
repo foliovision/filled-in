@@ -1,10 +1,10 @@
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><div class="options">
 <?php if ($extension->status == 'off') : ?>
-	<a href="#" title="<?php _e ('Enable', 'filled-in') ?>" class="nol" onclick="return enable_extension(<?php echo $extension->id ?>,'<?php echo $extension->what_group () ?>','<?php echo wp_create_nonce ('filledin-extension_enable_'.$extension->id); ?>');">
+	<a href="#" title="<?php esc_attr_e('Enable', 'filled-in') ?>" class="nol" onclick="return enable_extension(<?php echo $extension->id ?>,'<?php echo $extension->what_group () ?>','<?php echo wp_create_nonce ('filledin-extension_enable_'.$extension->id); ?>');">
 		<img src="<?php echo $this->url () ?>/images/enable.png" alt="edit" width="16" height="16"/>
 	</a>
 <?php else : ?>
-	<a href="#" title="<?php _e ('Disable', 'filled-in') ?>" class="nol" onclick="return disable_extension(<?php echo $extension->id ?>,'<?php echo $extension->what_group () ?>','<?php echo wp_create_nonce ('filledin-extension_disable_'.$extension->id); ?>');">
+	<a href="#" title="<?php esc_attr_e('Disable', 'filled-in') ?>" class="nol" onclick="return disable_extension(<?php echo $extension->id ?>,'<?php echo $extension->what_group () ?>','<?php echo wp_create_nonce ('filledin-extension_disable_'.$extension->id); ?>');">
 		<img src="<?php echo $this->url () ?>/images/disable.png" alt="edit" width="16" height="16"/>
 	</a>
 <?php endif; ?>

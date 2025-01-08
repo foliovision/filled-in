@@ -28,7 +28,7 @@ class Filter_Username extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('is not a <strong>WordPress Username</strong>', 'filled-in');
+		esc_html_e('is not a <strong>WordPress Username</strong>', 'filled-in');
 	}
 }
 

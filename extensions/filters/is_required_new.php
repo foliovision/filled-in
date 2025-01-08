@@ -44,12 +44,12 @@ class Filter_Is_Required_WP extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><?php _e ('Smallest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="smallest" value="<?php echo isset($this->config['smallest']) ? $this->config['smallest'] : '' ?>"/> <span class="sub"><?php _e ('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
+		<th><?php esc_html_e('Smallest', 'filled-in'); ?>:</th>
+		<td><input type="text" name="smallest" value="<?php echo isset($this->config['smallest']) ? $this->config['smallest'] : '' ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
 	</tr>
 	<tr>
-		<th><?php _e ('Largest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="largest" value="<?php echo isset($this->config['largest']) ? $this->config['largest'] : '' ?>"/> <span class="sub"><?php _e ('items required, leave empty for no largest', 'filled-in'); ?></span></td>
+		<th><?php esc_html_e('Largest', 'filled-in'); ?>:</th>
+		<td><input type="text" name="largest" value="<?php echo isset($this->config['largest']) ? $this->config['largest'] : '' ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no largest', 'filled-in'); ?></span></td>
 	</tr>
 	<?php
 	}
@@ -57,7 +57,7 @@ class Filter_Is_Required_WP extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('is <strong>Required</strong>', 'filled-in');
+		esc_html_e('is <strong>Required</strong>', 'filled-in');
 		if (isset($this->config['smallest']) && $this->config['smallest'] > 0 && $this->config['largest'] > 0)
 			printf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		else if (isset($this->config['smallest']) && $this->config['smallest'] > 0)

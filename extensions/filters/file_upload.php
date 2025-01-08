@@ -76,23 +76,23 @@ class Filter_File_Upload extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><?php _e ('Max file size', 'filled-in'); ?>:</th>
+		<th><?php esc_html_e('Max file size', 'filled-in'); ?>:</th>
 		<td><input type="text" name="file_size" value="<?php echo $this->config['file_size'] ?>"/> KB</td>
 	</tr>
 	<tr>
-		<th><?php _e ('Min files', 'filled-in'); ?>:</th>
-		<td><input type="text" name="file_min" value="<?php echo $this->config['file_min'] ?>"/> <?php _e( 'including', 'filled-in' ); ?> (<?php _e ('0 for no minimum', 'filled-in'); ?>)</td>
+		<th><?php esc_html_e('Min files', 'filled-in'); ?>:</th>
+		<td><input type="text" name="file_min" value="<?php echo $this->config['file_min'] ?>"/> <?php esc_html_e( 'including', 'filled-in' ); ?> (<?php esc_html_e ('0 for no minimum', 'filled-in'); ?>)</td>
 	</tr>
 	<tr>
-		<th><?php _e ('Max files', 'filled-in'); ?>:</th>
-		<td><input type="text" name="file_max" value="<?php echo $this->config['file_max'] ?>"/> <?php _e( 'including', 'filled-in' ); ?> (<?php _e ('0 for no maximum', 'filled-in'); ?>)</td>
+		<th><?php esc_html_e('Max files', 'filled-in'); ?>:</th>
+		<td><input type="text" name="file_max" value="<?php echo $this->config['file_max'] ?>"/> <?php esc_html_e( 'including', 'filled-in' ); ?> (<?php esc_html_e ('0 for no maximum', 'filled-in'); ?>)</td>
 	</tr>
 	<tr>
-		<th valign="top"><?php _e ('File types', 'filled-in'); ?>:</th>
+		<th valign="top"><?php esc_html_e('File types', 'filled-in'); ?>:</th>
 		<td>
 			<input type="text" name="file_type" value="<?php echo htmlspecialchars (stripslashes ($this->config['file_type'])) ?>"/>
-			<em><?php _e ('Separate file types with a comma.  No period is required', 'filled-in'); ?></em>
-			<p><?php _e ('Note: Restriction is only on filename and does not prevent a user uploading a renamed file', 'filled-in'); ?></p>
+			<em><?php esc_html_e('Separate file types with a comma.  No period is required', 'filled-in'); ?></em>
+			<p><?php esc_html_e('Note: Restriction is only on filename and does not prevent a user uploading a renamed file', 'filled-in'); ?></p>
 		</td>
 	</tr>
 	<?php
@@ -101,7 +101,7 @@ class Filter_File_Upload extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('with <strong>File Upload</strong> ', 'filled-in');
+		esc_html_e('with <strong>File Upload</strong> ', 'filled-in');
 		$parts = array ();
 		if ($this->config['file_size'] > 0)
 			$parts[] = sprintf (__ ('maximum filesize of %dKB', 'filled-in'), $this->config['file_size']);

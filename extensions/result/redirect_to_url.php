@@ -33,7 +33,7 @@ class Result_Redirect_URL extends FI_Results
 	{
 		?>
 	<tr>
-		<td width="50"><?php _e ('URL', 'filled-in'); ?>:</td>
+		<td width="50"><?php esc_html_e('URL', 'filled-in'); ?>:</td>
 		<td>
 			<input style="width: 95%" type="text" name="url" value="<?php echo $this->config['url'] ?>" id="post_id"/>
 		</td>

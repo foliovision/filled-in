@@ -25,7 +25,7 @@ class Result_Display_Form extends FI_Results
 	{
 		?>
 		<tr>
-				<td width="100"><label for="prefill"><?php _e ('Pre-fill form', 'filled-in'); ?>:</label:</td>
+				<td width="100"><label for="prefill"><?php esc_html_e('Pre-fill form', 'filled-in'); ?>:</label:</td>
 				<td>
 					<input type="checkbox" name="prefill" id="prefill"<?php if ($this->config['prefill'] != 'false') echo ' checked="checked"'?>/>
 				</td>
@@ -37,7 +37,7 @@ class Result_Display_Form extends FI_Results
 	{
 		parent::show ();
 		if (!isset ($this->config['prefill']) || $this->config['prefill'] == 'true')
-			_e (' (pre-filled)', 'filled-in');
+		  esc_html_e(' (pre-filled)', 'filled-in');
 	}
 	
 	function save ($arr)

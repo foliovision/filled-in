@@ -60,12 +60,12 @@ class Filter_Checkbox extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th><?php _e ('Smallest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="smallest" value="<?php echo $this->config['smallest'] ?>"/> <span class="sub"><?php _e ('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
+		<th><?php esc_html_e('Smallest', 'filled-in'); ?>:</th>
+		<td><input type="text" name="smallest" value="<?php echo $this->config['smallest'] ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
 	</tr>
 	<tr>
-		<th><?php _e ('Largest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="largest" value="<?php echo $this->config['largest'] ?>"/> <span class="sub"><?php _e ('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
+		<th><?php esc_html_e('Largest', 'filled-in'); ?>:</th>
+		<td><input type="text" name="largest" value="<?php echo $this->config['largest'] ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
 	</tr>
 	<?php
 	}
@@ -73,7 +73,7 @@ class Filter_Checkbox extends FI_Filter
 	function show ()
 	{
 		parent::show ();
-		_e ('is a <strong>Checkbox/Radio</strong>', 'filled-in');
+		esc_html_e('is a <strong>Checkbox/Radio</strong>', 'filled-in');
 		if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
 			printf (__(' with between %d and %d items', 'filled-in'), $this->config['smallest'], $this->config['largest']);
 		else if ($this->config['smallest'] > 0)

@@ -33,7 +33,7 @@ class Result_Redirect_Post extends FI_Results
 	{
 		?>
 	<tr>
-		<td><?php _e ('Post ID', 'filled-in'); ?>:</td>
+		<td><?php esc_html_e('Post ID', 'filled-in'); ?>:</td>
 		<td>
 			<input type="text" name="post" value="<?php echo $this->config['post'] ?>" id="post_id"/>
 		</td>

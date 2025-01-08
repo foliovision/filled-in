@@ -4,26 +4,26 @@
 
 <table class="widefat post fixed" style="width: 95%">
  	<tr>
-		<th class="core"><?php _e ('Collected', 'filled-in') ?>:</th>
+		<th class="core"><?php esc_html_e('Collected', 'filled-in') ?>:</th>
 		<td class="core"><?php printf (__ ('%s from <a href="http://urbangiraffe.com/map/?ip=%s&amp;from=filledin">%s</a>', 'filled-in'), date (get_option ('date_format').' '.get_option ('time_format'), $stat->created), $server->remote_host, $server->remote_host); ?></td>
 	</tr>
 	<tr>
-		<th class="core" valign="top"><?php _e ('Browser', 'filled-in') ?>:</th>
+		<th class="core" valign="top"><?php esc_html_e('Browser', 'filled-in') ?>:</th>
 		<td class="core"><?php echo $server->user_agent ?></td>
 	</tr>
  	<tr>
-		<th class="core" valign="top"><?php _e ('Time', 'filled-in') ?>:</th>
+		<th class="core" valign="top"><?php esc_html_e('Time', 'filled-in') ?>:</th>
 		<td class="core"><?php if ($post->time_to_complete > 0) echo $post->time_to_complete.'s'; ?></td>
 	</tr>
  
  <?php if ($errors && $errors->what_type () == 'pre') : ?>
  	<tr class="error">
-		<th><?php _e ('Pre-Processor failure', 'filled-in') ?>:</th>
+		<th><?php esc_html_e('Pre-Processor failure', 'filled-in') ?>:</th>
 		<td><?php echo htmlspecialchars ($errors->message) ?></td>
 	</tr>
  <?php elseif ($errors && $errors->what_type () == 'post') : ?>
  	<tr class="error">
-		<th><?php _e ('Post-Processor failure', 'filled-in') ?>:</th>
+		<th><?php esc_html_e('Post-Processor failure', 'filled-in') ?>:</th>
 		<td><?php echo htmlspecialchars ($errors->message) ?></td>
 	</tr>
  <?php endif; ?>
@@ -57,7 +57,7 @@
    <?php if ($errors && $errors->in_error ($key)) : ?>
    
    <td class="error">
-     <strong><?php echo $errors->show_error ($key) ?></strong> - <?php _e ('deleted', 'filled-in'); ?>
+     <strong><?php echo $errors->show_error ($key) ?></strong> - <?php esc_html_e('deleted', 'filled-in'); ?>
    </td>
    
    <?php else : ?>

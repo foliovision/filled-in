@@ -43,11 +43,11 @@ class Result_Display_Message extends FI_Results
 			</td>
 		</tr>
 		<tr>
-			<th width="160"><label for="autop"><?php _e ('Auto Formatting', 'filled-in'); ?>:</label></th>
+			<th width="160"><label for="autop"><?php esc_html_e('Auto Formatting', 'filled-in'); ?>:</label></th>
 			<td><input type="checkbox" name="autop" id="autop"<?php if (isset($this->config['autop']) && $this->config['autop'] == 'true') echo ' checked="checked"'?>/></td>
 		</tr>
 		<tr>
-			<th width="160"><label for="entire"><?php _e ('Replace entire page', 'filled-in'); ?>:</label></th>
+			<th width="160"><label for="entire"><?php esc_html_e('Replace entire page', 'filled-in'); ?>:</label></th>
 			<td><input type="checkbox" name="entire" id="entire"<?php if (isset($this->config['entire']) && $this->config['entire'] != 'false') echo ' checked="checked"'?>/></td>
 		</tr>
 	  <?php

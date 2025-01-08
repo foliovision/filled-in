@@ -263,40 +263,40 @@ class Post_Email_WP extends FI_Post
       ?>
 
    <tr>
-      <th width="150"><?php _e( 'To', 'filled-in' ); ?>:</th>
+      <th width="150"><?php esc_html_e( 'To', 'filled-in' ); ?>:</th>
       <td><input style="width: 95%" type="text" name="address" value="<?php echo htmlspecialchars (isset($this->config['address']) ? $this->config['address'] : '') ?>"/><br />
       <small>(use </small>;<small> to separate multiple addresses; enter $field_name$ to use any of the form field)</small></td>
    </tr>
 
    <tr id="replyto-<?php echo $this->id; ?>">
-      <th width="150"><?php _e( 'Use ReplyTo', 'filled-in' ); ?>:</th>
+      <th width="150"><?php esc_html_e( 'Use ReplyTo', 'filled-in' ); ?>:</th>
       <td>
          <input type="checkbox" name="replyto" value="yes" <?php if( 'yes' == $this->config['replyto'] ) echo 'checked="checked"'; ?> />
       </td>
    </tr>
    <tr class="replyto" valign="top">
-      <th width="150"><?php _e( 'ReplyTo email', 'filled-in' ); ?>:</th>
+      <th width="150"><?php esc_html_e( 'ReplyTo email', 'filled-in' ); ?>:</th>
       <td>
          <input style="width: 95%" type="text" name="replyto-email" value="<?php echo htmlspecialchars( isset( $this->config['replyto-email'] ) ? $this->config['replyto-email'] : '' ); ?>" /><br />
          <small>Use standard <strong>"name"&lt;email&gt;</strong> syntax to include name. You can use submitted fields.</small>
       </td>
    </tr>
    <tr class="replyto">
-      <th width="150" valign="top"><?php _e( 'ReplyTo email BCC', 'filled-in' ); ?>:</th>
+      <th width="150" valign="top"><?php esc_html_e( 'ReplyTo email BCC', 'filled-in' ); ?>:</th>
       <td>
          <input style="width: 95%" type="text" name="replyto-email-bcc" value="<?php echo htmlspecialchars( isset( $this->config['replyto-email-bcc'] ) ? $this->config['replyto-email-bcc'] : '' ); ?>" /><br />
          <small>Use standard <strong>"name"&lt;email&gt;</strong> syntax to include name. You can use submitted fields.</small>
       </td>
    </tr>
    <tr class="replyto" valign="top">
-      <th width="150"><?php _e( 'ReplyTo email subject', 'filled-in' ); ?>:</th>
+      <th width="150"><?php esc_html_e( 'ReplyTo email subject', 'filled-in' ); ?>:</th>
       <td>
          <input style="width: 95%" type="text" name="replyto-email-subject" value="<?php echo htmlspecialchars( isset( $this->config['replyto-email-subject'] ) ? $this->config['replyto-email-subject'] : '' ); ?>" /><br />
          <small>You can use submitted fields.</small>
       </td>
    </tr>
    <tr class="replyto" valign="top">
-      <th width="150"><?php _e( 'ReplyTo email content', 'filled-in' ); ?>:</th>
+      <th width="150"><?php esc_html_e( 'ReplyTo email content', 'filled-in' ); ?>:</th>
       <td>
          <textarea style="width: 95%" name="replyto-email-content"><?php echo htmlspecialchars( isset( $this->config['replyto-email-content'] ) ? $this->config['replyto-email-content'] : '' ); ?></textarea><br />
          <small>You can use submitted fields.</small>
@@ -304,10 +304,10 @@ class Post_Email_WP extends FI_Post
    </tr>
 
    <tr>
-      <th><?php _e ('Template', 'filled-in'); ?>:</th>
+      <th><?php esc_html_e('Template', 'filled-in'); ?>:</th>
       <td>
          <select name="template">
-            <option value="default"><?php _e ('Default', 'filled-in'); ?></option>
+            <option value="default"><?php esc_html_e('Default', 'filled-in'); ?></option>
             <?php if (count ($templates) > 0) : ?>
                <?php foreach ($templates AS $temp) : ?>
                   <option value="<?php echo $temp->name ?>" <?php if ($temp->name == $this->config['template'] ? $this->config['template'] : '') echo ' selected="selected"' ?>><?php echo $temp->name ?></option>
@@ -318,7 +318,7 @@ class Post_Email_WP extends FI_Post
    </tr>
 
    <tr>
-      <th><?php _e ('Subject', 'filled-in'); ?>:</th>
+      <th><?php esc_html_e('Subject', 'filled-in'); ?>:</th>
       <td>
          <input style="width: 95%" type="text" name="subject" value="<?php echo htmlspecialchars (isset($this->config['subject']) ? $this->config['subject'] : '') ?>"/><br />
          <small>(works with default template - leave blank for default subject (form name); enter $field_name$ to use any of the form field)</small>

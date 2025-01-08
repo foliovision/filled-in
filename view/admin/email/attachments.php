@@ -2,7 +2,7 @@
 	<?php foreach ($files AS $upload) :?>
 	<li>
 		<?php if (current_user_can ('administrator')) : ?><a style="float: right" class="nol" href="#" onclick="delete_file('<?php echo $name ?>','<?php echo urlencode ($upload->name) ?>'); return false"><img title="delete" src="<?php bloginfo ('wpurl') ?>/wp-content/plugins/filled-in/images/delete.png" alt="delete" width="16" height="16"/></a><?php endif; ?>
-		<a title="<?php _e ('Download file', 'filled-in'); ?>" href="<?php bloginfo ('wpurl') ?>/wp-content/plugins/filled-in/controller/attachment.php?id=<?php echo $name ?>&amp;file=<?php echo urlencode ($upload->name) ?>"><?php echo $upload->name ?></a>
+		<a title="<?php esc_attr_e('Download file', 'filled-in'); ?>" href="<?php bloginfo ('wpurl') ?>/wp-content/plugins/filled-in/controller/attachment.php?id=<?php echo $name ?>&amp;file=<?php echo urlencode ($upload->name) ?>"><?php echo $upload->name ?></a>
 	</li>
 	<?php endforeach; ?>
 </ul>

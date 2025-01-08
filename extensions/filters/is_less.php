@@ -35,12 +35,12 @@ class Filter_Is_Less extends FI_Filter
 		parent::edit ();
 	?>
 	<tr>
-		<th valign="top"><?php _e ('Less than', 'filled-in') ?>:</th>
+		<th valign="top"><?php esc_html_e('Less than', 'filled-in') ?>:</th>
 		<td>
 			<input type="text" name="value" value="<?php echo $this->config['value'] ?>"/>
-			<?php _e ('or equal:', 'filled-in')?>
+			<?php esc_html_e ('or equal:', 'filled-in')?>
 			<input type="checkbox" name="equal" <?php if ($this->config['equal'] == 'true') echo ' checked="checked"' ?>/>
-			<p><?php _e ('Remember that you can use other fields (i.e. this field is less than $otherfield$)', 'filled-in'); ?></p>
+			<p><?php esc_html_e('Remember that you can use other fields (i.e. this field is less than $otherfield$)', 'filled-in'); ?></p>
 		</td>
 	</tr>
 	<?php
@@ -50,9 +50,9 @@ class Filter_Is_Less extends FI_Filter
 	{
 		parent::show ();
 		if ($this->config['equal'] == 'true')
-			_e ('is <strong>Less Than Or Equal To</strong> ', 'filled-in');
+			esc_html_e('is <strong>Less Than Or Equal To</strong> ', 'filled-in');
 		else
-			_e ('is <strong>Less Than</strong> ', 'filled-in');
+			esc_html_e('is <strong>Less Than</strong> ', 'filled-in');
 			
 		if (!isset ($this->config['value']))
 			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';

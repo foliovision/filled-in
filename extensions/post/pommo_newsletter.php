@@ -77,30 +77,30 @@ class PostToPommoNewsletter extends FI_Post
 	{
 		?>
 	    <tr>
-	      <td width="130"><?php _e ('poMMo directory', 'filled-in') ?>:</td>
+	      <td width="130"><?php esc_html_e('poMMo directory', 'filled-in') ?>:</td>
 	      <td>
 					<input type="text" name="pommo_dir" value="<?php echo htmlspecialchars ($this->config['pommo_dir']) ?>"/>
-					<span class="sub"><?php _e ('Full directory to the poMMo installation', 'filled-in'); ?></span>
+					<span class="sub"><?php esc_html_e('Full directory to the poMMo installation', 'filled-in'); ?></span>
 				</td>
 	    </tr>
 	    <tr>
-	      <td width="130"><?php _e ('Newsletter field', 'filled-in') ?>:</td>
+	      <td width="130"><?php esc_html_e('Newsletter field', 'filled-in') ?>:</td>
 	      <td>
 					<input type="text" name="newsletter" value="<?php echo htmlspecialchars ($this->config['newsletter']) ?>"/>
-					<span class="sub"><?php _e ('Name of the Filled In field you want to use as the newsletter field', 'filled-in'); ?></span>
+					<span class="sub"><?php esc_html_e('Name of the Filled In field you want to use as the newsletter field', 'filled-in'); ?></span>
 				</td>
 	    </tr>
 	    <tr>
-	      <td width="130"><?php _e ('Email field', 'filled-in') ?>:</td>
+	      <td width="130"><?php esc_html_e('Email field', 'filled-in') ?>:</td>
 	      <td>
 					<input type="text" name="email" value="<?php echo htmlspecialchars ($this->config['email']) ?>"/>
-					<span class="sub"><?php _e ('Name of the Filled In field you want to use as the email address', 'filled-in'); ?></span>
+					<span class="sub"><?php esc_html_e('Name of the Filled In field you want to use as the email address', 'filled-in'); ?></span>
 				</td>
 	    </tr>
 			<tr>
 				<td width="130" valign="top">
-					<?php _e ('Data fields', 'filled-in') ?>:<br/>
-					<span class="sub"><?php _e ('One field per line as FIELD=[poMMo field ID] (i.e. name=1)', 'filled-in'); ?></span>
+					<?php esc_html_e ('Data fields', 'filled-in') ?>:<br/>
+					<span class="sub"><?php esc_html_e('One field per line as FIELD=[poMMo field ID] (i.e. name=1)', 'filled-in'); ?></span>
 				</td>
 	      <td>
 					<textarea name="fields" rows="5" cols="40"><?php echo $this->config['fields'] ?></textarea>

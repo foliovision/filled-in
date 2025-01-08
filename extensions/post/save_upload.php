@@ -37,15 +37,15 @@ class Post_Save_Upload extends FI_Post
 	{
 		?>
     <tr>
-      <td width="130"><?php _e ('Field name', 'filled-in') ?>:</td>
+      <td width="130"><?php esc_html_e('Field name', 'filled-in') ?>:</td>
       <td><input style="width: 95%" type="text" name="field" value="<?php echo htmlspecialchars ($this->config['field']) ?>"/></td>
     </tr>
 		<tr>
-			<td width="130"><?php _e ('Directory', 'filled-in') ?>:</td>
+			<td width="130"><?php esc_html_e('Directory', 'filled-in') ?>:</td>
       <td><input style="width: 95%" type="text" name="directory" value="<?php echo htmlspecialchars ($this->config['directory']) ?>"/></td>
 		</tr>
 		<tr>
-			<td width="130"><?php _e ('Force lowercase', 'filled-in') ?>:</td>
+			<td width="130"><?php esc_html_e('Force lowercase', 'filled-in') ?>:</td>
       <td><input type="checkbox" name="downcase" <?php if ($this->config['downcase'] == 'true') echo ' checked="checked"'; ?>/></td>
 		</tr>
 	  <?php

@@ -3,7 +3,7 @@
 	<?php $this->render_admin ('annoy'); ?>
 	<?php screen_icon(); ?>
 
-	<h2><?php _e ('Form List', 'filled-in') ?></h2>
+	<h2><?php esc_html_e('Form List', 'filled-in') ?></h2>
 	<?php $this->submenu (true); ?>
 
 	<?php if ( is_array($forms) && count($forms) > 0) : ?>
@@ -41,15 +41,15 @@
                     <?php if (current_user_can ('administrator')) : ?>
 			<div class="alignleft actions">
 				<select name="action2" id="action2_select">
-					<option value="-1" selected="selected"><?php _e('Bulk Actions', 'filled-in'); ?></option>
-					<option value="delete"><?php _e('Delete', 'filled-in'); ?></option>
+					<option value="-1" selected="selected"><?php esc_html_e('Bulk Actions', 'filled-in'); ?></option>
+					<option value="delete"><?php esc_html_e('Delete', 'filled-in'); ?></option>
 				</select>
 
-				<input type="submit" value="<?php _e('Apply', 'filled-in'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
+				<input type="submit" value="<?php esc_attr_e('Apply', 'filled-in'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
 
 				<?php $pager->per_page ('filled-in'); ?>
 
-				<input type="submit" value="<?php _e('Filter', 'filled-in'); ?>" class="button-secondary" />
+				<input type="submit" value="<?php esc_attr_e('Filter', 'filled-in'); ?>" class="button-secondary" />
 
 				<br class="clear" />
 			</div>
@@ -88,16 +88,16 @@
 		</div>
 
 	<?php else : ?>
-	  <p><?php _e ('You currently have no forms to display.', 'filled-in') ?></p>
+	  <p><?php esc_html_e('You currently have no forms to display.', 'filled-in') ?></p>
 	<?php endif; ?>
 
 	<?php if ($admin) : ?>
-		<h3><?php _e ('Create new form', 'filled-in') ?></h3>
+		<h3><?php esc_html_e('Create new form', 'filled-in') ?></h3>
 	
 		<form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="form-table">
 			<?php wp_nonce_field ('filledin-create_form'); ?>
 			
-			<?php _e ('Name', 'filled-in') ?>: <input type="text" name="form_name"/>
+			<?php esc_html_e('Name', 'filled-in') ?>: <input type="text" name="form_name"/>
 			<input class="button-primary" type="submit" name="create" value="Create"/>
 		</form>
 	<?php endif; ?>

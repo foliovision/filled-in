@@ -14,7 +14,7 @@
 			<input type="hidden" name="page" value="filled_in.php"/>
 			<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
 			<p class="search-box">
-				<label for="post-search-input" class="hidden"><?php _e('Search', 'filled-in') ?>:</label>
+				<label for="post-search-input" class="hidden"><?php esc_html_e('Search', 'filled-in') ?>:</label>
 
 				<input type="text" class="search-input" name="search" value="<?php echo isset($_GET['search']) ? htmlspecialchars ($_GET['search']) : ''?>"/>
 				<?php if (isset ($_GET['search']) && $_GET['search'] != '') : ?>
@@ -28,15 +28,15 @@
                             <?php if (current_user_can ('administrator')): ?>
 				<div class="alignleft actions">
 					<select name="action2" id="action2_select">
-						<option value="-1" selected="selected"><?php _e('Bulk Actions', 'filled-in'); ?></option>
-						<option value="delete"><?php _e('Delete', 'filled-in'); ?></option>
+						<option value="-1" selected="selected"><?php esc_html_e('Bulk Actions', 'filled-in'); ?></option>
+						<option value="delete"><?php esc_html_e('Delete', 'filled-in'); ?></option>
 					</select>
 
-					<input type="submit" value="<?php _e('Apply', 'filled-in'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
+					<input type="submit" value="<?php esc_attr_e('Apply', 'filled-in'); ?>" name="doaction2" id="doaction2" class="button-secondary action" />
 
 					<?php $pager->per_page ('filled-in'); ?>
 
-					<input type="submit" value="<?php _e('Filter', 'filled-in'); ?>" class="button-secondary" />
+					<input type="submit" value="<?php esc_attr_e('Filter', 'filled-in'); ?>" class="button-secondary" />
 
 					<br class="clear" />
 				</div>
@@ -81,16 +81,16 @@
 	</div>
 
 	<?php else : ?>
-		<p><?php _e ('There are no entries', 'filled-in') ?></p>
+		<p><?php esc_html_e('There are no entries', 'filled-in') ?></p>
 	<?php endif; ?>
 </div>
 
 <?php if (current_user_can ('administrator')) : ?><div class="wrap">
-	<h2><?php _e ('Delete all entries', 'filled-in'); ?></h2>
-	<p><?php _e ('Once deleted, your data will be permanently gone.  Please be sure this is what you really want to do.', 'filled-in'); ?></p>
+	<h2><?php esc_html_e('Delete all entries', 'filled-in'); ?></h2>
+	<p><?php esc_html_e('Once deleted, your data will be permanently gone.  Please be sure this is what you really want to do.', 'filled-in'); ?></p>
 	
 	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" accept-charset="utf-8">
-		<input class="button-primary" type="submit" name="delete" value="<?php _e ('Delete all entries', 'filled-in') ?>" id="delete" onclick="if (confirm (wp_confirm_data)) return true; return false;"/>
+		<input class="button-primary" type="submit" name="delete" value="<?php esc_attr_e('Delete all entries', 'filled-in') ?>" id="delete" onclick="if (confirm (wp_confirm_data)) return true; return false;"/>
 	</form>
 </div><?php endif; ?>
 
