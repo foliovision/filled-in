@@ -59,13 +59,13 @@ class Filter_Word_Count extends FI_Filter
 		parent::show ();
 		echo wp_kses( 'with <strong>Word Count</strong> ', 'filled-in', array( 'strong' => array() ) );
 		if ( ! empty( $this->config['shortest'] ) && intval( $this->config['shortest'] ) > 0 && ! empty( $this->config['longest'] ) && intval( $this->config['longest'] ) > 0)
-			printf (__('between %d and %d words long', 'filled-in'), $this->config['shortest'], $this->config['longest']);
+			echo esc_html( sprintf (__('between %d and %d words long', 'filled-in'), $this->config['shortest'], $this->config['longest']) );
 		else if ( ! empty( $this->config['shortest'] ) && intval( $this->config['shortest'] ) > 0 )
-			printf (__('at least %d words long', 'filled-in'), $this->config['shortest']);
+			echo esc_html( sprintf (__('at least %d words long', 'filled-in'), $this->config['shortest']) );
 		else if ( ! empty( $this->config['longest'] ) && intval( $this->config['longest'] ) > 0 )
-			printf (__('less than %d words long', 'filled-in'), $this->config['longest']);
+			echo esc_html( sprintf (__('less than %d words long', 'filled-in'), $this->config['longest']) );
 		else
-			printf ( '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>' );
+			printf ( '<em>' . esc_html( __('&lt;not configured&gt;', 'filled-in') ) . '</em>' );
 	}
 }
 

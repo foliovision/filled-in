@@ -39,7 +39,7 @@ class Prepare_for_mailto extends FI_Pre
 		if ($newfield == '')
 			$newfield = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
-		printf (__ (" from field '<strong>%s</strong>' into '<strong>%s</strong>'", 'filled-in'), $field, $newfield);
+		echo wp_kses( sprintf (__ (" from field '<strong>%s</strong>' into '<strong>%s</strong>'", 'filled-in'), $field, $newfield), array( 'strong' => array() ) );
 	}
 	
 	function save ($config)

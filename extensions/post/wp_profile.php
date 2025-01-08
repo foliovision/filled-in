@@ -118,7 +118,7 @@ class Add_To_Profile extends FI_Post
 		if ($fields == '')
 			$fields = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 	  
-		printf (__ (" with key '<strong>%s</strong>', and fields '<strong>%s</strong>'", 'filled-in'), $key, $fields);
+		echo wp_kses( sprintf (__ (" with key '<strong>%s</strong>', and fields '<strong>%s</strong>'", 'filled-in'), $key, $fields), array( 'strong' => array() ) );
 	}
 	
 	function save ($config)

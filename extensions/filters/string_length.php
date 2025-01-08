@@ -61,13 +61,13 @@ class Filter_String_Length extends FI_Filter
 		parent::show ();
 		echo wp_kses( 'with <strong>String Length</strong> ', 'filled-in', array( 'strong' => array() ) );
 		if (isset($this->config['shortest']) && $this->config['shortest'] > 0 && $this->config['longest'] > 0)
-			printf (__('between %d and %d characters long', 'filled-in'), $this->config['shortest'], $this->config['longest']);
+			echo esc_html( sprintf (__('between %d and %d characters long', 'filled-in'), $this->config['shortest'], $this->config['longest']) );
 		else if (isset($this->config['shortest']) && $this->config['shortest'] > 0)
-			printf (__('at least %d characters long', 'filled-in'), $this->config['shortest']);
+			echo esc_html( sprintf (__('at least %d characters long', 'filled-in'), $this->config['shortest']) );
 		else if (isset($this->config['longest']) && $this->config['longest'] > 0)
-			printf (__('less than %d characters long', 'filled-in'), $this->config['longest']);
+			echo esc_html( sprintf (__('less than %d characters long', 'filled-in'), $this->config['longest']) );
 		else
-			printf ( '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>' );
+			echo esc_html( sprintf ( '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>' ) );
 	}
 }
 

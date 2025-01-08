@@ -298,7 +298,7 @@ class Post_Email extends FI_Post
       if ($template == '')
          $template = '<em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
          
-      printf (__ (' to <strong>%s</strong>, with template \'%s\'', 'filled-in'), $to, $template);
+      echo wp_kses( sprintf (__ (' to <strong>%s</strong>, with template \'%s\'', 'filled-in'), $to, $template), array( 'strong' => array() ) );
    }
    
    function save ($config)

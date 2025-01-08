@@ -80,7 +80,7 @@ class WordPress_Lost_Password extends FI_Post
 		if ($username == '')
 			$username = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 
-		printf (__ (" with field '<strong>%s</strong>' for email, and '<strong>%s</strong>' for username", 'filled-in'), $email, $username);
+		echo wp_kses( sprintf (__ (" with field '<strong>%s</strong>' for email, and '<strong>%s</strong>' for username", 'filled-in'), $email, $username), array( 'strong' => array() ) );
 	}
 	
 	function save ($config)

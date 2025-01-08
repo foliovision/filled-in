@@ -75,7 +75,7 @@ class WordPress_Login extends FI_Post
 		if ($username == '')
 			$username = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 
-		printf (__ (" with field '<strong>%s</strong>' for password, and '<strong>%s</strong>' for username", 'filled-in'), $password, $username);
+		echo wp_kses( sprintf (__ (" with field '<strong>%s</strong>' for password, and '<strong>%s</strong>' for username", 'filled-in'), $password, $username), array( 'strong' => array() ) );
 	}
 	
 	function save ($config)

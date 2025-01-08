@@ -351,7 +351,7 @@ class Post_Email_WP extends FI_Post
 
       $subject = ! empty( $this->config['subject'] ) ? htmlspecialchars (strlen($this->config['subject']) ? 'and subject \''.$this->config['subject'].'\'' : '') : '';
 
-      printf (__ (' to <strong>%s</strong>, with template \'%s\' %s', 'filled-in'), $to, $template, $subject);
+      echo wp_kses( sprintf (__ (' to <strong>%s</strong>, with template \'%s\' %s', 'filled-in'), $to, $template, $subject), array( 'strong' => array() ) );
 
       if ( ! empty( $this->config['replyto'] ) && 'yes' == $this->config['replyto'] && ! empty( $this->config['replyto-email'] ) && trim( $this->config['replyto-email'] ) )
          echo '. Using a ReplyTo link to <em>'.$this->config['replyto-email'].'</em>.';

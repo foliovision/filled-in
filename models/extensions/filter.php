@@ -60,7 +60,9 @@ class FI_Filter extends FI_Extension
 	function is_editable () { return true; }
 	function what_group () { return 'filter'; }
 	function accept_what_source () { return 'post'; }
-	function show () { printf (__ ("Field '<strong>%s</strong>' ", 'filled-in'), $this->name); }
+	function show () {
+		echo wp_kses( sprintf (__ ("Field '<strong>%s</strong>' ", 'filled-in'), $this->name), array( 'strong' => array() ) );
+	}
 	function pre ($value) { return $value; }
 	
 	// These must be extended in the child class

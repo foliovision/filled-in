@@ -62,7 +62,7 @@ class Post_Save_Upload extends FI_Post
 		if ($directory == '')
 			$directory = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
-		printf (__ (" from field '<strong>%s</strong>' into '<strong>%s</strong>'", 'filled-in'), $field, $directory);
+		echo wp_kses( sprintf (__ (" from field '<strong>%s</strong>' into '<strong>%s</strong>'", 'filled-in'), $field, $directory), array( 'strong' => array() ) );
 	}
 	
 	function save ($config)
