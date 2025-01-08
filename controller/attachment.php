@@ -46,7 +46,7 @@ else if (isset ($_GET['file']) && current_user_can ('publish_pages'))
 </head>
 
 <body>
-	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td><?php esc_html_e('Name', 'filled-in') ?>:</td>
@@ -60,7 +60,7 @@ else if (isset ($_GET['file']) && current_user_can ('publish_pages'))
 				<td/>
 				<td>
 					<input type="submit" value="Upload" name="<?php esc_attr_e('Upload', 'filled-in'); ?>"/>
-					<input type="hidden" name="id" value="<?php echo $id ?>" id="id"/>
+					<input type="hidden" name="id" value="<?php echo esc_attr( $id ); ?>" id="id"/>
 				</td>
 			</tr>
 		</table>

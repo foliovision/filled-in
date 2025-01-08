@@ -9,7 +9,7 @@
 
   <?php if (is_array ($templates) && count ($templates) > 0) : ?>
 		<?php if (current_user_can ('administrator')) : ?>
-		<form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">	
+		<form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>">	
 			<div class="tablenav">
 				<div class="alignleft actions">
 					<select name="action2" id="action2_select">
@@ -49,7 +49,7 @@
   </div>
   
 	<br/>
-  <?php if (current_user_can ('administrator')) : ?><form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="form-table">
+  <?php if (current_user_can ('administrator')) : ?><form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" class="form-table">
 		<?php wp_nonce_field ('filledin-add_template'); ?>
    	<input type="text" name="name" class="regular-text" size="20"/>
 		<input class="button-primary" type="submit" name="create" value="<?php esc_attr_e('Create Template', 'filled-in') ?>"/>

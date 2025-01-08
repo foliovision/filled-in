@@ -77,15 +77,15 @@ class Filter_File_Upload extends FI_Filter
 	?>
 	<tr>
 		<th><?php esc_html_e('Max file size', 'filled-in'); ?>:</th>
-		<td><input type="text" name="file_size" value="<?php echo $this->config['file_size'] ?>"/> KB</td>
+		<td><input type="text" name="file_size" value="<?php echo esc_attr( $this->config['file_size'] ); ?>"/> KB</td>
 	</tr>
 	<tr>
 		<th><?php esc_html_e('Min files', 'filled-in'); ?>:</th>
-		<td><input type="text" name="file_min" value="<?php echo $this->config['file_min'] ?>"/> <?php esc_html_e( 'including', 'filled-in' ); ?> (<?php esc_html_e ('0 for no minimum', 'filled-in'); ?>)</td>
+		<td><input type="text" name="file_min" value="<?php echo esc_attr( $this->config['file_min'] ); ?>"/> <?php esc_html_e( 'including', 'filled-in' ); ?> (<?php esc_html_e ('0 for no minimum', 'filled-in'); ?>)</td>
 	</tr>
 	<tr>
 		<th><?php esc_html_e('Max files', 'filled-in'); ?>:</th>
-		<td><input type="text" name="file_max" value="<?php echo $this->config['file_max'] ?>"/> <?php esc_html_e( 'including', 'filled-in' ); ?> (<?php esc_html_e ('0 for no maximum', 'filled-in'); ?>)</td>
+		<td><input type="text" name="file_max" value="<?php echo esc_attr( $this->config['file_max'] ); ?>"/> <?php esc_html_e( 'including', 'filled-in' ); ?> (<?php esc_html_e ('0 for no maximum', 'filled-in'); ?>)</td>
 	</tr>
 	<tr>
 		<th valign="top"><?php esc_html_e('File types', 'filled-in'); ?>:</th>

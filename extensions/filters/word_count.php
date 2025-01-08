@@ -45,11 +45,11 @@ class Filter_Word_Count extends FI_Filter
 	?>
 	<tr>
 		<th><?php esc_html_e('Smallest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="shortest" value="<?php echo $this->config['shortest'] ?>"/> <span class="sub"><?php esc_html_e('words, leave empty for no shortest', 'filled-in'); ?></em></td>
+		<td><input type="text" name="shortest" value="<?php echo esc_attr( $this->config['shortest'] ); ?>"/> <span class="sub"><?php esc_html_e('words, leave empty for no shortest', 'filled-in'); ?></em></td>
 	</tr>
 	<tr>
 		<th><?php esc_html_e('Largest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="longest" value="<?php echo $this->config['longest'] ?>"/> <span class="sub"><?php esc_html_e('words, leave empty for no longest', 'filled-in'); ?></em></td>
+		<td><input type="text" name="longest" value="<?php echo esc_attr( $this->config['longest'] ); ?>"/> <span class="sub"><?php esc_html_e('words, leave empty for no longest', 'filled-in'); ?></em></td>
 	</tr>
 	<?php
 	}

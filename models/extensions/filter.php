@@ -70,7 +70,7 @@ class FI_Filter extends FI_Extension
 	<tr>
 		<th width="100"><?php esc_html_e('Field', 'filled-in') ?>:</th>
 		<td>
-			<input type="text" name="field_name" value="<?php echo $this->name ?>" style="width: 95%"/>
+			<input type="text" name="field_name" value="<?php echo esc_attr( $this->name ); ?>" style="width: 95%"/>
 		</td>
 	</tr>
 	<tr>

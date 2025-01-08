@@ -10,7 +10,7 @@
 
 	<p style="clear: both"><?php esc_html_e('While your original form data will remain untouched, please be aware that replaying data could cause unwanted side effects', 'filled-in'); ?></p>
 	
-	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" accept-charset="utf-8">
+	<form action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" method="post" accept-charset="utf-8">
 	<table width="100%" class="filled_in">
 		<tr>
 			<th><?php esc_html_e('Run form', 'filled-in'); ?>:</th>
@@ -18,7 +18,7 @@
 <?php if (count ($forms) > 0) : ?>
 				<select name="form">
 					<?php foreach ($forms AS $form) : ?>
-					<option value="<?php echo $form->id ?>"><?php echo htmlspecialchars ($form->name) ?></option>
+					<option value="<?php echo esc_attr( $form->id ); ?>"><?php echo htmlspecialchars ($form->name) ?></option>
 					<?php endforeach; ?>
 				</select>
 <?php endif; ?>
@@ -27,7 +27,7 @@
 				<?php esc_html_e('through', 'filled-in'); ?>: 
 				<select name="report">
 				<?php foreach ($reports AS $report) : ?>
-				<option value="<?php echo $report->id ?>"><?php echo htmlspecialchars ($report->name) ?></option>
+				<option value="<?php echo esc_attr( $report->id ); ?>"><?php echo htmlspecialchars ($report->name) ?></option>
 				<?php endforeach; ?>
 				</select>
 <?php endif; ?>
@@ -104,7 +104,7 @@
 	
 	<h3><?php esc_html_e('Create new batch', 'filled-in') ?></h3>
 	
-	<form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="form-table">
+	<form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" class="form-table">
 		<?php esc_html_e('Name', 'filled-in') ?>: <input type="text" name="form_name"/>
 		<input class="button-primary" type="submit" name="create" value="<?php esc_attr_e('Create', 'filled-in'); ?>"/>
 	</form>

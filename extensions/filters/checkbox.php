@@ -61,11 +61,11 @@ class Filter_Checkbox extends FI_Filter
 	?>
 	<tr>
 		<th><?php esc_html_e('Smallest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="smallest" value="<?php echo $this->config['smallest'] ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
+		<td><input type="text" name="smallest" value="<?php echo esc_attr( $this->config['smallest'] ); ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
 	</tr>
 	<tr>
 		<th><?php esc_html_e('Largest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="largest" value="<?php echo $this->config['largest'] ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
+		<td><input type="text" name="largest" value="<?php echo esc_attr( $this->config['largest'] ); ?>"/> <span class="sub"><?php esc_html_e('items required, leave empty for no smallest', 'filled-in'); ?></span></td>
 	</tr>
 	<?php
 	}

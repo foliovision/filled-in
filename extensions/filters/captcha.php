@@ -63,7 +63,7 @@ class Filter_CAPTCHA extends FI_Filter
 		<th><?php esc_html_e('Max attempts', 'filled-in'); ?>:
 		</th>
 		<td>
-			<input type="text" name="attempts" size="4" value="<?php echo $this->config['attempts'] ?>"/>
+			<input type="text" name="attempts" size="4" value="<?php echo esc_attr( $this->config['attempts'] ); ?>"/>
 			<span class="sub"><?php esc_html_e('Number of attempts before being blocked', 'filled-in'); ?></span>
 		</td>
 	</tr>
@@ -79,7 +79,7 @@ class Filter_CAPTCHA extends FI_Filter
 			<span class="sub"><?php esc_html_e('Overlaid warning', 'filled-in'); ?></span>
 		</th>
 		<td>
-			<input type="text" style="width: 95%" name="warning" value="<?php echo $this->config['warning'] ?>"/>
+			<input type="text" style="width: 95%" name="warning" value="<?php echo esc_attr( $this->config['warning'] ); ?>"/>
 		</td>
 	</tr>
 
@@ -91,7 +91,7 @@ class Filter_CAPTCHA extends FI_Filter
 				<option value="random"<?php if ($this->config['words'] == 'random') echo ' selected="selected"' ?>>Random</option>
 			</select>
 			
-			<?php esc_html_e('Length', 'filled-in'); ?>: <input type="text" size="4" name="length" value="<?php echo $this->config['length'] ?>" id="length"/>
+			<?php esc_html_e('Length', 'filled-in'); ?>: <input type="text" size="4" name="length" value="<?php echo esc_attr( $this->config['length'] ); ?>" id="length"/>
 		</td>
 	</tr>
 	<tr>

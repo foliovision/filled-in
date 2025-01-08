@@ -33,7 +33,7 @@
 
       <?php endif; ?>
 
-	<form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">	
+	<form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>">	
 		<input type="hidden" name="page" value="filled_in.php"/>
 		<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
 
@@ -94,7 +94,7 @@
 	<?php if ($admin) : ?>
 		<h3><?php esc_html_e('Create new form', 'filled-in') ?></h3>
 	
-		<form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="form-table">
+		<form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" class="form-table">
 			<?php wp_nonce_field ('filledin-create_form'); ?>
 			
 			<?php esc_html_e('Name', 'filled-in') ?>: <input type="text" name="form_name"/>

@@ -2,7 +2,7 @@
 <div id="extension_<?php echo $group ?>">
 	
 	<?php if (isset($form->extensions[$group]) && count ($form->extensions[$group]) > 0) : ?>
-	<ol id="<?php echo $group ?>_list">
+	<ol id="<?php echo esc_attr( $group ) ?>_list">
 	<?php foreach ($form->extensions[$group] AS $extension) : ?>
 		<li id="ext_<?php echo $extension->id ?>"<?php if ($extension->status == 'off') echo 'class="disabled"' ?>>
 			<?php $this->render_admin ('extension/show', array ('extension' => $extension)) ?>

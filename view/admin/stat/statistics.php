@@ -10,7 +10,7 @@
 	
 		<?php $this->submenu (true); ?>
 		
-		<form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">	
+		<form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>">	
 			<input type="hidden" name="page" value="filled_in.php"/>
 			<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
 			<p class="search-box">
@@ -58,7 +58,7 @@
 		<?php $alt = 0; foreach ($stats AS $statistic) : ?>
 		<tr <?php if ($alt++ % 2 == 1) echo ' class="alt"' ?> id="s_<?php echo $statistic->id ?>">
 			<?php if (current_user_can ('administrator')): ?><td width="16" class="item center">
-				<input type="checkbox" class="check" name="checkall[]" value="<?php echo $statistic->id ?>"/>
+				<input type="checkbox" class="check" name="checkall[]" value="<?php echo esc_attr( $statistic->id ); ?>"/>
 			</td><?php endif; ?>
 			<td class="date">
 				<a href="<?php echo $this->url () ?>/controller/admin_ajax.php?cmd=show_stat&amp;id=<?php echo $statistic->id ?>" class="filledin-show-stat"><?php echo date ('d M y', $statistic->created) ?></a>
@@ -89,7 +89,7 @@
 	<h2><?php esc_html_e('Delete all entries', 'filled-in'); ?></h2>
 	<p><?php esc_html_e('Once deleted, your data will be permanently gone.  Please be sure this is what you really want to do.', 'filled-in'); ?></p>
 	
-	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" accept-charset="utf-8">
+	<form action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" method="post" accept-charset="utf-8">
 		<input class="button-primary" type="submit" name="delete" value="<?php esc_attr_e('Delete all entries', 'filled-in') ?>" id="delete" onclick="if (confirm (wp_confirm_data)) return true; return false;"/>
 	</form>
 </div><?php endif; ?>

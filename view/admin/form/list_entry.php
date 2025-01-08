@@ -1,12 +1,12 @@
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?>
-<tr id="form_<?php echo $form['form']->id ?>" class="<?php echo $alt ?>" align="center">
+<tr id="form_<?php echo $form['form']->id ?>" class="<?php echo esc_attr( $alt ); ?>" align="center">
 	<?php if (current_user_can ('administrator')) : ?><td width="16" class="item center">
-		<input type="checkbox" class="check" name="checkall[]" value="<?php echo $form['form']->id ?>"/>
+		<input type="checkbox" class="check" name="checkall[]" value="<?php echo esc_attr( $form['form']->id ); ?>"/>
 	</td><?php endif; ?>
 	
 	<td align="left">
 		<?php if ($admin) : ?>
-		<a href="<?php echo $base?>&amp;edit=<?php echo $form['form']->id ?>">
+		<a href="<?php echo esc_attr( $base ) ?>&amp;edit=<?php echo $form['form']->id ?>">
 		<?php endif; ?>
 		<?php echo htmlspecialchars ($form['form']->name) ?>
 		<?php if ($admin) : ?>
@@ -16,14 +16,14 @@
 	
 	<td class="center">
 	<?php if ($form['total_results'] > 0) : ?>
-	<a href="<?php echo $base?>&amp;total=<?php echo $form['form']->id ?>"><?php echo number_format ($form['total_results'], 0) ?></a>
+	<a href="<?php echo esc_attr( $base ) ?>&amp;total=<?php echo $form['form']->id ?>"><?php echo number_format ($form['total_results'], 0) ?></a>
 	<?php else : ?>
 	&mdash;
 	<?php endif; ?>
 	</td>
 
 	<?php if ($form['total_errors']) : ?>
-	<td class="center"><a href="<?php echo $base?>&amp;errors=<?php echo $form['form']->id ?>"><?php echo $form['total_errors'] ?></a></td>
+	<td class="center"><a href="<?php echo esc_attr( $base ) ?>&amp;errors=<?php echo $form['form']->id ?>"><?php echo $form['total_errors'] ?></a></td>
 	<?php else : ?>
 	<td>&mdash;</td>
 	<?php endif; ?>

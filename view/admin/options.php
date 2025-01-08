@@ -8,7 +8,7 @@
 	
   <p style="clear: both"><?php esc_html_e('NOTE: All save directories <strong>must</strong> be writable by the web server', 'filled-in'); ?></p>
 
-  <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>">
+  <form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>">
 	<?php wp_nonce_field ('filledin-save_options'); ?>
 	
   <table class="filled_in form-table">
@@ -103,7 +103,7 @@
 	<h2><?php esc_html_e('Remove Filled In', 'filled-in'); ?></h2>
 	<p><?php esc_html_e('This will remove all Filled In configuration and database tables.  Doing this will destroy <strong>all</strong> your Filled In data and does not have an undo - please be sure this is what you want to do!', 'filled-in'); ?></p>
 	
-	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" accept-charset="utf-8">
+	<form action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" method="post" accept-charset="utf-8">
 		<?php wp_nonce_field ('filledin-remove_plugin'); ?>
 		
 		<input class="button-primary" type="submit" name="destroy" value="<?php esc_attr_e('Remove Filled In', 'filled-in') ?>" id="destroy" onclick="if (confirm ('Are you sure you want to remove all Filled In data?')) return true; else return false"/>

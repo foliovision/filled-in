@@ -37,7 +37,7 @@ class Filter_Is_Less extends FI_Filter
 	<tr>
 		<th valign="top"><?php esc_html_e('Less than', 'filled-in') ?>:</th>
 		<td>
-			<input type="text" name="value" value="<?php echo $this->config['value'] ?>"/>
+			<input type="text" name="value" value="<?php echo esc_attr( $this->config['value'] ); ?>"/>
 			<?php esc_html_e ('or equal:', 'filled-in')?>
 			<input type="checkbox" name="equal" <?php if ($this->config['equal'] == 'true') echo ' checked="checked"' ?>/>
 			<p><?php esc_html_e('Remember that you can use other fields (i.e. this field is less than $otherfield$)', 'filled-in'); ?></p>
