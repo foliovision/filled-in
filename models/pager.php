@@ -229,23 +229,20 @@ class FI_Pager
 	 * @return string SQL
 	 **/
 	
-	function to_limits ($conditions = '', $searches = '', $filters = '', $group_by = '')
+	function to_limits ($conditions = '', $searches = '', $filters = '')
 	{
 		$sql = $this->to_conditions ($conditions, $searches, $filters);
-		
-		if ($group_by)
-			$sql .= ' '.$group_by.' ';
 			
 		if (strlen ($this->order_by) > 0)
 		{
 			if (!$this->is_secondary_sort ())
-				$sql .= " ORDER BY ".$this->order_by.' '.$this->order_direction;
+				$sql .= " ORDER BY " . sanitize_key( $this->order_by ) . ' '. sanitize_key( $this->order_direction );
 			else
-				$sql .= " ORDER BY ".$this->order_original.' '.$this->order_direction;
+				$sql .= " ORDER BY " . sanitize_key( $this->order_original ) . ' ' . sanitize_key( $this->order_direction );
 		}
 
 		if ($this->per_page > 0)
-			$sql .= ' LIMIT '.$this->offset ().','.$this->per_page;
+			$sql .= ' LIMIT ' . intval( $this->offset () ) . ','. intval( $this->per_page );
 		return $sql;
 	}
 
