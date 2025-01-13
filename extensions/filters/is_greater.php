@@ -55,7 +55,7 @@ class Filter_Is_Greater extends FI_Filter
 			echo wp_kses( 'is <strong>Greater Than</strong> ', 'filled-in', array( 'strong' => array() ) );
 			
 		if (!isset ($this->config['value']))
-			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
+			echo ' <em>' . esc_html( __('&lt;not configured&gt;', 'filled-in') ) . '</em>';
 		else
 			echo esc_html( $this->config['value'] );
 	}

@@ -55,9 +55,9 @@ class Filter_Is_Less extends FI_Filter
 			echo wp_kses( 'is <strong>Less Than</strong> ', 'filled-in', array( 'strong' => array() ) );
 			
 		if (!isset ($this->config['value']))
-			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
+			echo ' <em>' . esc_html( __('&lt;not configured&gt;', 'filled-in') ) . '</em>';
 		else
-			echo $this->config['value'];
+			echo esc_html( $this->config['value'] );
 	}
 }
 

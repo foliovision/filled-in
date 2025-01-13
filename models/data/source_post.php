@@ -175,8 +175,8 @@ class FI_Data_POST extends FI_Data_Source
       }
 
       if (!$echo)
-         return $str;
-      echo $str;
+         return esc_html( $str );
+      echo esc_html( $str );
    }
 
 	function what_group () { return 'post'; }

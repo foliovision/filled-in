@@ -10,7 +10,7 @@ class Result_Redirect_Post extends FI_Results
 			ob_start ();
 			?>
 			<script type="text/javascript">
-				document.location.href = '<?php echo get_permalink ($this->config["post"]) ?>';
+				document.location.href = '<?php echo esc_attr( get_permalink ($this->config["post"]) ) ?>';
 			</script>
 			<?php
 			$output = ob_get_contents ();
@@ -48,13 +48,12 @@ class Result_Redirect_Post extends FI_Results
 		{
 			$post = get_post ($this->config['post']);
 			if ($post->ID == $this->config['post'])
-				$post = "{$post->ID} (".htmlspecialchars ($post->post_title).")";
+				echo esc_html( $post->ID . " ( " . $post->post_title . ")" );
 			else
-				$post = $this->config['post'];
+				echo esc_html( $this->config['post'] );
 		}
 		else
-			$post = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
-		echo ' '.$post;
+			echo '<em>' . esc_html( __ ('&lt;not configured&gt;', 'filled-in') ) . '</em>';
 	}
 	
 	function save ($arr)

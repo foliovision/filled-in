@@ -4,5 +4,5 @@
 
 <?php if ($ajax) : ?>
 <script type="text/javascript" src="<?php bloginfo ('wpurl') ?>/wp-includes/js/jquery/jquery.js"></script>
-<script type="text/javascript" src="<?php echo $this->url () ?>/js/filled_in.js"></script>
+<script type="text/javascript" src="<?php echo esc_attr( $this->url () ) ?>/js/filled_in.js"></script>
 <?php endif;

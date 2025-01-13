@@ -13,13 +13,13 @@
         $aOptions = get_option('fv_antispam');
         if (!$aOptions['protect_filledin']) { ?>
           <p>
-            <small>(For better protection check the "<i>Protect Filled in forms</i>" in <a href="<?php echo site_url() . '/wp-admin/options-general.php?page=fv-antispam/fv-antispam.php'?>">FV Antispam</a> options.)</small>
+            <small>(For better protection check the "<i>Protect Filled in forms</i>" in <a href="<?php echo esc_attr( site_url() ) . '/wp-admin/options-general.php?page=fv-antispam/fv-antispam.php'?>">FV Antispam</a> options.)</small>
           </p>  
   <?php }
       }
   }
 ?>
-<form method="post" action="<?php echo esc_attr( $action.$top ); ?>" <?php echo $params ?><?php echo $upload ?>>
+<form method="post" action="<?php echo esc_attr( $action.$top ); ?>" <?php echo $params ?><?php echo $upload ? ' enctype="multipart/form-data"' : ''; ?>>
 	<input type="hidden" name="filled_in_form" value="<?php echo esc_attr( $formid ); ?>"/>
 	<input type="hidden" name="filled_in_start" value="<?php echo esc_attr( $time ); ?>"/>
 

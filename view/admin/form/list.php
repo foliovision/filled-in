@@ -15,12 +15,12 @@
             <table cellspacing="3" class="widefat post fixed">
                <?php foreach( $aPostErrorData as $strKey => $mixData ) : ?>
                   <tr>
-                     <td><?php echo $strKey; ?></td>
+                     <td><?php echo esc_html( $strKey ); ?></td>
                      <td>
                         <?php if( is_array( $mixData ) || is_object( $mixData ) ) : ?>
-                           <?php echo str_replace( "\n", '<br />', print_r( $mixData, true ) ); ?>
+                           <?php echo esc_html( str_replace( "\n", '<br />', print_r( $mixData, true ) ) ); ?>
                         <?php else : ?>
-                           <?php echo $mixData; ?>
+                           <?php echo esc_html( $mixData ); ?>
                         <?php endif; ?>
                      </td>
                   </tr>
@@ -35,7 +35,7 @@
 
 	<form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>">	
 		<input type="hidden" name="page" value="filled_in.php"/>
-		<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
+		<input type="hidden" name="curpage" value="<?php echo esc_attr( $pager->current_page () ) ?>"/>
 
 		<div id="pager" class="tablenav">
                     <?php if (current_user_can ('administrator')) : ?>
@@ -55,7 +55,7 @@
 			</div>
                     <?php endif; ?>
 			<div class="tablenav-pages">
-				<?php echo $pager->page_links (); ?>
+				<?php echo wp_kses( $pager->page_links (), array( 'a' => array( 'class' => array(), 'href' => array() ), 'span' => array( 'class' => array() ) ) ); ?>
 			</div>
 		</div>
 	</form>
@@ -67,10 +67,13 @@
 				<?php if (current_user_can ('administrator')) : ?><th width="16" class="check-column">
 					<input type="checkbox" name="select_all" class="select-all"/>
 				</th><?php endif; ?>
-				<th><?php echo $pager->sortable ('name', __ ('Form name', 'filled-in')); ?></th>
-				<th class="center"><a href=""><?php echo $pager->sortable ('_success', __ ('Succeeded', 'filled-in')); ?></th>
-				<th class="center"><a href=""><?php echo $pager->sortable ('_failed', __ ('Failed', 'filled-in')); ?></th>
-				<th class="center"><a href=""><?php echo $pager->sortable ('_last', __ ('Last Completed', 'filled-in')); ?></th>
+				<?php
+				$wp_kses = array( 'a' => array( 'href' => array() ), 'img' => array( 'src' => array(), 'width' => array(), 'height' => array() ) );
+				?>
+				<th><?php echo wp_kses( $pager->sortable ('name', __ ('Form name', 'filled-in')), $wp_kses ); ?></th>
+				<th class="center"><a href=""><?php echo wp_kses( $pager->sortable ('_success', __ ('Succeeded', 'filled-in')), $wp_kses ); ?></th>
+				<th class="center"><a href=""><?php echo wp_kses( $pager->sortable ('_failed', __ ('Failed', 'filled-in')), $wp_kses ); ?></th>
+				<th class="center"><a href=""><?php echo wp_kses( $pager->sortable ('_last', __ ('Last Completed', 'filled-in')), $wp_kses ); ?></th>
 			</tr>
 		</thead>
 
@@ -121,7 +124,7 @@
 		jQuery('#doaction2').click (function ()
 		{
 			if (jQuery('#action2_select').attr ('value') == 'delete')
-				deleteItems ('delete_forms','<?php echo wp_create_nonce ('filledin-delete_items'); ?>');
+				deleteItems ('delete_forms','<?php echo esc_attr( wp_create_nonce ('filledin-delete_items') ); ?>');
 			return false;
 		});
 	});

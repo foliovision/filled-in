@@ -3,16 +3,16 @@
 		<img src="<?php bloginfo ('wpurl') ?>/wp-content/plugins/filled-in/images/error_big.png" alt="error" width="128" height="128"/>
 	</p>
 	
-	<p><?php echo $message ?></p>
+	<p><?php echo esc_html( $message ) ?></p>
 
 	<div style="margin-left: 120px">
 		<ul>
 <?php if (is_array ($errors->message)) : ?>
 			<?php foreach ($errors->message AS $error) : ?>
-				<li><?php echo $error; ?></li>
+				<li><?php echo esc_html( $error ); ?></li>
 			<?php endforeach; ?>
 <?php else : ?>
-			<li><?php echo $errors->message ?></li>
+			<li><?php echo esc_html( $errors->message ) ?></li>
 <?php endif; ?>
 		</ul>
 	</div>

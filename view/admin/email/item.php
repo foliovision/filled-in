@@ -3,7 +3,7 @@
 	<input type="checkbox" class="check" name="checkall[]" value="<?php echo esc_attr( $template->name ); ?>"/>
 </td><?php endif; ?>
 <td>
-	<a href="<?php echo $this->url () ?>/controller/admin_ajax.php?cmd=edit_template&amp;id=<?php echo $template->name ?>" class="filledin-template-edit"><?php echo $template->name ?></a>
+	<a href="<?php echo esc_attr( $this->url () ) ?>/controller/admin_ajax.php?cmd=edit_template&amp;id=<?php echo esc_attr( $template->name ) ?>" class="filledin-template-edit"><?php echo esc_attr( $template->name ) ?></a>
 </td>
 <td><?php echo esc_html ($template->from); ?></td>
 <td><?php echo esc_html ($template->to); ?></td>

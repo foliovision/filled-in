@@ -47,11 +47,11 @@ class Filter_String_Length extends FI_Filter
 	?>
 	<tr>
 		<th><?php esc_html_e('Shortest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="shortest" value="<?php echo isset($this->config['shortest']) ? $this->config['shortest'] : '' ?>"/> <span class="sub"><?php esc_html_e('characters, leave empty for no shortest', 'filled-in'); ?></span></td>
+		<td><input type="text" name="shortest" value="<?php echo esc_attr( isset($this->config['shortest']) ? $this->config['shortest'] : '' ) ?>"/> <span class="sub"><?php esc_html_e('characters, leave empty for no shortest', 'filled-in'); ?></span></td>
 	</tr>
 	<tr>
 		<th><?php esc_html_e('Longest', 'filled-in'); ?>:</th>
-		<td><input type="text" name="longest" value="<?php echo isset($this->config['longest']) ? $this->config['longest'] : '' ?>"/> <span class="sub"><?php esc_html_e('characters, leave empty for no longest', 'filled-in'); ?></span></td>
+		<td><input type="text" name="longest" value="<?php echo esc_attr( isset($this->config['longest']) ? $this->config['longest'] : '' ) ?>"/> <span class="sub"><?php esc_html_e('characters, leave empty for no longest', 'filled-in'); ?></span></td>
 	</tr>
 	<?php
 	}

@@ -93,11 +93,11 @@ class Filter_Is_Equal extends FI_Filter
 			echo wp_kses( __('is <strong>Equal To</strong>: ', 'filled-in'), array( 'strong' => array() ) );
 			
 		if (!isset ($this->config['values']) || $this->config['values'] == '')
-			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
+			echo ' <em>' . esc_html( __('&lt;not configured&gt;', 'filled-in') ) . '</em>';
 		else
 		{
 			$values = preg_split ('/[\n\r]+/', $this->config['values']);
-			echo "'".implode ('\' or \'', $values)."'";
+			echo esc_html( "'".implode ('\' or \'', $values)."'" );
 		}
 	}
 }

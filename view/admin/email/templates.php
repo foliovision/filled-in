@@ -37,7 +37,7 @@
 		</thead>
 		
     <?php foreach ($templates AS $template) : ?>
-      <tr id="temp_<?php echo $template->name ?>">
+      <tr id="temp_<?php echo esc_attr( $template->name ) ?>">
         <?php $this->render_admin ('email/item', array ('template' => $template)); ?>
       </tr>
     <?php endforeach; ?>
@@ -45,7 +45,7 @@
   <?php endif; ?>
   
   <div id="loading" style="display: none">
-    <img src="<?php echo $this->url () ?>/images/loading.gif" width="32" height="32" alt="loading"/>
+    <img src="<?php echo esc_attr( $this->url () ) ?>/images/loading.gif" width="32" height="32" alt="loading"/>
   </div>
   
 	<br/>
@@ -74,7 +74,7 @@
 		jQuery('#doaction2').click (function ()
 		{
 			if (jQuery('#action2_select').attr ('value') == 'delete')
-				deleteItems ('delete_templates','<?php echo wp_create_nonce ('filledin-delete_items'); ?>');
+				deleteItems ('delete_templates','<?php echo esc_attr( wp_create_nonce ('filledin-delete_items') ); ?>');
 			return false;
 		});
 		

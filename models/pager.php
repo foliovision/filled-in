@@ -460,7 +460,7 @@ class FI_Pager
 		<select name="perpage">
 			<?php foreach ($this->steps AS $step) : ?>
 		  	<option value="<?php echo esc_attr( $step ); ?>"<?php if ($this->per_page == $step) echo ' selected="selected"' ?>>
-					<?php printf (__ ('%d per-page', $plugin), $step) ?>
+					<?php echo esc_html( sprintf (__ ('%d per-page', $plugin), intval( $step ) ) ); ?>
 				</option>
 			<?php endforeach; ?>
 		</select>

@@ -133,7 +133,7 @@ class PostToPommo extends FI_Post
 		else
 			$fields = '';
 ?>
- with email taken from '<?php echo $email ?>' <?php echo $fields?>
+ with email taken from '<?php echo esc_html( $email ) ?>' <?php echo esc_html( $fields ) ?>
 <?php
 	}
 	

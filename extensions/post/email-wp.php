@@ -268,7 +268,7 @@ class Post_Email_WP extends FI_Post
       <small>(use </small>;<small> to separate multiple addresses; enter $field_name$ to use any of the form field)</small></td>
    </tr>
 
-   <tr id="replyto-<?php echo $this->id; ?>">
+   <tr id="replyto-<?php echo intval( $this->id ); ?>">
       <th width="150"><?php esc_html_e( 'Use ReplyTo', 'filled-in' ); ?>:</th>
       <td>
          <input type="checkbox" name="replyto" value="yes" <?php if ( ! empty( $this->config['replyto'] ) && 'yes' == $this->config['replyto'] ) echo 'checked="checked"'; ?> />
@@ -310,7 +310,7 @@ class Post_Email_WP extends FI_Post
             <option value="default"><?php esc_html_e('Default', 'filled-in'); ?></option>
             <?php if ( is_array( $templates ) && count ($templates) > 0) : ?>
                <?php foreach ($templates AS $temp) : ?>
-                  <option value="<?php echo esc_attr( $temp->name ); ?>" <?php if ($temp->name == $this->config['template'] ? $this->config['template'] : '') echo ' selected="selected"' ?>><?php echo $temp->name ?></option>
+                  <option value="<?php echo esc_attr( $temp->name ); ?>" <?php if ($temp->name == $this->config['template'] ? $this->config['template'] : '') echo ' selected="selected"' ?>><?php echo esc_html( $temp->name ) ?></option>
                <?php endforeach; ?>
             <?php endif; ?>
          </select>
@@ -327,12 +327,12 @@ class Post_Email_WP extends FI_Post
 
 
    <script type="text/javascript">
-      jQuery( "#replyto-<?php echo $this->id; ?>" ).change( function( evt ){
-         jQuery( "#replyto-<?php echo $this->id; ?>" ).siblings( ".replyto" ).toggle();
+      jQuery( "#replyto-<?php echo intval( $this->id ); ?>" ).change( function( evt ){
+         jQuery( "#replyto-<?php echo intval( $this->id ); ?>" ).siblings( ".replyto" ).toggle();
       });
 
-      if( 0 >= jQuery( "#replyto-<?php echo $this->id; ?> input:checked" ).length )
-         jQuery( "#replyto-<?php echo $this->id; ?>" ).siblings( ".replyto" ).hide();
+      if( 0 >= jQuery( "#replyto-<?php echo intval( $this->id ); ?> input:checked" ).length )
+         jQuery( "#replyto-<?php echo intval( $this->id ); ?>" ).siblings( ".replyto" ).hide();
    </script>
 
       <?php
@@ -354,7 +354,7 @@ class Post_Email_WP extends FI_Post
       echo wp_kses( sprintf (__ (' to <strong>%s</strong>, with template \'%s\' %s', 'filled-in'), $to, $template, $subject), array( 'strong' => array() ) );
 
       if ( ! empty( $this->config['replyto'] ) && 'yes' == $this->config['replyto'] && ! empty( $this->config['replyto-email'] ) && trim( $this->config['replyto-email'] ) )
-         echo '. Using a ReplyTo link to <em>'.$this->config['replyto-email'].'</em>.';
+         echo '. Using a ReplyTo link to <em>' . esc_html( $this->config['replyto-email'] ) .'</em>.';
    }
 
    function save( $config ){

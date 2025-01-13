@@ -188,7 +188,7 @@ class FI_Extension
 	function prefill ($text, $data) { return $text; }
 	function what_group () { return ''; }
 	function edit () {	}
-	function show ()	{	echo '<strong>'.$this->name ().'</strong>'; }
+	function show ()	{	echo '<strong>' . esc_html( $this->name () ) . '</strong>'; }
 	function save ($config) { return $config; }
 	function is_enabled () { return $this->status == 'on'; }
 	function name () { return ""; }

@@ -33,7 +33,7 @@
       <?php
         $failed_cron_last_run = get_option ('filled_in_cron_delete_failed_last_run');
         if ( $failed_cron_last_run != false ){
-          echo ' <strong>Last run:</strong> '. date( 'r', $failed_cron_last_run );
+          echo ' <strong>Last run:</strong> '. esc_html( date( 'r', $failed_cron_last_run ) );
         }
       ?>
     </td>
@@ -51,7 +51,7 @@
 				<span class="sub"><?php esc_html_e('Where email attachments are saved', 'filled-in'); ?></span>
 			</th>
 	  	<td>
-	      <input type="text" class="regular-text" style="width: 95%" name="attachments" value="<?php echo get_option ('filled_in_attachments') ?>"/>
+	      <input type="text" class="regular-text" style="width: 95%" name="attachments" value="<?php echo esc_attr( get_option ('filled_in_attachments') ) ?>"/>
 	  	</td>
     </tr>
 
@@ -60,7 +60,7 @@
 			<span class="sub"><?php esc_html_e('Where uploads are saved before being moved by processors', 'filled-in'); ?></span>
 			</th>
 	  	<td>
-	      <input type="text" class="regular-text" style="width: 95%" name="uploads" value="<?php echo get_option ('filled_in_uploads') ?>"/>
+	      <input type="text" class="regular-text" style="width: 95%" name="uploads" value="<?php echo esc_attr( get_option ('filled_in_uploads') ) ?>"/>
 	  	</td>
     </tr>
 
@@ -69,8 +69,8 @@
 				<?php esc_html_e('SMTP host', 'filled-in'); ?>:<br/><span class="sub"><?php esc_html_e('Leave blank to use default settings', 'filled-in'); ?></span>
 			</th>
 			<td valign="top">
-				<input type="text" class="regular-text" name="smtp_host" value="<?php echo get_option ('filled_in_smtp_host') ?>" />
-				<?php esc_html_e('Port', 'filled-in'); ?>: <input type="text" size="5" name="smtp_port" value="<?php echo get_option ('filled_in_smtp_port') ?>" />
+				<input type="text" class="regular-text" name="smtp_host" value="<?php echo esc_attr( get_option ('filled_in_smtp_host') ) ?>" />
+				<?php esc_html_e('Port', 'filled-in'); ?>: <input type="text" size="5" name="smtp_port" value="<?php echo esc_attr( get_option ('filled_in_smtp_port') ) ?>" />
 				<select name="smtp_ssl">
 					<option value="none" <?php if (get_option ('filled_in_smtp_ssl') == 'none') echo ' selected="selected"' ?>><?php esc_html_e('Unencrypted', 'filled-in'); ?></option>
 					<option value="ssl" <?php if (get_option ('filled_in_smtp_ssl') == 'ssl') echo ' selected="selected"' ?>>SSL</option>

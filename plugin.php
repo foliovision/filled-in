@@ -324,7 +324,7 @@ class Filled_In_Plugin {
 		if ( file_exists( "{$this->plugin_base}/view/admin/$ug_name.php" ) )
 			include "{$this->plugin_base}/view/admin/$ug_name.php";
 		else
-			echo "<p>Rendering of admin template {$this->plugin_base}/view/admin/$ug_name.php failed</p>";
+			echo "<p>Rendering of admin template " . esc_html( $this->plugin_base ) . "/view/admin/" . esc_html( $ug_name ) . ".php failed</p>";
 	}
 
 	/**
@@ -340,12 +340,12 @@ class Filled_In_Plugin {
 			$$key = $val;
 		}
 
-		if ( file_exists( TEMPLATEPATH."/view/{$this->plugin_name}/$ug_name.php" ) )
-			include TEMPLATEPATH."/view/{$this->plugin_name}/$ug_name.php";
+		if ( file_exists( get_template_directory() . "/view/{$this->plugin_name}/$ug_name.php" ) )
+			include get_template_directory() . "/view/{$this->plugin_name}/$ug_name.php";
 		elseif ( file_exists( "{$this->plugin_base}/view/{$this->plugin_name}/$ug_name.php" ) )
 			include "{$this->plugin_base}/view/{$this->plugin_name}/$ug_name.php";
 		else
-			echo "<p>Rendering of template $ug_name.php failed</p>";
+			echo "<p>Rendering of template " . esc_html( $ug_name ) . ".php failed</p>";
 	}
 
 	/**
@@ -392,7 +392,7 @@ class Filled_In_Plugin {
 	function render_error( $message ) {
 	?>
 <div class="fade error" id="message">
- <p><?php echo $message ?></p>
+ <p><?php echo esc_html( $message ) ?></p>
 </div>
 <?php
 	}
@@ -409,7 +409,7 @@ class Filled_In_Plugin {
 	function render_message( $message, $timeout = 0 ) {
 		?>
 <div class="updated" id="message" onclick="this.parentNode.removeChild(this)">
- <p><?php echo $message ?></p>
+ <p><?php echo esc_html( $message ) ?></p>
 </div>
 	<?php
 	}
@@ -521,16 +521,16 @@ class Filled_In_Plugin {
 		if ( count( $items ) > 0 ) {
 			foreach ( $items AS $key => $value ) {
 				if ( is_array( $value ) )	{
-					echo '<optgroup label="'.$key.'">';
+					echo '<optgroup label="' . esc_attr( $key ) . '">';
 
 					foreach ( $value AS $sub => $subvalue ) {
-						echo '<option value="'.$sub.'"'.( $sub == $default ? ' selected="selected"' : '' ).'>'.$subvalue.'</option>';
+						echo '<option value="' . esc_attr( $sub ) . '"'.( $sub == $default ? ' selected="selected"' : '' ).'>' . esc_html( $subvalue ) . '</option>';
 					}
 
 					echo '</optgroup>';
 				}
 				else
-					echo '<option value="'.$key.'"'.( $key == $default ? ' selected="selected"' : '' ).'>'.$value.'</option>';
+					echo '<option value="' . esc_attr( $key ) . '"'.( $key == $default ? ' selected="selected"' : '' ).'>' . esc_html( $value ) . '</option>';
 			}
 		}
 	}

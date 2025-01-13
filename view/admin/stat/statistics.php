@@ -2,7 +2,7 @@
 <div class="wrap">
 	<h2>
 <?php if (true || current_user_can ('administrator')) : ?>
-		<?php echo esc_html( $title ) ?> for '<a href="<?php bloginfo ('wpurl') ?>/wp-admin/edit.php?page=filled_in.php&amp;edit=<?php echo $form->id ?>"><?php echo esc_html ($form->name) ?></a>'
+		<?php echo esc_html( $title ) ?> for '<a href="<?php echo esc_attr( admin_url( 'edit.php?page=filled_in.php&edit=' . intval( $form->id ) ) ) ?>"><?php echo esc_html ($form->name) ?></a>'
 <?php else : ?>
 	<?php echo esc_html( $title ) ?> for '<?php echo esc_html ($form->name) ?>'
 <?php endif; ?>
@@ -12,7 +12,7 @@
 		
 		<form method="post" action="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>">	
 			<input type="hidden" name="page" value="filled_in.php"/>
-			<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>
+			<input type="hidden" name="curpage" value="<?php echo intval( $pager->current_page () ) ?>"/>
 			<p class="search-box">
 				<label for="post-search-input" class="hidden"><?php esc_html_e('Search', 'filled-in') ?>:</label>
 
@@ -42,7 +42,7 @@
 				</div>
                             <?php endif; ?>
 				<div class="tablenav-pages">
-					<?php echo $pager->page_links (); ?>
+					<?php echo wp_kses( $pager->page_links (), array( 'a' => array( 'class' => array(), 'href' => array() ), 'span' => array( 'class' => array() ) ) ); ?>
 				</div>
 			</div>
 		</form>
@@ -56,12 +56,12 @@
 
 		<tbody>
 		<?php $alt = 0; foreach ($stats AS $statistic) : ?>
-		<tr <?php if ($alt++ % 2 == 1) echo ' class="alt"' ?> id="s_<?php echo $statistic->id ?>">
+		<tr <?php if ($alt++ % 2 == 1) echo ' class="alt"' ?> id="s_<?php echo intval( $statistic->id ) ?>">
 			<?php if (current_user_can ('administrator')): ?><td width="16" class="item center">
 				<input type="checkbox" class="check" name="checkall[]" value="<?php echo esc_attr( $statistic->id ); ?>"/>
 			</td><?php endif; ?>
 			<td class="date">
-				<a href="<?php echo $this->url () ?>/controller/admin_ajax.php?cmd=show_stat&amp;id=<?php echo $statistic->id ?>" class="filledin-show-stat"><?php echo date ('d M y', $statistic->created) ?></a>
+				<a href="<?php echo esc_attr( $this->url () ) ?>/controller/admin_ajax.php?cmd=show_stat&amp;id=<?php echo intval( $statistic->id ) ?>" class="filledin-show-stat"><?php echo esc_html( date ('d M y', $statistic->created) )?></a>
 			</td>
 
 			<?php
@@ -70,14 +70,14 @@
 			?>
 		</tr>
 
-		<tr id="d_<?php echo $statistic->id ?>" style="display: none"><td/></tr>
+		<tr id="d_<?php echo intval( $statistic->id ) ?>" style="display: none"><td/></tr>
 
 		<?php endforeach; ?>
 		</tbody>
 	</table>
 
 	<div id="loading" style="display: none">
-		<img src="<?php echo $this->url () ?>/images/loading.gif" alt="loading" width="32" height="32"/>
+		<img src="<?php echo esc_attr( $this->url () ) ?>/images/loading.gif" alt="loading" width="32" height="32"/>
 	</div>
 
 	<?php else : ?>
@@ -111,10 +111,7 @@
 		jQuery('#doaction2').click (function ()
 		{
 			if (jQuery('#action2_select').attr ('value') == 'delete')
-			  /* ///  Modification  1.7.6 - bugfix */
-				/* //deleteItems ('delete_stats','<?php echo wp_create_nonce ('filledin-delete_items'); ?>'); */
-				deleteItems ('delete_stats','<?php echo wp_create_nonce ('filledin-delete_stats'); ?>');
-				/* /// End of modification */
+				deleteItems ('delete_stats','<?php echo esc_attr( wp_create_nonce ('filledin-delete_stats') ); ?>');
 			return false;
 		});
 		

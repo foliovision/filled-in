@@ -112,7 +112,7 @@ class Filter_File_Upload extends FI_Filter
 		if ($this->config['file_max'] != 0)
 			$parts[] = sprintf (__ ('maximum of %d %s', 'filled-in'), $this->config['file_max'], $this->config['file_max'] == 1 ? __ ('file', 'filled-in') : __ ('files', 'filled-in'));
 			
-		echo implode (', ', $parts);
+		echo esc_html( implode (', ', $parts) );
 	}
 	
 	function accept_what_source () { return 'files'; }

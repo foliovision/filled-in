@@ -45,9 +45,9 @@ class Pre_Include_Fields extends FI_Pre
 
 		$fields = $this->config['fields'];
 		if ($fields == '')
-			echo ' <em>' . __('&lt;not configured&gt;', 'filled-in') . '</em>';
+			echo ' <em>' . esc_html( __('&lt;not configured&gt;', 'filled-in') ) . '</em>';
 		else
-			echo " '$fields'";
+			echo esc_html( " '$fields'" );
 	}
 	
 	function save ($config)

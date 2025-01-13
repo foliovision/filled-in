@@ -78,7 +78,7 @@ class FI_Filter extends FI_Extension
 	<tr>
 		<th><?php esc_html_e('Error message', 'filled-in') ?>:</th>
 		<td>
-			<input type="text" name="error" value="<?php echo isset($this->config['error']) ? $this->config['error'] : '' ?>" style="width: 95%"/>
+			<input type="text" name="error" value="<?php echo esc_attr( isset($this->config['error']) ? $this->config['error'] : '' ) ?>" style="width: 95%"/>
 		</td>
 	</tr>
 	<?php

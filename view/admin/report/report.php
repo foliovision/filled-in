@@ -93,7 +93,7 @@
 	<?php if (count ($reports) > 0) : ?>
 	<ul class="emails" style="clear: both">
 		<?php foreach ($reports AS $report) : ?>
-		<li id="form_<?php echo $report->id ?>">
+		<li id="form_<?php echo intval( $report->id ) ?>">
 			<?php $this->render_admin ('report/item', array ('base' => $base, 'report' => $report)); ?>
 		</li>
 		<?php endforeach; ?>

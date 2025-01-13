@@ -394,7 +394,7 @@ class Filled_In extends Filled_In_Plugin
         'name'    => $form->name,
         'pageid'  => $post,
         'action'  => $strUrl,
-        'upload'  => ( isset($form->options['upload']) && $form->options['upload'] == 'true' ) ? ' enctype="multipart/form-data"' : '',
+        'upload'  => isset($form->options['upload']) && $form->options['upload'] == 'true',
         'time'    => $time == '' ? time () : $time,
         'base'    => $strUrl,
         'waiting' => isset($form->options['custom_submit']) ? $form->options['custom_submit'] : '',

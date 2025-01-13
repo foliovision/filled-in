@@ -10,7 +10,7 @@ class Result_Redirect_URL extends FI_Results
 			ob_start ();
 			?>
 			<script type="text/javascript">
-				document.location.href = '<?php echo $this->config["url"] ?>';
+				document.location.href = '<?php echo esc_attr( $this->config["url"] ) ?>';
 			</script>
 			<?php
 			$output = ob_get_contents ();
@@ -45,10 +45,9 @@ class Result_Redirect_URL extends FI_Results
 	{
 		parent::show ();
 		if (isset ($this->config['url']) != 0)
-			$url = $this->config['url'];
+			echo esc_html( $this->config['url'] );
 		else
-			$url = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
-		echo ' '.$url;
+			echo '<em>' . esc_html( __ ('&lt;not configured&gt;', 'filled-in') ) . '</em>';
 	}
 	
 	function save ($arr)

@@ -1,7 +1,7 @@
 <?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><div class="wrap">
 	<h2><?php esc_html_e('Form Edit', 'filled-in') ?></h2>
 	<?php $this->submenu (true); ?>
-	<form style="clear: both" method="post" action="<?php echo str_replace ('&', '&amp;', $_SERVER['REQUEST_URI']) ?>">
+	<form style="clear: both" method="post" action="<?php echo esc_attr( str_replace ('&', '&amp;', $_SERVER['REQUEST_URI'] ) ) ?>">
 		<table class="form-table">
 		  <tr>
 			<th width="120" valign="top"><?php esc_html_e('Name', 'filled-in') ?>:<br/><span class="sub"><?php esc_html_e('Identifies the form', 'filled-in') ?></span></th>

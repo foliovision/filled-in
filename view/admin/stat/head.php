@@ -6,6 +6,6 @@
   <th class="date"><?php esc_html_e('Date', 'filled-in') ?></th>
 
   <?php foreach ($columns AS $column) : ?>
-  <th><?php echo $column ?></th>
+  <th><?php echo esc_html( $column ) ?></th>
   <?php endforeach; ?>
 </tr>

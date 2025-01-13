@@ -294,9 +294,9 @@ class Filled_In_Admin extends Filled_In_Plugin
 	  $url = $url[0];
 
 		if (!$this->is_25 () && $inwrap == false)
-			$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub, 'class' => 'id="subsubmenu"'));
+			$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub, 'id' => 'subsubmenu'));
 		else if ($this->is_25 () && $inwrap == true)
-			$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub, 'class' => 'class="subsubsub"', 'trail' => ' | '));
+			$this->render_admin ('submenu', array ('url' => $url, 'sub' => $sub, 'class' => 'subsubsub', 'trail' => ' | '));
 			
 		return $sub;
 	}

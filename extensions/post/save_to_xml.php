@@ -83,7 +83,7 @@ class Save_To_XML extends FI_Post
 			$overwrite = __ ('(file is overwritten)', 'filled-in');
 
 	  ?>
-	  '<strong><?php echo $filename ?></strong>' <?php echo $overwrite ?>
+	  '<strong><?php echo esc_html( $filename ) ?></strong>' <?php echo esc_html( $overwrite ) ?>
 		<?php
 	}
 	
