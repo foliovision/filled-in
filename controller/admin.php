@@ -634,21 +634,6 @@ class Filled_In_Admin extends Filled_In_Plugin
     if( ($version_db === false) || version_compare( $version_db, $plugin_data['Version'], '<') ){
       update_option('filled_in_version',$plugin_data['Version']); //version in database update
     }
-    
-    $this->pointer_boxes = array();
-    
-    if( isset($notifications['filled_in_cron_delete_failed_notice']) && $notifications['filled_in_cron_delete_failed_notice'] ) {
-        $this->pointer_boxes['filled_in_cron_delete_failed_notice'] = array(
-          'id' => '#wpadminbar',
-          'heading' => __('Filled In: Failed submissions', 'filled-in'),
-          'content' => __('From now on failed submissions older than 30 days are automatically deleted from database.<br/><br />If you want to turn this off, go to <a href="http://localhost/site/wp-admin/tools.php?page=filled_in.php&sub=options">Filled In Options</a> and check "Delete failed submission" off. However then you should be checking if your database is not too big.<br />', 'filled-in'),
-          'position' => array( 'edge' => 'top', 'align' => 'right' ),
-          'button1' => __('I understand', 'filled-in'),
-          'button2' => __('I\'ll check this later', 'filled-in')
-        );
-    }
-
-    add_action( 'wp_ajax_fv_foliopress_ajax_pointers', array( $this, 'util__pointers_ajax' ) );
   }
   
 }
