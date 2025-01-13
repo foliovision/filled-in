@@ -61,7 +61,7 @@ class Result_Display_Message extends FI_Results
 		else
 			$message = '<em>' . __ ('&lt;not configured&gt;', 'filled-in') . '</em>';
 		
-		echo wp_kses( sprintf (__ (" witha '%s'", 'filled-in'), $message), array( 'em' => array() ) );
+		echo wp_kses( sprintf (__ (" with '%s'", 'filled-in'), $message), array( 'em' => array() ) );
 	}
 	
 	function save ($arr)
