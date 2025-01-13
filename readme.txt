@@ -3,7 +3,7 @@ Contributors: johnny5, FolioVision
 Donate link: http://foliovision.com/donate/
 Tags: form, contact, validate
 Requires at least: 2.7
-Tested up to: 6.3.3
+Tested up to: 6.7
 Stable tag: trunk 
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -51,6 +51,11 @@ You can find full details of installing a plugin on the [plugin installation pag
 Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugins/filled-in/) page.
 
 == Changelog ==
+
+= 1.9.1 =
+* Security: Avoid CSRF with plugin settings page
+* Security: Full WordPress Plugin Check
+* Tested up to: 6.7
 
 = 1.9 =
 * PHP 8.2 fixes
