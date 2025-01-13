@@ -8,7 +8,6 @@ class Filled_In_Admin extends Filled_In_Plugin
 {
 	function __construct ()
 	{
-    parent::__construct();
     
 		if (file_exists (ABSPATH.'wp-includes/pluggable-functions.php'))
 			include (ABSPATH.'wp-includes/pluggable-functions.php');
@@ -16,11 +15,6 @@ class Filled_In_Admin extends Filled_In_Plugin
 			include (ABSPATH.'wp-includes/pluggable.php');
 		
 		$this->register_plugin ('filled-in', dirname (__FILE__));
-		
-		/// Addition  1.7.6 - additional API
-		$this->readme_URL = 'http://plugins.trac.wordpress.org/browser/filled-in/trunk/readme.txt?format=txt';    
-	  add_action( 'in_plugin_update_message-filled-in/filled_in.php', array( &$this, 'plugin_update_message' ) );
-	  /// End of addition
 		
 		$this->add_action ('activate_filled-in/filled_in.php', 'activate');
 		if (current_user_can ('edit_posts') && is_admin ())

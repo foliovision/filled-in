@@ -106,7 +106,7 @@
 
 /// Modification  1.7.6 - additional API
 //class Filled_In_Plugin {
-class Filled_In_Plugin extends Filled_In_Foliopress_Plugin {
+class Filled_In_Plugin {
 /// End of Modification  
 	/**
 	 * Plugin name
@@ -125,10 +125,6 @@ class Filled_In_Plugin extends Filled_In_Foliopress_Plugin {
 	 * @var string URL
 	 **/
 	var $version_url;
-
-  function __construct(){
-    parent::__construct();
-  }
   
 	/**
 	 * Register your plugin with a name and base directory.  This <strong>must</strong> be called once.

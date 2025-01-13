@@ -10,9 +10,6 @@ License: GPL-3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 */
 
-/// Addition  1.7.6 - additional API
-include (dirname (__FILE__).'/fp-api.php');
-/// End of Addition
 include (dirname (__FILE__).'/plugin.php');
 include (dirname (__FILE__).'/models/form.php');
 
