@@ -79,7 +79,7 @@
  <?php endforeach; ?>
 <?php endif; ?>
 
-<?php if (count ($cookies->data) > 0 && is_array ($cookies->data)) : ?>
+<?php if ( ! empty( $cookies->data ) && is_array ($cookies->data)) : ?>
  <?php foreach ($cookies->data AS $key => $value) : ?>
  <tr class="cookie">
    <th valign="top"><?php echo $key ?>:</th>

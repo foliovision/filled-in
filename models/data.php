@@ -102,7 +102,7 @@ class FI_Data
 		return $wpdb->query ($sql);
 	}
 	
-	function load ($dataid)
+	public static function load ($dataid)
 	{
 		global $wpdb;
 		

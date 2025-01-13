@@ -180,10 +180,12 @@ class Filled_In_Admin_AJAX extends Filled_In_Plugin
 		$form   = FI_Form::load_by_id ($stat->form_id);
 
 		$columns = array ();
-		if ($form->quickview)
+		if ($form->quickview) {
 			$columns = explode (',', $form->quickview);
-		else if (count ($stat) > 0)
+
+		} else if ( ! empty( $stat->sources['post']->data ) && count ($stat->sources['post']->data) > 0 ) {
 			$columns = array_slice (array_keys ($stat->sources['post']->data), 0, 4);
+		}
 
 		$this->render_admin ('stat/stat_details', array ('columns' => count ($columns), 'stat' => $stat, 'post' => $stat->get_source ('post'), 'cookies' => $stat->get_source ('cookies'), 'server' => $stat->get_source ('server'), 'files' => $stat->get_source ('files'), 'errors' => $errors));
 	}
