@@ -524,13 +524,23 @@ class Filled_In_Admin extends Filled_In_Plugin
 			$msg = '';
 			if (isset ($_POST['update']))
 			{
-				$msg = __ ("Form details updated successfully", 'filled-in');
-				$result = $form->update_details ($_POST['new_name'], $_POST['quickview'], $_POST['special']);
+				if ( ! wp_verify_nonce( $_POST['filled_in_nonce'], 'filled_in_nonce' ) ) {
+					$result = 'Nonce error.';
+
+				} else {
+					$msg = __ ("Form details updated successfully", 'filled-in');
+					$result = $form->update_details ($_POST['new_name'], $_POST['quickview'], $_POST['special']);
+				}
 			}
 			else if (isset ($_POST['update_options']))
 			{
-				$msg = __ ("Form details updated successfully", 'filled-in');
-				$result = $form->update_options ($_POST['custom_submit'], $_POST['custom_id'], trim( $_POST['submit-anchor'] ) );
+				if ( ! wp_verify_nonce( $_POST['filled_in_nonce'], 'filled_in_nonce' ) ) {
+					$result = 'Nonce error.';
+
+				} else {
+					$msg = __ ("Form details updated successfully", 'filled-in');
+					$result = $form->update_options ($_POST['custom_submit'], $_POST['custom_id'], trim( $_POST	['submit-anchor'] ) );
+				}
 			}
 
 			if ($result === true && $msg != '')

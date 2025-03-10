@@ -30,6 +30,7 @@
 		  <tr>
 		    <td width="120" ></td>
 		    <td>
+					<?php wp_nonce_field( 'filled_in_nonce', 'filled_in_nonce' ); ?>
 					<input class="button-primary" type="submit" name="update" value="<?php esc_attr_e('Update', 'filled-in') ?>"/>
 				</td>
 		  </tr>
@@ -90,6 +91,7 @@
 	  <tr>
 	    <td width="180"></td>
 	    <td>
+				<?php wp_nonce_field( 'filled_in_nonce', 'filled_in_nonce' ); ?>
 				<input type="submit" class="button-primary" name="update_options" value="<?php esc_attr_e('Update', 'filled-in') ?>"/>
 			</td>
 	  </tr>
