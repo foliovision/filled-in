@@ -52,6 +52,10 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.9.2 =
+* Security: Nonce verification for form options
+* Security: Adding missing nonce verification for form extensions
+
 = 1.9.1 =
 * Security: Avoid CSRF with plugin settings page
 * Security: Full WordPress Plugin Check
