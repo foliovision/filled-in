@@ -108,9 +108,14 @@ class Filled_In_Admin_AJAX extends Filled_In_Plugin
 	
 	function extension_save ($id)
 	{
-		$ext = FI_Extension::load ($id);
-		$ext->update (new FI_Data_POST ($_POST));
-		$this->render_admin ('extension/show', array ('extension' => $ext));
+		if ( check_ajax_referer( 'filled_in_nonce', false, false ) ) {
+			$ext = FI_Extension::load ($id);
+			$ext->update (new FI_Data_POST ($_POST));
+			$this->render_admin ('extension/show', array ('extension' => $ext));
+
+		} else {
+			echo 'Invalid nonce, please reload the page.';
+		}
 	}
 	
 	function extension_order ($id)
@@ -120,34 +125,50 @@ class Filled_In_Admin_AJAX extends Filled_In_Plugin
 		
 	function extension_enable ($id)
 	{
-		if (check_ajax_referer ('filledin-extension_enable_'.$id))
+		if (check_ajax_referer ('filledin-extension_enable_'.$id, false, false ))
 		{
 			$ext = FI_Extension::load ($id);
 			$ext->enable ();
 			$this->render_admin ('extension/show', array ('extension' => $ext));
+
+		} else {
+			echo 'Invalid nonce, please reload the page.';
 		}
 	}
 	
 	function extension_disable ($id)
 	{
-		if (check_ajax_referer ('filledin-extension_disable_'.$id))
+		if (check_ajax_referer ('filledin-extension_disable_'.$id, false, false ))
 		{
 			$ext = FI_Extension::load ($id);
 			$ext->disable ();
 			$this->render_admin ('extension/show', array ('extension' => $ext));
+
+		} else {
+			echo 'Invalid nonce, please reload the page.';
 		}
 	}
 	
 	function extension_edit ($id)
 	{
-		$ext = FI_Extension::load ($id);
-		$this->render_admin ('extension/edit', array ('extension' => $ext));
+		if ( check_ajax_referer( 'filled_in_nonce_edit', false, false ) ) {
+			$ext = FI_Extension::load ($id);
+			$this->render_admin ('extension/edit', array ('extension' => $ext));
+
+		} else {
+			echo 'Invalid nonce, please reload the page.';
+		}
 	}
 	
 	function extension_show ($id)
 	{
-		$ext = FI_Extension::load ($id);
-		$this->render_admin ('extension/show', array ('extension' => $ext));		
+		if ( check_ajax_referer( 'filled_in_nonce_cancel', false, false ) ) {
+			$ext = FI_Extension::load ($id);
+			$this->render_admin ('extension/show', array ('extension' => $ext));
+
+		} else {
+			echo 'Invalid nonce, please reload the page.';
+		}
 	}
 	
 	

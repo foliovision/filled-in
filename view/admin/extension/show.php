@@ -12,7 +12,7 @@
 </div>
 
 <?php if ($extension->status == 'on' && $extension->is_editable ()) : ?>
-<a href="#" onclick="return edit_extension(<?php echo intval( $extension->id ) ?>,'<?php echo esc_attr( $extension->what_group () ) ?>')">
+<a href="#" onclick="return edit_extension(<?php echo intval( $extension->id ) ?>,'<?php echo esc_attr( $extension->what_group () ); ?>', '<?php echo esc_attr( wp_create_nonce( 'filled_in_nonce_edit' ) ); ?>' )">
 <?php endif; ?>
 
 	<?php $extension->show () ?>

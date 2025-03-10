@@ -84,9 +84,9 @@ function delete_extension (item,group, nonce){
   return false;
 }
 
-function edit_extension (item,group){
+function edit_extension (item,group, nonce){
   jQuery('#ext_loading_' + group).show ();
-  jQuery('#ext_' + item).load (wp_base + '?id=' + item + '&cmd=extension_edit', {}, function () {
+  jQuery('#ext_' + item).load (wp_base + '?id=' + item + '&cmd=extension_edit&_ajax_nonce=' + nonce, {}, function () {
     jQuery('#ext_loading_' + group).hide ();
   });
   
@@ -122,9 +122,9 @@ function enable_extension (item,group,nonce){
   return false;
 }
 
-function show_extension (item,group){  
+function show_extension (item,group, nonce){  
   jQuery('#ext_loading_' + group).show (); 
-  jQuery('#ext_' + item).load(wp_base + '?id=' + item + '&cmd=extension_show', {}, function()    {    
+  jQuery('#ext_' + item).load(wp_base + '?id=' + item + '&cmd=extension_show&_ajax_nonce=' + nonce, {}, function()    {    
     jQuery('#ext_' + item).removeClass ();      jQuery('#ext_loading_' + group).hide ();
   });  
   return false;
