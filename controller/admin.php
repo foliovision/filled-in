@@ -518,6 +518,8 @@ class Filled_In_Admin extends Filled_In_Plugin
 
 	function display_edit_page ($id)
 	{
+		$id = absint($id);
+
 		if (($form = FI_Form::load_by_id ($id)))
 		{
 			$result = true;
@@ -529,7 +531,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 
 				} else {
 					$msg = __ ("Form details updated successfully", 'filled-in');
-					$result = $form->update_details ($_POST['new_name'], $_POST['quickview'], $_POST['special']);
+					$result = $form->update_details ( sanitize_text_field( $_POST['new_name'] ), sanitize_text_field( $_POST['quickview'] ), sanitize_text_field( $_POST['special'] ) );
 				}
 			}
 			else if (isset ($_POST['update_options']))
@@ -539,7 +541,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 
 				} else {
 					$msg = __ ("Form details updated successfully", 'filled-in');
-					$result = $form->update_options ($_POST['custom_submit'], $_POST['custom_id'], trim( $_POST	['submit-anchor'] ) );
+					$result = $form->update_options ( wp_kses_post( $_POST['custom_submit'] ), sanitize_text_field( $_POST['custom_id'] ), sanitize_text_field( $_POST	['submit-anchor'] ) );
 				}
 			}
 
