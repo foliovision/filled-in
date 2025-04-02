@@ -52,7 +52,7 @@ class WordPress_Registration extends FI_Post
 
 		/* checking the email isn't already used by another user */
 		global $wpdb;
-		$email_exists = $wpdb->get_row("SELECT user_email FROM $wpdb->users WHERE user_email = '$user_email'");
+		$email_exists = $wpdb->get_row( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE user_email = %s", $user_email ) );
 		if ( $email_exists)
 		{
 			$errors = __('This email address is already registered, please supply another.', 'filled-in');

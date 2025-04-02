@@ -33,7 +33,7 @@ class WordPress_Lost_Password extends FI_Post
 			$key = substr( md5( uniqid( microtime() ) ), 0, 8);
 			
 			// Now insert the new pass md5'd into the db
-			$wpdb->query("UPDATE $wpdb->users SET user_activation_key = '$key' WHERE user_login = '$my_user_login'");
+			$wpdb->query(  $wpdb->prepare( "UPDATE $wpdb->users SET user_activation_key = %s WHERE user_login = %s", $key, $my_user_login ) );
 			
 			$message = __('Someone has asked to reset the password for the following site and username.', 'filled-in') . "\r\n\r\n";
 			$message .= get_option('home') . "\r\n\r\n";

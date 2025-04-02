@@ -30,9 +30,9 @@ class Filled_In_Admin_AJAX extends Filled_In_Plugin
 		
 				// Delete results & extensions
 				global $wpdb;
-				$wpdb->query ("DELETE FROM {$wpdb->prefix}filled_in_extensions WHERE form_id='$id'");
-				$wpdb->query ("DELETE FROM {$wpdb->prefix}filled_in_data WHERE form_id='$id'");
-				$wpdb->query ("DELETE FROM {$wpdb->prefix}filled_in_errors WHERE form_id='$id'");
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}filled_in_extensions WHERE form_id = %d", $id ) );
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}filled_in_data WHERE form_id = %d", $id ) );
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}filled_in_errors WHERE form_id = %d", $id ) );
 			}
 		}
 	}
