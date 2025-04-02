@@ -36,14 +36,14 @@ class FI_Form
 
       $forms = array ();
 
-      $results = $wpdb->get_results ("SELECT * FROM {$wpdb->prefix}filled_in_forms WHERE type='$type' ".$pager->to_limits (), ARRAY_A);
+      $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}filled_in_forms WHERE type= %s " . $pager->to_limits(), $type ), ARRAY_A);
       if (count ($results) > 0)
       {
          foreach ($results AS $result)
             $forms[] = new FI_Form ($result);
       }
 
-      $pager->set_total ($wpdb->get_var ("SELECT COUNT(*) FROM {$wpdb->prefix}filled_in_forms WHERE type='$type'"));
+      $pager->set_total ($wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}filled_in_forms WHERE type = %s", $type ) ));
       return $forms;
    }
 
@@ -55,7 +55,7 @@ class FI_Form
 
       global $wpdb;
 
-      $form = $wpdb->get_row ("SELECT * FROM {$wpdb->prefix}filled_in_forms WHERE id='$id'", ARRAY_A);
+      $form = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}filled_in_forms WHERE id = %d", $id ), ARRAY_A);
       if( $form ){
          self::$aForms[$id] = new FI_Form ($form);
          return self::$aForms[$id];
@@ -67,9 +67,7 @@ class FI_Form
    public static function load_by_name ($name, $type='form')
    {
       global $wpdb;
-      
-      $name = esc_sql ($name);
-      $form = $wpdb->get_row ("SELECT * FROM {$wpdb->prefix}filled_in_forms WHERE name='$name' AND type='$type'", ARRAY_A);
+      $form = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}filled_in_forms WHERE name = %s AND type = %s", $name, $type ), ARRAY_A);
       if ($form)
          return new FI_Form ($form);
       return false;
@@ -84,10 +82,9 @@ class FI_Form
          $name = FI_Form::sanitize_name ($name);
          
          // First check if form already exists
-         if ($wpdb->get_var ("SELECT count(id) FROM {$wpdb->prefix}filled_in_forms WHERE name='$name' AND type='$type'") == 0)
+         if ($wpdb->get_var( $wpdb->prepare( "SELECT count(id) FROM {$wpdb->prefix}filled_in_forms WHERE name = %s AND type = %s", $name, $type ) ) == 0)
          {
-            $name = esc_sql ($name);
-            $wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_forms (name,type) VALUES ('$name','$type')");
+            $wpdb->query($wpdb->prepare( "INSERT INTO {$wpdb->prefix}filled_in_forms (name,type) VALUES (%s, %s)", $name, $type ) );
             return true;
          }
          
@@ -107,7 +104,7 @@ class FI_Form
    {
       global $wpdb;
       
-      if ($wpdb->query ("DELETE FROM {$wpdb->prefix}filled_in_forms WHERE id='{$this->id}'") !== false)
+      if ($wpdb->query ( $wpdb->prepare( "DELETE FROM {$wpdb->prefix}filled_in_forms WHERE id = %d" ), $this->id ) !== false)
          return true;
       return __ ("Failed to delete form", 'filled-in');
    }
@@ -119,8 +116,7 @@ class FI_Form
       $this->options['custom_id'] = $customid;
       $this->options['submit-anchor'] = $strSubmitAnchor;
 
-      $custom = esc_sql( serialize( $this->options ) );
-      $wpdb->query( "UPDATE {$wpdb->prefix}filled_in_forms SET options='$custom' WHERE id='{$this->id}'" );
+      $wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}filled_in_forms SET options = %s WHERE id = %d", serialize( $this->options ), $this->id ) );
 
       return true;
    }
@@ -138,17 +134,14 @@ class FI_Form
       if (strlen ($name) > 0)
       {
          // First check if name is a duplicate
-         if ($this->name == $name || $wpdb->get_var ("SELECT count(id) FROM {$wpdb->prefix}filled_in_forms WHERE name='".esc_sql ($name)."' AND type='$type'") == 0)
+         if ($this->name == $name || $wpdb->get_var($wpdb->prepare( "SELECT count(id) FROM {$wpdb->prefix}filled_in_forms WHERE name= %s AND type = %s", $name, $type ) ) == 0)
          {
             $this->quickview = trim (preg_replace ('/[^A-Za-z0-9,\-_\[\]]/', '', $quick));
             $this->options['ajax']   = $special == 'ajax' ? 'true' : 'false';
             $this->options['upload'] = $special == 'upload' ? 'true' : 'false';
 
-            $quick   = esc_sql ($this->quickview);
-            $options = serialize ($this->options);
-
             $this->name = $name;
-            $sql = "UPDATE {$wpdb->prefix}filled_in_forms SET name='".esc_sql ($name)."', quickview='$quick', options='$options' WHERE id='{$this->id}'";
+            $sql = $wpdb->prepare( "UPDATE {$wpdb->prefix}filled_in_forms SET name = %s, quickview = %s, options = %s WHERE id= %d", $name, $this->quickview, serialize( $this->options ), $this->id );
             if ($wpdb->query ($sql) !== false)
                return true;
 
