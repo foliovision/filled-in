@@ -63,13 +63,13 @@
 		<tr>
 			<th width="180" valign="top"><?php esc_html_e( 'Submit anchor', 'filled-in' ); ?>:<br/><span class="sub"><?php esc_html_e('When a form is submitted the user will be taken to specified anchor. Leave empty to submit to top of page', 'filled-in'); ?></span></th>
 			<td valign="top">
-				<input type="text" name="submit-anchor" value="<?php echo esc_attr( $form->options['submit-anchor'] ); ?>" />
+				<input type="text" name="submit-anchor" value="<?php echo ! empty( $form->options['submit-anchor'] ) ? esc_attr( $form->options['submit-anchor'] ) : ''; ?>" />
 			</td>
 		</tr>
     <tr>
       <th width="180" valign="top"><?php esc_html_e('Predecessor\'s form allowed ID', 'filled-in'); ?>:<br/><span class="sub"><?php esc_html_e('Define allowed predecessor\'s form ID which has been submitted before this form has shown', 'filled-in'); ?></span></th>
       <td>
-        <input type="text" name="custom_id" value="<?php echo esc_attr( $form->options['custom_id'] ); ?>" />
+        <input type="text" name="custom_id" value="<?php echo ! empty( $form->options['custom_id'] ) ? esc_attr( $form->options['custom_id'] ) : ''; ?>" />
       </td>
     </tr>
 		<tr>
