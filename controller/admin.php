@@ -531,7 +531,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 
 				} else {
 					$msg = __ ("Form details updated successfully", 'filled-in');
-					$result = $form->update_details ( sanitize_text_field( $_POST['new_name'] ), sanitize_text_field( $_POST['quickview'] ), sanitize_text_field( $_POST['special'] ) );
+					$result = $form->update_details ( sanitize_key( $_POST['new_name'] ), sanitize_text_field( $_POST['quickview'] ), sanitize_text_field( $_POST['special'] ) );
 				}
 			}
 			else if (isset ($_POST['update_options']))
@@ -541,7 +541,7 @@ class Filled_In_Admin extends Filled_In_Plugin
 
 				} else {
 					$msg = __ ("Form details updated successfully", 'filled-in');
-					$result = $form->update_options ( wp_kses_post( $_POST['custom_submit'] ), sanitize_text_field( $_POST['custom_id'] ), sanitize_text_field( $_POST	['submit-anchor'] ) );
+					$result = $form->update_options ( wp_kses_post( $_POST['custom_submit'] ), sanitize_key( $_POST['custom_id'] ), sanitize_text_field( $_POST	['submit-anchor'] ) );
 				}
 			}
 
