@@ -52,6 +52,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.9.3 =
+* Security: Better input sanitization
+
 = 1.9.2 =
 * Security: Nonce verification for form options
 * Security: Adding missing nonce verification for form extensions
