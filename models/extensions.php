@@ -81,7 +81,14 @@ class FI_Extension
 			$this->config = array_merge ($this->config, $extraconfig);
 			
 		$config       = esc_sql (serialize ($this->config));
- 		return $wpdb->query ("UPDATE {$wpdb->prefix}filled_in_extensions SET name='{$this->name}', config='$config' WHERE id='{$this->id}'") == 1;
+ 		return $wpdb->query(
+			$wpdb->prepare(
+				"UPDATE {$wpdb->prefix}filled_in_extensions SET name = %s, config = %s WHERE id = %d",
+				$this->name,
+				$config,
+				$this->id
+			)
+		) == 1;
   }
 
 	public static function create ($formid, $type)
@@ -99,8 +106,23 @@ class FI_Extension
 			$obj = new $type (array ());
 			
 			// Get current count
-			$count = $wpdb->get_var ("SELECT COUNT(*) FROM {$wpdb->prefix}filled_in_extensions WHERE form_id='$formid' AND base='".$obj->what_group ()."'");
-			if ($wpdb->query ("INSERT INTO {$wpdb->prefix}filled_in_extensions (form_id,type,base,position) VALUES ('$formid','$type','".$obj->what_group ()."','$count')") !== false)
+			$count = $wpdb->get_var (
+				$wpdb->prepare(
+					"SELECT COUNT(*) FROM {$wpdb->prefix}filled_in_extensions WHERE form_id = %d AND base = %s",
+					$formid,
+					$obj->what_group ()
+				)
+			);
+
+			if ($wpdb->query (
+				$wpdb->prepare(
+					"INSERT INTO {$wpdb->prefix}filled_in_extensions (form_id,type,base,position) VALUES (%d,%s,%s,%d)",
+					$formid,
+					$type,
+					$obj->what_group (),
+					$count
+				)
+			) !== false)
 				return true;
 			return __ ("Failed to add extension to form", 'filled-in');
 		}
@@ -111,14 +133,24 @@ class FI_Extension
 	{
 		global $wpdb;
 		$this->status = 'off';
-		$wpdb->query ("UPDATE {$wpdb->prefix}filled_in_extensions SET status='off' WHERE id='{$this->id}'");
+		$wpdb->query(
+			$wpdb->prepare(
+				"UPDATE {$wpdb->prefix}filled_in_extensions SET status = 'off' WHERE id = %d",
+				$this->id
+			)
+		);
 	}
 	
 	function enable ()
 	{
 		global $wpdb;
 		$this->status = 'on';
-		$wpdb->query ("UPDATE {$wpdb->prefix}filled_in_extensions SET status='on' WHERE id='{$this->id}'");
+		$wpdb->query(
+			$wpdb->prepare(
+				"UPDATE {$wpdb->prefix}filled_in_extensions SET status = 'on' WHERE id = %d",
+				$this->id
+			)
+		);
 	}
 	
 	// Takes an array of filter IDs
@@ -131,7 +163,13 @@ class FI_Extension
 		$pos = 0;
 		foreach ($order AS $id)
 		{
-			$wpdb->query ("UPDATE {$wpdb->prefix}filled_in_extensions SET position=$pos WHERE id='$id'");
+			$wpdb->query(
+				$wpdb->prepare(
+					"UPDATE {$wpdb->prefix}filled_in_extensions SET position = %d WHERE id = %d",
+					$pos,
+					$id
+				)
+			);
 			$pos++;
 		}
 	}

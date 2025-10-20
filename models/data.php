@@ -191,24 +191,34 @@ class FI_Data
 	public static function delete_results ($formid)
 	{
 		global $wpdb;
-		
-		$sql = "DELETE FROM {$wpdb->prefix}filled_in_data USING {$wpdb->prefix}filled_in_data
-		 			  LEFT JOIN {$wpdb->prefix}filled_in_errors ON {$wpdb->prefix}filled_in_data.id={$wpdb->prefix}filled_in_errors.data_id
-					  WHERE {$wpdb->prefix}filled_in_errors.data_id IS NULL AND {$wpdb->prefix}filled_in_data.form_id=$formid ";
-
-		$wpdb->query ($sql);
+		$wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM {$wpdb->prefix}filled_in_data USING {$wpdb->prefix}filled_in_data
+				  LEFT JOIN {$wpdb->prefix}filled_in_errors ON {$wpdb->prefix}filled_in_data.id={$wpdb->prefix}filled_in_errors.data_id
+				  WHERE {$wpdb->prefix}filled_in_errors.data_id IS NULL AND {$wpdb->prefix}filled_in_data.form_id = %d",
+				$formid
+			)
+		);
 	}
 	
 	public static function delete_errors ($formid)
 	{
 		global $wpdb;
+		$wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM {$wpdb->prefix}filled_in_data USING {$wpdb->prefix}filled_in_data
+				  LEFT JOIN {$wpdb->prefix}filled_in_errors ON {$wpdb->prefix}filled_in_data.id={$wpdb->prefix}filled_in_errors.data_id
+				  WHERE {$wpdb->prefix}filled_in_errors.data_id={$wpdb->prefix}filled_in_data.id AND {$wpdb->prefix}filled_in_data.form_id = %d",
+				$formid
+			)
+		);
 
-		$sql = "DELETE FROM {$wpdb->prefix}filled_in_data USING {$wpdb->prefix}filled_in_data
-		 			  LEFT JOIN {$wpdb->prefix}filled_in_errors ON {$wpdb->prefix}filled_in_data.id={$wpdb->prefix}filled_in_errors.data_id
-					  WHERE {$wpdb->prefix}filled_in_errors.data_id={$wpdb->prefix}filled_in_data.id AND {$wpdb->prefix}filled_in_data.form_id=$formid ";
-		
-		$wpdb->query ($sql);
-		$wpdb->query ("DELETE FROM {$wpdb->prefix}filled_in_errors WHERE form_id=$formid");
+		$wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM {$wpdb->prefix}filled_in_errors WHERE form_id = %d",
+				$formid
+			)
+		);
 	}
 }
 
