@@ -188,7 +188,7 @@ class FI_Data
 		return $results;
 	}
 	
-	function delete_results ($formid)
+	public static function delete_results ($formid)
 	{
 		global $wpdb;
 		
@@ -199,7 +199,7 @@ class FI_Data
 		$wpdb->query ($sql);
 	}
 	
-	function delete_errors ($formid)
+	public static function delete_errors ($formid)
 	{
 		global $wpdb;
 

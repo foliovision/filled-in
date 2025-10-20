@@ -122,7 +122,7 @@ class FI_Extension
 	}
 	
 	// Takes an array of filter IDs
-	function reorder ($order)
+	public static function reorder ($order)
 	{
 		assert (is_array ($order));
 		
