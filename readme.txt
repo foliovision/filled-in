@@ -52,6 +52,10 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.9.4 =
+* More PHP 8.2 fixes
+* SQL injection vulneratility fixes
+
 = 1.9.3 =
 * Security: Better input sanitization
 
