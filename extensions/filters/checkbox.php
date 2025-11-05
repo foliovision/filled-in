@@ -4,11 +4,15 @@ class Filter_Checkbox extends FI_Filter
 {
 	function filter (&$value, $all_data)
 	{
+
+		// Ensure value is countable before using count()
+		$value_count = is_array( $value ) ? count($value) : 1;
+
 		if ($this->config['smallest'] > 0 || $this->config['largest'] > 0)
 		{
 			if ($this->config['smallest'] > 0 && $this->config['largest'] > 0)
 			{
-				if (count ($value) >= $this->config['smallest'] && count ($value) <= $this->config['largest'])
+				if ( $value_count >= $this->config['smallest'] && $value_count <= $this->config['largest'])
 					return true;
 					
 				if (!is_array ($value))
@@ -17,7 +21,7 @@ class Filter_Checkbox extends FI_Filter
 			}
 			else if ($this->config['smallest'] > 0)
 			{
-				if (count ($value) < $this->config['smallest'])
+				if ( $value_count < $this->config['smallest'])
 				{
 					if (!is_array ($value))
 						$value = 'no';
@@ -26,14 +30,14 @@ class Filter_Checkbox extends FI_Filter
 			}
 			else if ($this->config['largest'] > 0)
 			{
-				if (count ($value) > $this->config['largest'])
+				if ( $value_count > $this->config['largest'])
 				{
 					if (!is_array ($value))
 						$value = 'no';
 					return sprintf (__ ("no more than %d item(s) are required", 'filled-in'), $this->config['largest']);
 				}
 			}
-			else if (count ($value) == 0)
+			else if ( $value_count == 0)
 				$value = __ ('no', 'filled-in');
 		}
 		else if ($value == 'on')
