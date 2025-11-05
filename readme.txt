@@ -52,6 +52,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.9.5 =
+* Fix PHP 8.x fatal error with the Checkbox/Radio filter
+
 = 1.9.4 =
 * More PHP 8.2 fixes
 * SQL injection vulneratility fixes
