@@ -77,11 +77,14 @@ class FI_Extension
  		global $wpdb;
  		$this->name   = esc_sql ($name);
 		$this->config = $this->save ($config->data);
-		if (!is_null ($extraconfig))
-			$this->config = array_merge ($this->config, $extraconfig);
-			
-		$config       = esc_sql (serialize ($this->config));
- 		return $wpdb->query(
+
+		if ( ! is_null( $extraconfig ) && is_array( $extraconfig ) ) {
+			$this->config = array_merge( $this->config, $extraconfig );
+		}
+
+		$config       = serialize( $this->config );
+
+		return $wpdb->query(
 			$wpdb->prepare(
 				"UPDATE {$wpdb->prefix}filled_in_extensions SET name = %s, config = %s WHERE id = %d",
 				$this->name,
