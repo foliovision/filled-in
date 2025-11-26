@@ -52,6 +52,9 @@ Full documentation can be found on the [Filled In](http://urbangiraffe.com/plugi
 
 == Changelog ==
 
+= 1.9.6 =
+* Fix module config updating after the SQL fixes
+
 = 1.9.5 =
 * Fix PHP 8.x fatal error with the Checkbox/Radio filter
 
