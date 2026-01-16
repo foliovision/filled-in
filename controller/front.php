@@ -21,8 +21,7 @@ class Filled_In extends Filled_In_Plugin
     $this->register_plugin ('filled-in', dirname (__FILE__));
     
     // Decide what to do depending if this a GET or POST
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['filled_in_form']))
-    {
+    if ( ! empty( $_SERVER['REQUEST_METHOD'] ) && $_SERVER['REQUEST_METHOD'] == 'POST' && ! empty( $_POST['filled_in_form'] ) ) {
       $this->add_action ('wp_loaded', 'grab_post_data');
       if (isset ($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
         $this->add_action ('template_redirect', 'handle_ajax');
